@@ -10,8 +10,8 @@ class LogoImageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(25),
-      height: 50,
-      width: 50,
+      height: 180,
+      width: 180,
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(5.0),
