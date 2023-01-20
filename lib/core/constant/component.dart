@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:test_app/core/theme/theme_color.dart';
+import 'package:test_app/pages/widget/auth_widget/text_widget.dart';
 
 Widget defaultTextForm({
   required TextEditingController controller,
@@ -44,12 +46,13 @@ Widget defaultTextForm({
           fontWeight: FontWeight.bold,
         ),
         labelStyle: const TextStyle(
-          color: Colors.white,
+          color: Colors.grey,
         ),
         labelText: label,
-        //border: const OutlineInputBorder(),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
         prefixIcon: Icon(
           prefix,
+          color: AppColor.nearlyBlue,
         ),
         suffixIcon: suffix != null
             ? IconButton(
@@ -58,8 +61,41 @@ Widget defaultTextForm({
                 },
                 icon: Icon(
                   suffix,
+                  color: AppColor.nearlyBlue,
                 ),
               )
             : null,
       ),
     );
+
+Widget animatedOptacity(String text) {
+  return AnimatedOpacity(
+      duration: const Duration(milliseconds: 500),
+      opacity: 0.99,
+      child: Padding(
+          padding: const EdgeInsets.only(left: 30, bottom: 16, right: 30),
+          child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(
+                    child: Container(
+                        height: 48,
+                        decoration: BoxDecoration(
+                            color: AppColor.defaultColor,
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(16.0)),
+                            boxShadow: <BoxShadow>[
+                              BoxShadow(
+                                  color: AppColor.nearlyBlue.withOpacity(0.5),
+                                  offset: const Offset(1.1, 1.1),
+                                  blurRadius: 10.0)
+                            ]),
+                        child: Center(
+                            child: TextWidgetShapeEnglish(
+                                text: text,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                                size: 30))))
+              ])));
+}

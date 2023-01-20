@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test_app/core/constant/link_photo.dart';
+import 'package:test_app/core/theme/theme_color.dart';
 import 'package:test_app/pages/widget/splach_scenn_widget/logo_widget.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -10,12 +11,14 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromARGB(230, 9, 171, 211),
+        backgroundColor: AppColor.defaultColor,
         body: Container(
             height: Get.height,
             child:
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Center(child: LogoImageWidget(image: AppLink.logoImage)),
+              Center(
+                  child: LogoImageWidget(
+                      image: AppLink.logoImage, width: 180, height: 180)),
               SizedBox(height: 10),
               RichText(
                   text: TextSpan(children: [
