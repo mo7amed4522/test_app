@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="223.502" height="186.182" viewBox="0 0 223.502 186.182">
+  <g id="Forgot_password_illustration" data-name="Forgot password illustration" transform="translate(-76 -60.641)">
+    <path id="Path_15" data-name="Path 15" d="M0,52.152V31.714A31.714,31.714,0,0,1,31.714,0h0A31.714,31.714,0,0,1,63.427,31.714V52.152" transform="translate(161.007 104.641)" fill="none" stroke="#0baabc" stroke-width="16.458"/>
+    <path id="Rectangle_18" data-name="Rectangle 18" d="M30.035,0H81.876a30.035,30.035,0,0,1,30.035,30.035v37.03A30.035,30.035,0,0,1,81.876,97.1H30.035A30.035,30.035,0,0,1,0,67.065V30.035A30.035,30.035,0,0,1,30.035,0Z" transform="translate(137 149.723)" fill="none"/>
+    <path id="Rectangle_19" data-name="Rectangle 19" d="M32.092,0H76.528A32.092,32.092,0,0,1,108.62,32.092V65.007A32.092,32.092,0,0,1,76.528,97.1H32.092A32.092,32.092,0,0,1,0,65.007V32.092A32.092,32.092,0,0,1,32.092,0Z" transform="translate(137 149.723)" fill="#0aa8ba"/>
+    <path id="Path_17" data-name="Path 17" d="M31.949,15.972A15.975,15.975,0,1,0,10.378,30.937L9.866,42.124a2.4,2.4,0,0,0,2.349,2.509h8.457a2.4,2.4,0,0,0,2.391-2.509l-.576-11.586a15.974,15.974,0,0,0,9.458-14.565Z" transform="translate(176.981 176.059)" fill="#fff"/>
+    <text id="_" data-name="**" transform="translate(76 104.253)" fill="#0aa8ba" font-size="38.675" font-family="Roboto-Regular, Roboto" letter-spacing="0.078em"><tspan x="0" y="37">*</tspan></text>
+    <text id="_2" data-name="**" transform="translate(259.502 60.641)" fill="#0aa8ba" font-size="38.675" font-family="Roboto-Regular, Roboto" letter-spacing="0.129em"><tspan x="0" y="37">*</tspan></text>
+  </g>
+</svg>

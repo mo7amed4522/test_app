@@ -1,72 +1,57 @@
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
 import 'package:test_app/core/theme/theme_color.dart';
 import 'package:test_app/pages/widget/auth_widget/text_widget.dart';
 
-Widget defaultTextForm({
-  required TextEditingController controller,
-  required TextInputType keyboardType,
-  required String label,
-  bool formEnable = true,
-  bool readOnly = false,
-  required IconData prefix,
-  IconData? suffix,
-  Function? suffixPress,
-  Function? onSubmit,
-  Function? onChange,
-  Function? onTap,
-  required color,
-  required Function validate,
-  bool isPassword = false,
-}) =>
+Widget defaultTextForm(
+        {required TextEditingController controller,
+        required TextInputType keyboardType,
+        required String label,
+        bool formEnable = true,
+        bool readOnly = false,
+        required IconData prefix,
+        IconData? suffix,
+        Function? suffixPress,
+        Function? onSubmit,
+        Function? onChange,
+        Function? onTap,
+        required color,
+        required Function validate,
+        bool isPassword = false}) =>
     TextFormField(
-      style: TextStyle(
-        color: color,
-      ),
-      readOnly: readOnly,
-      obscureText: isPassword,
-      enabled: formEnable,
-      controller: controller,
-      keyboardType: keyboardType,
-      onTap: () {
-        onTap!();
-      },
-      onFieldSubmitted: (value) {
-        onSubmit!(value);
-      },
-      onChanged: (value) {
-        onChange!(value);
-      },
-      validator: (s) {
-        return validate(s);
-      },
-      decoration: InputDecoration(
-        errorStyle: const TextStyle(
-          color: Colors.red,
-          fontSize: 20.0,
-          fontWeight: FontWeight.bold,
-        ),
-        labelStyle: const TextStyle(
-          color: Colors.grey,
-        ),
-        labelText: label,
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
-        prefixIcon: Icon(
-          prefix,
-          color: AppColor.nearlyBlue,
-        ),
-        suffixIcon: suffix != null
-            ? IconButton(
-                onPressed: () {
-                  suffixPress!();
-                },
-                icon: Icon(
-                  suffix,
-                  color: AppColor.nearlyBlue,
-                ),
-              )
-            : null,
-      ),
-    );
+        style: TextStyle(color: color),
+        readOnly: readOnly,
+        obscureText: isPassword,
+        enabled: formEnable,
+        controller: controller,
+        keyboardType: keyboardType,
+        onTap: () {
+          onTap!();
+        },
+        onFieldSubmitted: (value) {
+          onSubmit!(value);
+        },
+        onChanged: (value) {
+          onChange!(value);
+        },
+        validator: (s) {
+          return validate(s);
+        },
+        decoration: InputDecoration(
+            errorStyle: const TextStyle(
+                color: Colors.red, fontSize: 20.0, fontWeight: FontWeight.bold),
+            labelStyle: const TextStyle(color: Colors.grey),
+            labelText: label,
+            border:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
+            prefixIcon: Icon(prefix, color: AppColor.nearlyBlue),
+            suffixIcon: suffix != null
+                ? IconButton(
+                    onPressed: () {
+                      suffixPress!();
+                    },
+                    icon: Icon(suffix, color: AppColor.nearlyBlue))
+                : null));
 
 Widget animatedOptacity(String text) {
   return AnimatedOpacity(
@@ -80,7 +65,7 @@ Widget animatedOptacity(String text) {
               children: [
                 Expanded(
                     child: Container(
-                        height: 48,
+                        height: 70,
                         decoration: BoxDecoration(
                             color: AppColor.defaultColor,
                             borderRadius:
@@ -99,3 +84,14 @@ Widget animatedOptacity(String text) {
                                 size: 30))))
               ])));
 }
+
+SnackBar snackBar(
+        {required String title,
+        required String message,
+        required ContentType contentType}) =>
+    SnackBar(
+        elevation: 0,
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: AppColor.snackBar,
+        content: AwesomeSnackbarContent(
+            title: title, message: message, contentType: contentType));

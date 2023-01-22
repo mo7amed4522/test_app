@@ -18,18 +18,9 @@ class SplashScreen extends StatelessWidget {
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
               Center(
                   child: LogoImageWidget(
-                      image: AppLink.logoImage, width: 180, height: 180)),
+                      image: AppLinkImage.logoImage, width: 280, height: 280)),
               SizedBox(height: 10),
-              RichText(
-                  text: TextSpan(children: [
-                TextSpan(
-                    text: 'Lifeline',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 40,
-                        fontFamily: "PlayfairDisplay",
-                        fontWeight: FontWeight.bold))
-              ]))
+              RichText(text: TextSpan(children: []))
             ])));
   }
 }

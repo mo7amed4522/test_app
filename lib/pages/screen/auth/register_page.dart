@@ -22,9 +22,9 @@ class RegisterPage extends StatelessWidget {
             child: ListView(
               children: [
                 Padding(
-                  padding: EdgeInsets.only(right: 7.h, left: 7.h),
+                  padding: EdgeInsets.only(top: 3.h, right: 7.h, left: 7.h),
                   child: LogoImageWidget(
-                      image: AppLink.logo, height: 150, width: 100),
+                      image: AppLinkImage.logoImage, height: 150, width: 100),
                 ),
                 SizedBox(height: 3.h),
                 Center(
@@ -103,7 +103,7 @@ class RegisterPage extends StatelessWidget {
                     },
                     color: Colors.grey,
                     validate: (String? val) {}),
-                SizedBox(height: 15.h),
+                SizedBox(height: 10.h),
                 GestureDetector(
                     child: animatedOptacity("SING UP"),
                     onTap: () {
@@ -111,15 +111,20 @@ class RegisterPage extends StatelessWidget {
                     }),
                 Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   TextWidgetShapeEnglish(
-                      text: "Already have an account?",
+                      text: "Already have an account ?",
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
                       size: 10.sp),
-                  TextWidgetShapeEnglish(
-                      text: "LOGIN",
-                      fontWeight: FontWeight.bold,
-                      color: AppColor.defaultColor,
-                      size: 15.sp)
+                  MaterialButton(
+                    onPressed: () {
+                      controller.login();
+                    },
+                    child: TextWidgetShapeEnglish(
+                        text: "LOGIN",
+                        fontWeight: FontWeight.bold,
+                        color: AppColor.defaultColor,
+                        size: 15.sp),
+                  )
                 ]),
                 SizedBox(height: 3.h),
               ],
