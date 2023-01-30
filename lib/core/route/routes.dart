@@ -9,10 +9,10 @@ import 'package:test_app/pages/screen/auth_attach/reset_password_page.dart';
 import 'package:test_app/pages/screen/home/history_screen.dart';
 import 'package:test_app/pages/screen/home/nearby_hospital_screen.dart';
 import 'package:test_app/pages/screen/home/support_screen.dart';
+import 'package:test_app/pages/screen/internal_screen/first_internal_screen.dart';
+import 'package:test_app/pages/screen/internal_screen/sec_internal_page.dart';
 import 'package:test_app/pages/screen/register_case_attach/first_screen_register.dart';
-import 'package:test_app/pages/screen/register_case_attach/four_register_case_screen.dart';
 import 'package:test_app/pages/screen/register_case_attach/sec_register_case_screen.dart';
-import 'package:test_app/pages/screen/register_case_attach/third_register_case_screen.dart';
 import 'package:test_app/pages/screen/splach_screen/home.dart';
 import 'package:test_app/pages/screen/home/home_page.dart';
 
@@ -40,9 +40,9 @@ List<GetPage<dynamic>>? routes = [
   GetPage(
       name: AppRoute.registerCaseSec, page: () => const RegisterCaseSecPage()),
   GetPage(
-      name: AppRoute.registerCaseThird,
-      page: () => const RegisterCaseScreenThird()),
+      name: AppRoute.internalCaseFirst,
+      page: () => const InternalScreenFirst()),
   GetPage(
-      name: AppRoute.registerCaseFour,
-      page: () => const RegisterCaseFourScreen()),
+      name: AppRoute.internalCaseSec,
+      page: () => const InternalSecondScreen()),
 ];

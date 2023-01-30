@@ -2,11 +2,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
-import 'package:test_app/controller/register_case_controller.dart/register_case_sec_controller.dart';
+import 'package:test_app/controller/internal_controller/internal_first_page_controller.dart';
 import 'package:test_app/core/theme/theme_color.dart';
 
-class DropMnueWidget extends GetView<RegisterCaseSecondIMP> {
-  const DropMnueWidget({super.key});
+class InternalDropMnueWidget extends GetView<InternalFirstPageControllerIMP> {
+  const InternalDropMnueWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

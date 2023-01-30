@@ -34,7 +34,7 @@ class HomePageScreen extends StatelessWidget {
             icon: const Icon(Icons.menu, size: 30), onPressed: () {}),
         iconTheme: const IconThemeData(color: AppColor.back),
         foregroundColor: AppColor.defaultColor,
-        backgroundColor: const Color.fromARGB(230, 51, 157, 184),
+        backgroundColor: AppColor.defaultColor,
         shadowColor: AppColor.defaultColor,
         elevation: 0.0,
       ),

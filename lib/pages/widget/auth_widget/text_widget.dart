@@ -20,7 +20,7 @@ class TextWidgetShapeEnglish extends StatelessWidget {
         style: TextStyle(
           fontSize: size,
           fontWeight: fontWeight,
-          fontFamily: "PlayfairDisplay",
+          fontFamily: "Poppins",
           color: color,
         ));
   }

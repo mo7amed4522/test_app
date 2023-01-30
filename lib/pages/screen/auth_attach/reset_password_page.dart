@@ -28,12 +28,18 @@ class ResetPasswordPage extends StatelessWidget {
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          CustomIconBtn(
-                              icon: Icons.arrow_back,
-                              color: AppColor.back,
-                              onPressed: () {
-                                Get.back();
-                              })
+                          Container(
+                            height: 4.h,
+                            decoration: BoxDecoration(
+                                color: AppColor.back,
+                                borderRadius: BorderRadius.circular(9.sp)),
+                            child: CustomIconBtn(
+                                icon: Icons.arrow_back,
+                                color: AppColor.black,
+                                onPressed: () {
+                                  Get.back();
+                                }),
+                          )
                         ])),
                 SizedBox(height: 5.h),
                 SvgPicture.asset(AppLinkImage.resetPass,
@@ -43,7 +49,7 @@ class ResetPasswordPage extends StatelessWidget {
                     child: TextWidgetShapeEnglish(
                         text: "Reset Password",
                         fontWeight: FontWeight.bold,
-                        color: AppColor.back,
+                        color: AppColor.black,
                         size: 18.sp)),
                 Center(
                     child: TextWidgetShapeEnglish(
@@ -58,9 +64,10 @@ class ResetPasswordPage extends StatelessWidget {
                         fontWeight: FontWeight.normal,
                         color: Colors.grey)),
                 SizedBox(height: 3.h),
-                defaultTextForm(
+               defaultTextForm(
                     controller: controller.passwordController,
                     keyboardType: TextInputType.visiblePassword,
+                    assetName: AppLinkImage.iconsPassword,
                     label: "Password",
                     onTap: () {},
                     onChange: (String? vall) {},
@@ -79,6 +86,7 @@ class ResetPasswordPage extends StatelessWidget {
                 defaultTextForm(
                     controller: controller.confirmPasswordController,
                     keyboardType: TextInputType.visiblePassword,
+                    assetName: AppLinkImage.iconsPassword,
                     label: "Confirm Password",
                     prefix: Icons.lock_outline,
                     onTap: () {},
@@ -94,11 +102,14 @@ class ResetPasswordPage extends StatelessWidget {
                     color: Colors.grey,
                     validate: (String? val) {}),
                 SizedBox(height: 10.h),
-                GestureDetector(
-                    child: animatedOptacity("SUBMIT"),
-                    onTap: () {
-                      controller.successReset(context);
-                    }),
+                Padding(
+                  padding:  EdgeInsets.only(right: 7.w,left: 7.w),
+                  child: GestureDetector(
+                      child: animatedOptacity("SUBMIT"),
+                      onTap: () {
+                        controller.successReset(context);
+                      }),
+                ),
               ],
             ),
           ),

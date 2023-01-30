@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -11,7 +13,8 @@ import 'package:test_app/pages/widget/home_widget/app_bar_widget.dart';
 import 'package:test_app/pages/widget/home_widget/choice_button_widget.dart';
 
 class RegisterCaseFirstPage extends StatelessWidget {
-  const RegisterCaseFirstPage({super.key});
+  
+   const RegisterCaseFirstPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,10 +23,12 @@ class RegisterCaseFirstPage extends StatelessWidget {
             builder: (context, orientation, deviceType) => GetBuilder<
                     RegisterCaseFirstIMP>(
                 init: RegisterCaseFirstIMP(),
-                builder: (controller) => ListView(
+                builder: (controller) => Container(
+                  color: AppColor.backgroungRegister,
                         padding:
                             EdgeInsets.only(right: 1.h, left: 1.h, top: 5.h),
-                        children: [
+                        child: Column(
+                          children: [
                           const AppBarWidgetRegisterCase(),
                           SizedBox(height: 3.h),
                           SvgPicture.asset(AppLinkImage.regiserCase,
@@ -55,30 +60,33 @@ class RegisterCaseFirstPage extends StatelessWidget {
                                   color: AppColor.back,
                                   fontWeight: FontWeight.bold)),
                           SizedBox(height: 5.h),
-                          GestureDetector(
-                              onTap: () {
-                                controller.changeSelected();
-                              },
-                              child: ChoiceButtonWidget(
-                                  text: "Interactive body",
-                                  color: controller.color,
-                                  colorText: controller.colorText)),
+                          ChoiceButtonWidget(
+                            onTap: (){
+                              controller.changeInteractive();
+                            },
+                              text: "Interactive body",
+                              color: controller.color,
+                              colorText: controller.colorText),
                           SizedBox(height: 5.h),
-                          GestureDetector(
-                              onTap: () {
-                                controller.changeSelected();
-                              },
-                              child: ChoiceButtonWidget(
-                                  text: "Internal list",
-                                  color: controller.color2,
-                                  colorText: controller.colorText2)),
+                          ChoiceButtonWidget(
+                            onTap: (){
+                              controller.changeInternal();
+                            },
+                              text: "Internal list",
+                              color: controller.color2,
+                              colorText: controller.colorText2),
                           SizedBox(height: 15.h),
-                          GestureDetector(
-                              onTap: () {
-                                controller
-                                    .goToSecRegisterCasePage(controller.x);
-                              },
-                              child: animatedOptacity("Next"))
-                        ]))));
+                          Padding(
+                            padding:  EdgeInsets.only(right: 4.h,left: 4.h),
+                            child: GestureDetector(
+                                onTap: () {
+                                  controller
+                                      .goToSecRegisterCasePage(controller.x);
+                                },
+                                child: animatedOptacity("Next")),
+                          )
+                        ]
+                        ),
+                        ))));
   }
 }

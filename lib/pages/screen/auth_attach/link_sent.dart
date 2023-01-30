@@ -27,12 +27,18 @@ class LinkSentPage extends StatelessWidget {
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        CustomIconBtn(
-                            icon: Icons.arrow_back,
-                            color: AppColor.back,
-                            onPressed: () {
-                              Get.back();
-                            })
+                        Container(
+                          height: 4.h,
+                          decoration: BoxDecoration(
+                              color: AppColor.back,
+                              borderRadius: BorderRadius.circular(9.sp)),
+                          child: CustomIconBtn(
+                              icon: Icons.arrow_back,
+                              color: AppColor.black,
+                              onPressed: () {
+                                Get.back();
+                              }),
+                        )
                       ])),
               SizedBox(height: 5.h),
               SvgPicture.asset(AppLinkImage.linkset,
@@ -43,31 +49,34 @@ class LinkSentPage extends StatelessWidget {
                       text: "Link has been sent",
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
-                      size: 18.sp)),
+                      size: 20.sp)),
               Center(
                   child: TextWidgetShapeEnglish(
                       text: "We have sent an email to that",
-                      size: 10.sp,
+                      size: 17.sp,
                       fontWeight: FontWeight.normal,
                       color: Colors.grey)),
               Center(
                   child: TextWidgetShapeEnglish(
                       text: "contains a link to reset your",
-                      size: 10.sp,
+                      size: 17.sp,
                       fontWeight: FontWeight.normal,
                       color: Colors.grey)),
               Center(
                   child: TextWidgetShapeEnglish(
                       text: "password",
-                      size: 10.sp,
+                      size: 17.sp,
                       fontWeight: FontWeight.normal,
                       color: Colors.grey)),
-              SizedBox(height: 10.h),
-              GestureDetector(
-                  child: animatedOptacity("CLOSE"),
-                  onTap: () {
-                    controller.goToResetePassword();
-                  })
+              SizedBox(height: 5.h),
+              Padding(
+                padding:  EdgeInsets.only(right: 7.w,left: 7.w),
+                child: GestureDetector(
+                    child: animatedOptacity("CLOSE"),
+                    onTap: () {
+                      controller.goToResetePassword();
+                    }),
+              )
             ],
           ),
         ),

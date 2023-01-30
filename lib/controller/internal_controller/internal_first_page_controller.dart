@@ -3,12 +3,12 @@
 import 'package:get/get.dart';
 import 'package:test_app/core/route/app_routes.dart';
 
-abstract class RegisterCaseSecond extends GetxController {
+abstract class InternalFirstPageController extends GetxController {
+  goToFourthPage();
   changeDropMnue(String Val);
-  goToThirdPage();
 }
 
-class RegisterCaseSecondIMP extends RegisterCaseSecond {
+class InternalFirstPageControllerIMP extends InternalFirstPageController {
   String dropdownvalue = 'Left Leg';
 
   var items = [
@@ -26,7 +26,7 @@ class RegisterCaseSecondIMP extends RegisterCaseSecond {
   }
 
   @override
-  goToThirdPage() {
-    Get.toNamed(AppRoute.registerCase);
+  goToFourthPage() {
+    Get.toNamed(AppRoute.internalCaseSec);
   }
 }

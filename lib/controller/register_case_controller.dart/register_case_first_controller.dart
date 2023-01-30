@@ -6,32 +6,34 @@ import 'package:test_app/core/theme/theme_color.dart';
 
 abstract class RegisterCaseFirst extends GetxController {
   changeSelected();
+  changeInternal();
+  changeInteractive();
   goToSecRegisterCasePage(int? x);
 }
 
 class RegisterCaseFirstIMP extends RegisterCaseFirst {
   bool isSelected = false;
-  Color color = AppColor.grey;
-  Color colorText = AppColor.back;
-  Color color2 = AppColor.grey;
+  Color color = AppColor.black;
+  Color colorText = AppColor.black;
+  Color color2 = AppColor.black;
   int? x;
-  Color colorText2 = AppColor.back;
+  Color colorText2 = AppColor.black;
 
   @override
   changeSelected() {
-    isSelected = !isSelected;
-    if (isSelected == true) {
+    //isSelected = !isSelected;
+    if (isSelected == false) {
       color = AppColor.defaultColor;
       colorText = AppColor.defaultColor;
-      color2 = AppColor.grey;
-      colorText2 = AppColor.back;
+      color2 = AppColor.black;
+      colorText2 = AppColor.black;
       x = 1;
       if (kDebugMode) {
         print(x);
       }
     } else {
-      color = AppColor.grey;
-      colorText = AppColor.back;
+      color = AppColor.black;
+      colorText = AppColor.black;
       color2 = AppColor.defaultColor;
       colorText2 = AppColor.defaultColor;
       x = 2;
@@ -47,7 +49,21 @@ class RegisterCaseFirstIMP extends RegisterCaseFirst {
     if (x == 1) {
       Get.toNamed(AppRoute.registerCaseSec);
     } else {
-      Get.toNamed(AppRoute.registerCaseThird);
+      Get.toNamed(AppRoute.internalCaseFirst);
     }
+  }
+
+  @override
+  changeInteractive() {
+    isSelected =false;
+    changeSelected();
+    update();
+  }
+
+  @override
+  changeInternal() {
+    isSelected = true;
+    changeSelected();
+    update();
   }
 }

@@ -28,12 +28,19 @@ class ForgetPasswordPage extends StatelessWidget {
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
                                       children: [
-                                        CustomIconBtn(
-                                            icon: Icons.arrow_back,
-                                            color: AppColor.back,
-                                            onPressed: () {
-                                              Get.back();
-                                            })
+                                        Container(
+                                          height: 4.h,
+                                          decoration: BoxDecoration(
+                                              color: AppColor.back,
+                                              borderRadius:
+                                                  BorderRadius.circular(9.sp)),
+                                          child: CustomIconBtn(
+                                              icon: Icons.arrow_back,
+                                              color: AppColor.black,
+                                              onPressed: () {
+                                                Get.back();
+                                              }),
+                                        )
                                       ])),
                               SizedBox(height: 5.h),
                               SvgPicture.asset(AppLinkImage.forgetPass,
@@ -46,12 +53,12 @@ class ForgetPasswordPage extends StatelessWidget {
                                       text: "Forgot Password",
                                       fontWeight: FontWeight.bold,
                                       color: Colors.black,
-                                      size: 18.sp)),
+                                      size: 20.sp)),
                               Center(
                                   child: TextWidgetShapeEnglish(
                                       text:
                                           "Enter your email to get a verification",
-                                      size: 10.sp,
+                                      size: 14.sp,
                                       fontWeight: FontWeight.normal,
                                       color: Colors.grey)),
                               Center(
@@ -64,6 +71,7 @@ class ForgetPasswordPage extends StatelessWidget {
                               defaultTextForm(
                                   controller: controller.emailController,
                                   keyboardType: TextInputType.name,
+                                  assetName: AppLinkImage.iconsEmail,
                                   label: "Email",
                                   prefix: Icons.email_rounded,
                                   onTap: () {},

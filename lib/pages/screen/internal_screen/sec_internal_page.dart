@@ -3,23 +3,24 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
-import 'package:test_app/controller/register_case_controller.dart/register_case_four_controller.dart';
+import 'package:test_app/controller/internal_controller/internal_sec_screen_controller.dart';
 import 'package:test_app/core/constant/component.dart';
 import 'package:test_app/core/theme/theme_color.dart';
 import 'package:test_app/pages/widget/auth_widget/text_widget.dart';
 import 'package:test_app/pages/widget/home_widget/app_bar_widget.dart';
 
-class RegisterCaseFourScreen extends StatelessWidget {
-  const RegisterCaseFourScreen({super.key});
+class InternalSecondScreen extends StatelessWidget {
+  const InternalSecondScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Sizer(
             builder: ((context, orientation, deviceType) => GetBuilder<
-                    RegisterCaseFourControllerIMP>(
-                init: RegisterCaseFourControllerIMP(),
+                    InternalSecondScreenControllerIMP>(
+                init: InternalSecondScreenControllerIMP(),
                 builder: (controller) => Container(
+                  color: AppColor.backgroungRegister,
                     padding: EdgeInsets.only(left: 1.h, right: 1.h, top: 5.h),
                     child: Column(children: [
                       AppBarWidgetRegisterCase(),
@@ -29,7 +30,7 @@ class RegisterCaseFourScreen extends StatelessWidget {
                           height: 30.h,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(12.w)),
-                          child: defaultTextForm(
+                          child: defaultTextFormwithoutasset(
                               maxLines: 10,
                               controller: controller.painController,
                               keyboardType: TextInputType.text,
@@ -37,7 +38,7 @@ class RegisterCaseFourScreen extends StatelessWidget {
                               onTap: () {},
                               onChange: (String? vall) {},
                               onSubmit: (String? vall) {},
-                              color: AppColor.back,
+                              color: AppColor.black,
                               validate: (String? val) {})),
                       SizedBox(height: 3.h),
                       RadioListTile(
@@ -60,7 +61,9 @@ class RegisterCaseFourScreen extends StatelessWidget {
                       ),
                       const Spacer(),
                       GestureDetector(
-                          onTap: () {}, child: animatedOptacity("Next")),
+                          onTap: () {
+                            controller.goToChoiceScreen();
+                          }, child: animatedOptacity("Next")),
                       SizedBox(height: 2.h)
                     ]))))));
   }

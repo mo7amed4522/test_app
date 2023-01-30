@@ -13,32 +13,35 @@ class ItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        Get.toNamed(data["Funchion"]);
-      },
-      child: Container(
-          decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(25),
-              boxShadow: kElevationToShadow[3]),
-          padding: const EdgeInsets.all(12.0),
-          height: 150,
-          child: Card(
-              color: Colors.white,
-              child: Column(children: [
-                Expanded(
-                    child: Container(
-                        height: 140,
-                        child: SvgPicture.asset(data["Image"],
-                            fit: BoxFit.contain))),
-                Center(
-                    child: TextWidgetShapeEnglish(
-                  text: data["Name"],
-                  size: 20,
-                  fontWeight: FontWeight.bold,
-                ))
-              ]))),
+    return Padding(
+      padding: const EdgeInsets.all(7.0),
+      child: InkWell(
+        onTap: () {
+          Get.toNamed(data["Funchion"]);
+        },
+        child: Container(
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(25),
+                boxShadow: kElevationToShadow[3]),
+            padding: const EdgeInsets.all(12.0),
+            height: 150,
+            child: Card(
+                color: Colors.white,
+                child: Column(children: [
+                  Expanded(
+                      child: Container(
+                          height: 140,
+                          child: SvgPicture.asset(data["Image"],
+                              fit: BoxFit.contain))),
+                  Center(
+                      child: TextWidgetShapeEnglish(
+                    text: data["Name"],
+                    size: 20,
+                    fontWeight: FontWeight.bold,
+                  ))
+                ]))),
+      ),
     );
   }
 }

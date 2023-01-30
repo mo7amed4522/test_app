@@ -21,6 +21,7 @@ class RegisterCaseSecPage extends StatelessWidget {
                     RegisterCaseSecondIMP>(
                 init: RegisterCaseSecondIMP(),
                 builder: (controller) => Container(
+                  color: AppColor.backgroungRegister,
                     padding: EdgeInsets.only(top: 5.h, right: 1.h, left: 1.h),
                     child: Column(children: [
                       const AppBarWidgetRegisterCase(),
@@ -29,7 +30,7 @@ class RegisterCaseSecPage extends StatelessWidget {
                           child: TextWidgetShapeEnglish(
                               text: "Please select the part of Pain",
                               size: 5.w,
-                              color: AppColor.back,
+                              color: AppColor.black,
                               fontWeight: FontWeight.bold)),
                       SizedBox(height: 5.h),
                       Row(children: [
@@ -46,11 +47,14 @@ class RegisterCaseSecPage extends StatelessWidget {
                       // ignore: prefer_const_constructors
                       DropMnueWidget(),
                       const Spacer(),
-                      GestureDetector(
-                          onTap: () {
-                            controller.goToThirdPage();
-                          },
-                          child: animatedOptacity("Next")),
+                      Padding(
+                        padding:  EdgeInsets.only(left: 3.h,right: 3.h),
+                        child: GestureDetector(
+                            onTap: () {
+                              controller.goToThirdPage();
+                            },
+                            child: animatedOptacity("Next")),
+                      ),
                       SizedBox(height: 2.h)
                     ])))));
   }

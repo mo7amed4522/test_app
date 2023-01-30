@@ -4,10 +4,13 @@ class AppColor {
   AppColor._();
 
   static const Color nearlyWhite = Color(0xFFFFFFFF);
-  static const Color white = Colors.white;
-  static const Color back = Colors.black87;
-  static const Color nearlyBlue = Color(0xFF00B6F0);
-  static const Color grey = Color.fromARGB(255, 218, 228, 236);
-  static const Color defaultColor = Color.fromARGB(230, 9, 171, 211);
-  static const Color snackBar = Colors.transparent;
+  static const Color colorFontgry = Color(0xFF828282);
+  static const Color back = Color(0xFFF1F8FF);
+  static const Color nearlyBlue = Color(0xFF017B89);
+  static const Color grey = Color.fromARGB(255, 119, 118, 118);
+  static const Color defaultColor = Color(0xFF0BA8BB);
+  static const Color containerWidget = Color(0xFFEFF7F8);
+  static const Color black = Colors.black;
+  static const Color buttonColor = Color(0xFF09A9BC);
+  static const Color backgroungRegister = Color(0xFFF1F8FF);
 }
