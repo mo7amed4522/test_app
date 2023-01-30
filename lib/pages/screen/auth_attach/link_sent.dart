@@ -5,6 +5,7 @@ import 'package:sizer/sizer.dart';
 import 'package:test_app/controller/auth_attach/link_sent_controller.dart';
 import 'package:test_app/core/constant/component.dart';
 import 'package:test_app/core/constant/link_photo.dart';
+import 'package:test_app/core/theme/theme_color.dart';
 import 'package:test_app/pages/widget/auth_widget/back_arrow_widget.dart';
 import 'package:test_app/pages/widget/auth_widget/text_widget.dart';
 
@@ -26,9 +27,12 @@ class LinkSentPage extends StatelessWidget {
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        CustomIconBtn(onPressed: () {
-                          Get.back();
-                        })
+                        CustomIconBtn(
+                            icon: Icons.arrow_back,
+                            color: AppColor.back,
+                            onPressed: () {
+                              Get.back();
+                            })
                       ])),
               SizedBox(height: 5.h),
               SvgPicture.asset(AppLinkImage.linkset,

@@ -4,20 +4,17 @@ import 'package:flutter/material.dart';
 
 class CustomIconBtn extends StatelessWidget {
   void Function()? onPressed;
-  CustomIconBtn({super.key, this.onPressed});
+  IconData icon;
+  Color color;
+  CustomIconBtn(
+      {super.key, required this.color, required this.icon, this.onPressed});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-          shape: BoxShape.rectangle, borderRadius: BorderRadius.circular(10)),
-      child: IconButton(
-        onPressed: onPressed,
-        icon: const Icon(
-          Icons.arrow_back_rounded,
-          color: Colors.black,
-        ),
-      ),
-    );
+        decoration: BoxDecoration(
+            shape: BoxShape.rectangle, borderRadius: BorderRadius.circular(10)),
+        child:
+            IconButton(onPressed: onPressed, icon: Icon(icon, color: color)));
   }
 }

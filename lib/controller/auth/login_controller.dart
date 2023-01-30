@@ -25,7 +25,9 @@ class LoginControllerIMP extends LoginController {
   }
 
   @override
-  login() {}
+  login() {
+    Get.toNamed(AppRoute.homePage);
+  }
 
   @override
   goToSignUpPage() {

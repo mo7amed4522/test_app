@@ -1,31 +1,40 @@
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test_app/core/constant/component.dart';
 import 'package:test_app/core/route/app_routes.dart';
 
 abstract class ResetPasswordController extends GetxController {
-  successReset();
+  successReset(BuildContext context);
   changeVisablePass();
   changeVisablePassConfirm();
-  snackBarSeccess();
-  snackBarFailer();
 }
 
 class ResetPasswordControllerIMP extends ResetPasswordController {
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
   bool isPassword = true;
   bool isPasswordconfirm = true;
-  int success = 1;
+  bool success = true;
 
   @override
-  successReset() {
-    if (success == 1) {
-      snackBarSeccess();
+  successReset(BuildContext context) {
+    if (success) {
+      ScaffoldMessenger.of(context)
+        ..hideCurrentSnackBar()
+        ..showSnackBar(snackBar(
+            title: "SUCCESS",
+            message: "Your password has been reset",
+            contentType: ContentType.success));
       Get.toNamed(AppRoute.loginPage);
     } else {
-      snackBarSeccess();
+      ScaffoldMessenger.of(context)
+        ..hideCurrentSnackBar()
+        ..showSnackBar(snackBar(
+            title: "FAILURE",
+            message: "Your password has not reset",
+            contentType: ContentType.failure));
     }
   }
 
@@ -39,21 +48,5 @@ class ResetPasswordControllerIMP extends ResetPasswordController {
   changeVisablePassConfirm() {
     isPasswordconfirm = !isPasswordconfirm;
     update();
-  }
-
-  @override
-  snackBarSeccess() {
-    snackBar(
-        title: "SUCCESS",
-        message: "Your password has been reset",
-        contentType: ContentType.success);
-  }
-
-  @override
-  snackBarFailer() {
-    snackBar(
-        title: "FAILURE",
-        message: "Your password has not reset",
-        contentType: ContentType.failure);
   }
 }

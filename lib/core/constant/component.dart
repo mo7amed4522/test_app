@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
 import 'package:test_app/core/theme/theme_color.dart';
@@ -9,17 +11,21 @@ Widget defaultTextForm(
         required String label,
         bool formEnable = true,
         bool readOnly = false,
-        required IconData prefix,
+        IconData? prefix,
         IconData? suffix,
         Function? suffixPress,
         Function? onSubmit,
         Function? onChange,
         Function? onTap,
+        int? maxLength,
+        int maxLines = 1,
         required color,
         required Function validate,
         bool isPassword = false}) =>
     TextFormField(
         style: TextStyle(color: color),
+        maxLength: maxLength,
+        maxLines: maxLines,
         readOnly: readOnly,
         obscureText: isPassword,
         enabled: formEnable,
@@ -38,9 +44,9 @@ Widget defaultTextForm(
           return validate(s);
         },
         decoration: InputDecoration(
-            errorStyle: const TextStyle(
+            errorStyle: TextStyle(
                 color: Colors.red, fontSize: 20.0, fontWeight: FontWeight.bold),
-            labelStyle: const TextStyle(color: Colors.grey),
+            labelStyle: TextStyle(color: Colors.grey),
             labelText: label,
             border:
                 OutlineInputBorder(borderRadius: BorderRadius.circular(25.0)),
