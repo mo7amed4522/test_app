@@ -27,16 +27,16 @@ class ChoiceButtonWidget extends StatelessWidget {
                   children: [
                     Expanded(
                         child: Container(
-                            height: 70,
-                            decoration: BoxDecoration(
+                            height: 60,
+                            decoration:  BoxDecoration(
                                 color: AppColor.nearlyWhite,
                                 border: Border.all(width: 5.0, color: color!),
-                                borderRadius: const BorderRadius.all(
+                                borderRadius:const  BorderRadius.all(
                                     Radius.circular(16.0))),
                             child: Center(
                                 child: TextWidgetShapeEnglish(
                                     text: text,
-                                    fontWeight: FontWeight.bold,
+                                    fontWeight: FontWeight.normal,
                                     color: colorText,
                                     size: 15))))
                   ]))),

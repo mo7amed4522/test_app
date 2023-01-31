@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:test_app/core/theme/theme_color.dart';
 import 'package:test_app/pages/widget/auth_widget/text_widget.dart';
 
 class ItemWidget extends StatelessWidget {
@@ -21,13 +22,14 @@ class ItemWidget extends StatelessWidget {
         },
         child: Container(
             decoration: BoxDecoration(
-                color: Colors.white,
+                color: AppColor.nearlyWhite,
                 borderRadius: BorderRadius.circular(25),
-                boxShadow: kElevationToShadow[3]),
+                boxShadow: kElevationToShadow[9]
+                ),
             padding: const EdgeInsets.all(12.0),
-            height: 150,
+            height: 120,
             child: Card(
-                color: Colors.white,
+                //scolor: Colors.white,
                 child: Column(children: [
                   Expanded(
                       child: Container(

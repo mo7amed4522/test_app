@@ -31,7 +31,7 @@ class RegisterCaseSecPage extends StatelessWidget {
                               text: "Please select the part of Pain",
                               size: 5.w,
                               color: AppColor.black,
-                              fontWeight: FontWeight.bold)),
+                              fontWeight: FontWeight.normal)),
                       SizedBox(height: 5.h),
                       Row(children: [
                         Expanded(
@@ -55,7 +55,7 @@ class RegisterCaseSecPage extends StatelessWidget {
                             },
                             child: animatedOptacity("Next")),
                       ),
-                      SizedBox(height: 2.h)
+                      SizedBox(height: 7.h)
                     ])))));
   }
 }

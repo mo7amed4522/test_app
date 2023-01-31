@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable
+// ignore_for_file: must_be_immutable, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
@@ -24,18 +24,19 @@ class HomePageScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 80,
         title: TextWidgetShapeEnglish(
             text: "Home",
-            size: 5.w,
-            fontWeight: FontWeight.bold,
+            size: 25,
+            fontWeight: FontWeight.normal,
             color: AppColor.nearlyWhite),
         centerTitle: true,
-        leading: IconButton(
-            icon: const Icon(Icons.menu, size: 30), onPressed: () {}),
+        leading: Padding(
+            padding: EdgeInsets.only(left: 5),
+            child: IconButton(
+                icon: const Icon(Icons.menu, size: 30), onPressed: () {})),
         iconTheme: const IconThemeData(color: AppColor.back),
-        foregroundColor: AppColor.defaultColor,
         backgroundColor: AppColor.defaultColor,
-        shadowColor: AppColor.defaultColor,
         elevation: 0.0,
       ),
       backgroundColor: AppColor.defaultColor,
@@ -43,13 +44,13 @@ class HomePageScreen extends StatelessWidget {
         builder: (context, orientation, deviceType) => Container(
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(7.h),
-                    topRight: Radius.circular(7.h)),
-                color: Colors.white),
+                    topLeft: Radius.circular(35),
+                    topRight: Radius.circular(35)),
+                color: AppColor.nearlyWhite),
             child: GridView.count(
-              padding: EdgeInsets.only(top: 7.h),
+              padding: EdgeInsets.all(5),
               crossAxisCount: 2,
-              crossAxisSpacing: 2,
+              crossAxisSpacing: 20,
               mainAxisSpacing: 2,
               children: [
                 ...HomeModule().list.map((e) {

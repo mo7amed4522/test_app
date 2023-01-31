@@ -13,9 +13,9 @@ abstract class RegisterCaseFirst extends GetxController {
 
 class RegisterCaseFirstIMP extends RegisterCaseFirst {
   bool isSelected = false;
-  Color color = AppColor.black;
+  Color color = AppColor.back;
   Color colorText = AppColor.black;
-  Color color2 = AppColor.black;
+  Color color2 = AppColor.back;
   int? x;
   Color colorText2 = AppColor.black;
 
@@ -25,17 +25,17 @@ class RegisterCaseFirstIMP extends RegisterCaseFirst {
     if (isSelected == false) {
       color = AppColor.defaultColor;
       colorText = AppColor.defaultColor;
-      color2 = AppColor.black;
+      color2 = AppColor.back;
       colorText2 = AppColor.black;
       x = 1;
       if (kDebugMode) {
         print(x);
       }
     } else {
-      color = AppColor.black;
+      color = AppColor.back;
       colorText = AppColor.black;
       color2 = AppColor.defaultColor;
-      colorText2 = AppColor.defaultColor;
+      colorText2 = AppColor.black;
       x = 2;
       if (kDebugMode) {
         print(x);

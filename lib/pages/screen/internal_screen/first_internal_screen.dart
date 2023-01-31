@@ -31,8 +31,7 @@ class InternalScreenFirst extends StatelessWidget {
                               text: "Please select the part of Pain",
                               size: 5.w,
                               color: AppColor.black,
-                              fontWeight: FontWeight.bold)),
-                      SizedBox(height: 3.h),
+                              fontWeight: FontWeight.normal)),
                       InternalDropMnueWidget(),
                       Spacer(),
                       Padding(
@@ -43,7 +42,7 @@ class InternalScreenFirst extends StatelessWidget {
                             },
                             child: animatedOptacity("Next")),
                       ),
-                      SizedBox(height: 2.h)
+                      SizedBox(height: 3.h)
                     ])))));
   }
 }

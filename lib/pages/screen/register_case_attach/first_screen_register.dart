@@ -30,36 +30,37 @@ class RegisterCaseFirstPage extends StatelessWidget {
                         child: Column(
                           children: [
                           const AppBarWidgetRegisterCase(),
-                          SizedBox(height: 3.h),
+                          SizedBox(height: 5.h),
                           SvgPicture.asset(AppLinkImage.regiserCase,
-                              height: 12.h, width: 12.w, fit: BoxFit.contain),
+                              height: 7.h, width: 7.w, fit: BoxFit.contain),
+                              SizedBox(height: 3.h),
                           Center(
                               child: TextWidgetShapeEnglish(
                                   text: "Register Case",
                                   size: 5.w,
                                   color: AppColor.defaultColor,
                                   fontWeight: FontWeight.bold)),
-                          SizedBox(height: 5.h),
+                          SizedBox(height: 2.h),
                           Center(
                               child: TextWidgetShapeEnglish(
                                   text: "Please enter the following details to",
                                   size: 4.w,
                                   color:
-                                      const Color.fromARGB(255, 51, 49, 49))),
+                                      AppColor.grey)),
                           Center(
                               child: TextWidgetShapeEnglish(
                                   text: "register your case",
                                   size: 4.w,
                                   color:
-                                      const Color.fromARGB(255, 51, 49, 49))),
-                          SizedBox(height: 5.h),
+                                      AppColor.grey)),
+                          SizedBox(height: 7.h),
                           Center(
                               child: TextWidgetShapeEnglish(
                                   text: "Please select one of the following",
-                                  size: 5.w,
-                                  color: AppColor.back,
-                                  fontWeight: FontWeight.bold)),
-                          SizedBox(height: 5.h),
+                                  size: 4.w,
+                                  color: AppColor.black,
+                                  fontWeight: FontWeight.normal)),
+                          SizedBox(height: 3.h),
                           ChoiceButtonWidget(
                             onTap: (){
                               controller.changeInteractive();
@@ -67,7 +68,7 @@ class RegisterCaseFirstPage extends StatelessWidget {
                               text: "Interactive body",
                               color: controller.color,
                               colorText: controller.colorText),
-                          SizedBox(height: 5.h),
+                          //SizedBox(height: 0.5.h),
                           ChoiceButtonWidget(
                             onTap: (){
                               controller.changeInternal();
@@ -75,7 +76,7 @@ class RegisterCaseFirstPage extends StatelessWidget {
                               text: "Internal list",
                               color: controller.color2,
                               colorText: controller.colorText2),
-                          SizedBox(height: 15.h),
+                          SizedBox(height: Get.height/4),
                           Padding(
                             padding:  EdgeInsets.only(right: 4.h,left: 4.h),
                             child: GestureDetector(

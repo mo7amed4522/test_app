@@ -12,9 +12,9 @@ class AppBarWidgetRegisterCase extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(mainAxisAlignment: MainAxisAlignment.start, children: [
       Container(
-        height: 4.h,
+        height: 5.h,
         decoration: BoxDecoration(
-            color: AppColor.nearlyWhite, borderRadius: BorderRadius.circular(9.sp)),
+            color: AppColor.nearlyWhite, borderRadius: BorderRadius.circular(6.sp)),
         child: CustomIconBtn(
             icon: Icons.arrow_back,
             color: AppColor.black,
@@ -22,12 +22,12 @@ class AppBarWidgetRegisterCase extends StatelessWidget {
               Get.back();
             }),
       ),
-      SizedBox(width: 20.w),
+      SizedBox(width: 23.w),
       TextWidgetShapeEnglish(
           text: "Register Case",
           color: AppColor.black,
           size: 20,
-          fontWeight: FontWeight.bold),
+          fontWeight: FontWeight.normal),
     ]);
   }
 }

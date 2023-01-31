@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
       splash: const SplashScreen(),
-      nextScreen: const RegisterPage(),
+      nextScreen: const RegisterScreen(),
       splashIconSize: Get.height,
       animationDuration: const Duration(
         milliseconds: 2000,

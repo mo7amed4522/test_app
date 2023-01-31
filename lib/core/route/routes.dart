@@ -23,8 +23,8 @@ List<GetPage<dynamic>>? routes = [
       page: () => const HomePage(),
       middlewares: [MyMiddleWare()]),
   // =============== auth =====//
-  GetPage(name: AppRoute.registerPage, page: () => const RegisterPage()),
-  GetPage(name: AppRoute.loginPage, page: () => const LoginPage()),
+  GetPage(name: AppRoute.registerPage, page: () => const RegisterScreen()),
+  GetPage(name: AppRoute.loginPage, page: () => const LoginScreen()),
   // =============== auth_attach =====//
   GetPage(name: AppRoute.forggetPass, page: () => const ForgetPasswordPage()),
   GetPage(name: AppRoute.linkSent, page: () => const LinkSentPage()),
