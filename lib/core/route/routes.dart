@@ -26,16 +26,16 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoute.registerPage, page: () => const RegisterScreen()),
   GetPage(name: AppRoute.loginPage, page: () => const LoginScreen()),
   // =============== auth_attach =====//
-  GetPage(name: AppRoute.forggetPass, page: () => const ForgetPasswordPage()),
-  GetPage(name: AppRoute.linkSent, page: () => const LinkSentPage()),
-  GetPage(name: AppRoute.resetPassword, page: () => const ResetPasswordPage()),
+  GetPage(name: AppRoute.forggetPass, page: () => const ForgetPasswordScreen()),
+  GetPage(name: AppRoute.linkSent, page: () => const LinkSentScreen()),
+  GetPage(
+      name: AppRoute.resetPassword, page: () => const ResetePasswordScreen()),
   // =============== Home Page =====//
   GetPage(name: AppRoute.homePage, page: () => HomePageScreen()),
   GetPage(
       name: AppRoute.registerCase, page: () => const RegisterCaseFirstPage()),
   GetPage(name: AppRoute.historyPage, page: () => const HistoryScreen()),
-  GetPage(
-      name: AppRoute.nearbyHospital, page: () => const NearbyHospitalScreen()),
+  GetPage(name: AppRoute.nearbyHospital, page: () => NearbyHospitalScreen()),
   GetPage(name: AppRoute.support, page: () => const SupportScreen()),
   GetPage(
       name: AppRoute.registerCaseSec, page: () => const RegisterCaseSecPage()),
@@ -43,6 +43,5 @@ List<GetPage<dynamic>>? routes = [
       name: AppRoute.internalCaseFirst,
       page: () => const InternalScreenFirst()),
   GetPage(
-      name: AppRoute.internalCaseSec,
-      page: () => const InternalSecondScreen()),
+      name: AppRoute.internalCaseSec, page: () => const InternalSecondScreen()),
 ];

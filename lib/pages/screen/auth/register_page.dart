@@ -38,7 +38,7 @@ class RegisterScreen extends StatelessWidget {
                       image: AppLinkImage.logoImage2,
                       height: Get.height / 10,
                       width: Get.width / 4)),
-              SizedBox(height: 50),
+              SizedBox(height: 30),
               Center(
                   child: TextWidgetShapeEnglish(
                       text: "New Account",
@@ -49,13 +49,13 @@ class RegisterScreen extends StatelessWidget {
               Center(
                   child: TextWidgetShapeEnglish(
                       text: "Please enter the following details to",
-                      size: 20,
+                      size: 15,
                       fontWeight: FontWeight.normal,
                       color: AppColor.colorFontgry)),
               Center(
                   child: TextWidgetShapeEnglish(
                       text: "create an account",
-                      size: 20,
+                      size: 15,
                       fontWeight: FontWeight.normal,
                       color: AppColor.colorFontgry)),
               SizedBox(height: 30),
@@ -129,26 +129,24 @@ class RegisterScreen extends StatelessWidget {
                       onTap: () {
                         controller.signUp();
                       })),
-              SizedBox(height: Get.height /9),
-              Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          TextWidgetShapeEnglish(
-                              text: "Already have an account ?",
-                              fontWeight: FontWeight.normal,
-                              color: AppColor.black,
-                              size: 15),
-                          MaterialButton(
-                            child: TextWidgetShapeEnglish(
-                                text: "LOGIN",
-                                fontWeight: FontWeight.bold,
-                                color: AppColor.defaultColor,
-                                size: 20),
-                            onPressed: () {
-                              controller.login();
-                            },
-                          )
-                        ]),
+              SizedBox(height: Get.height / 13),
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                TextWidgetShapeEnglish(
+                    text: "Already have an account ?",
+                    fontWeight: FontWeight.normal,
+                    color: AppColor.black,
+                    size: 15),
+                MaterialButton(
+                  child: TextWidgetShapeEnglish(
+                      text: "LOGIN",
+                      fontWeight: FontWeight.bold,
+                      color: AppColor.defaultColor,
+                      size: 20),
+                  onPressed: () {
+                    controller.login();
+                  },
+                )
+              ]),
             ],
           ),
         ),

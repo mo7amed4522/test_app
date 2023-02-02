@@ -24,25 +24,23 @@ class ItemWidget extends StatelessWidget {
             decoration: BoxDecoration(
                 color: AppColor.nearlyWhite,
                 borderRadius: BorderRadius.circular(25),
-                boxShadow: kElevationToShadow[9]
-                ),
+                boxShadow: kElevationToShadow[9]),
             padding: const EdgeInsets.all(12.0),
             height: 120,
             child: Card(
-                //scolor: Colors.white,
                 child: Column(children: [
-                  Expanded(
-                      child: Container(
-                          height: 140,
-                          child: SvgPicture.asset(data["Image"],
-                              fit: BoxFit.contain))),
-                  Center(
-                      child: TextWidgetShapeEnglish(
-                    text: data["Name"],
-                    size: 20,
-                    fontWeight: FontWeight.bold,
-                  ))
-                ]))),
+              Expanded(
+                  child: Container(
+                      height: 140,
+                      child: SvgPicture.asset(data["Image"],
+                          fit: BoxFit.contain))),
+              Center(
+                  child: TextWidgetShapeEnglish(
+                text: data["Name"],
+                size: 15,
+                fontWeight: FontWeight.bold,
+              ))
+            ]))),
       ),
     );
   }
