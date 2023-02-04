@@ -15,8 +15,15 @@ class AppRoute {
   static const String nearbyHospital = "/NearByHospitalScreen";
   static const String support = "/SupportScreen";
   static const String registerCaseSec = "/RegisterCaseSecPage";
-
     // ============== register case =============//
   static const String internalCaseFirst = "/InternalCaseFirst";
     static const String internalCaseSec = "/InternalCaseSec";
+        // ============== Nearby Hosiptal =============//
+  static const String nearbyHospitalFirst = "/NearbyHospitalFirst";
+          // ============== History =============//
+  static const String firstHistoryScreen = "/HistoryScreenFirst";
+            // ============== Profil =============//
+  static const String userProfile = "/UserProfileScreen";
+  static const String changePassword = "/ChangePasswordScreen";
+
 }

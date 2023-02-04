@@ -26,7 +26,7 @@ class HomeModule {
       "Funchion": AppRoute.registerCase
     },
     {
-      "Name": "Nerby Hositals",
+      "Name": "Nerby Hospitals",
       "Image": AppLinkImage.nearbyHospital,
       "Funchion": AppRoute.nearbyHospital
     },

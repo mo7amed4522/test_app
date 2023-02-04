@@ -2,9 +2,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test_app/controller/home_controller/nearby_hospital_screen_controller.dart';
+import 'package:test_app/core/constant/component.dart';
+import 'package:test_app/core/route/app_routes.dart';
 import 'package:test_app/core/theme/theme_color.dart';
 import 'package:test_app/pages/widget/auth_widget/back_arrow_widget.dart';
-import 'package:test_app/pages/widget/auth_widget/text_widget.dart';
+import 'package:test_app/pages/widget/home_widget/map_nearby_hospital_widget.dart';
 
 class NearbyHospitalScreen extends GetView<NearbySchoolScreenControllerIMP> {
   @override
@@ -17,11 +19,15 @@ class NearbyHospitalScreen extends GetView<NearbySchoolScreenControllerIMP> {
       backgroundColor: AppColor.backgroungRegister,
       appBar: AppBar(
         backgroundColor: AppColor.backgroungRegister,
-        title: TextWidgetShapeEnglish(
-            text: "Nearby Hospital",
-            size: 20,
-            fontWeight: FontWeight.normal,
-            color: AppColor.black),
+        title: Text(
+          "Nearby Hospital",
+          style: TextStyle(
+            fontFamily: "Inter",
+            fontSize: 23,
+            color: AppColor.black,
+            fontWeight: FontWeight.w500
+          ),
+        ),
         centerTitle: true,
         leading: Padding(
             padding: EdgeInsets.only(left: 5),
@@ -37,15 +43,37 @@ class NearbyHospitalScreen extends GetView<NearbySchoolScreenControllerIMP> {
       body: Container(
         color: AppColor.backgroungRegister,
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(height: 30),
-              Container(),
-              SizedBox(height: 30),
-              ListView(),
-            ],
-          ),
+        child: Column(
+          children: [
+            SizedBox(height: 30),
+            defaultTextFormNormal(
+                controller: controller.searchController,
+                keyboardType: TextInputType.emailAddress,
+                label: "Search",
+                onTap: () {},
+                onChange: (String? vall) {},
+                onSubmit: (String? vall) {},
+               suffix: Icons.search_rounded,
+                color: Colors.black,
+                validate: (String? val) {}),
+            SizedBox(height: 20),
+            Expanded(
+              child: SizedBox(
+                height: Get.height - 300,
+                width: Get.width,
+                child: ListView.builder(
+                  itemCount: 10,
+                itemBuilder: (context, i){
+                  return  MapNearbyHospitalWidget(
+                    onTap: (){
+                      Get.toNamed(AppRoute.nearbyHospitalFirst);
+                    },
+                  );
+                }
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

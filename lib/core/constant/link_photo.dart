@@ -14,6 +14,18 @@ class AppLinkImage {
   static const String frontBody = "$images/frontbody.svg";
   static const String backBody = "$images/backbody.svg";
   static const String success = "$images/Success.svg";
+  static const String map = "$images/map.svg";
+  static const String map2 = "$images/map2.svg";
+  static const String location = "$images/location.svg";
+  static const String pin = "$images/pin.svg";
+  static const String hospitalName = "$images/hospital name.svg";
+  static const String phone = "$images/phone.svg";
+  static const String speciality = "$images/Speciality.svg";
+  static const String time = "$images/Time__user history.svg";
+  static const String date = "$images/Date_user history.svg";
+  static const String close = "$images/close.svg";
+  static const String logout = "$images/logout.svg";
+  static const String edit = "$images/edit.svg";
     // ======================= Icons ===============//
   static const String icons = "assets/image/icons";
   static const String iconsEmail = "$icons/Email.svg";

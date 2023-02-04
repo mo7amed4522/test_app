@@ -6,11 +6,15 @@ import 'package:test_app/pages/screen/auth/register_page.dart';
 import 'package:test_app/pages/screen/auth_attach/forget_password.dart';
 import 'package:test_app/pages/screen/auth_attach/link_sent.dart';
 import 'package:test_app/pages/screen/auth_attach/reset_password_page.dart';
+import 'package:test_app/pages/screen/history_screen/first_history_screen.dart';
 import 'package:test_app/pages/screen/home/history_screen.dart';
 import 'package:test_app/pages/screen/home/nearby_hospital_screen.dart';
 import 'package:test_app/pages/screen/home/support_screen.dart';
 import 'package:test_app/pages/screen/internal_screen/first_internal_screen.dart';
 import 'package:test_app/pages/screen/internal_screen/sec_internal_page.dart';
+import 'package:test_app/pages/screen/nearby_hospital_screen/first_nearbyschool_screen.dart';
+import 'package:test_app/pages/screen/profile_screen/change_password_user.dart';
+import 'package:test_app/pages/screen/profile_screen/profile_screen.dart';
 import 'package:test_app/pages/screen/register_case_attach/first_screen_register.dart';
 import 'package:test_app/pages/screen/register_case_attach/sec_register_case_screen.dart';
 import 'package:test_app/pages/screen/splach_screen/home.dart';
@@ -44,4 +48,14 @@ List<GetPage<dynamic>>? routes = [
       page: () => const InternalScreenFirst()),
   GetPage(
       name: AppRoute.internalCaseSec, page: () => const InternalSecondScreen()),
+  GetPage(
+      name: AppRoute.nearbyHospitalFirst,
+      page: () => const FirstNearByHospitalScreen()),
+  GetPage(
+      name: AppRoute.firstHistoryScreen,
+      page: () => const FirstUserHistoryScreen()),
+  GetPage(name: AppRoute.userProfile, page: () => const ProfileScreeen()),
+  GetPage(
+      name: AppRoute.changePassword,
+      page: () => const ChangePasswordUserScreen()),
 ];

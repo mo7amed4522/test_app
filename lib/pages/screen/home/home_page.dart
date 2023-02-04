@@ -1,10 +1,13 @@
 // ignore_for_file: must_be_immutable, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:get/state_manager.dart';
+import 'package:test_app/controller/home_controller/home_controller.dart';
 import 'package:test_app/core/theme/theme_color.dart';
 import 'package:test_app/module/home_page.dart';
 import 'package:test_app/pages/widget/auth_widget/text_widget.dart';
 import 'package:test_app/pages/widget/home_widget/card_item_widget.dart';
+import 'package:test_app/pages/widget/home_widget/custom_drawer_home_screen_widget.dart';
 
 class HomePageScreen extends StatelessWidget {
   var column = Column(mainAxisAlignment: MainAxisAlignment.start, children: [
@@ -27,34 +30,36 @@ class HomePageScreen extends StatelessWidget {
         title: TextWidgetShapeEnglish(
             text: "Home",
             size: 25,
-            fontWeight: FontWeight.normal,
+            fontWeight: FontWeight.w500,
             color: AppColor.nearlyWhite),
         centerTitle: true,
-        leading: Padding(
-            padding: EdgeInsets.only(left: 5),
-            child: IconButton(
-                icon: const Icon(Icons.menu, size: 30), onPressed: () {})),
+        //automaticallyImplyLeading: false,
         iconTheme: const IconThemeData(color: AppColor.back),
         backgroundColor: AppColor.defaultColor,
         elevation: 0.0,
       ),
+      drawer: CustomDrawerHomeWidget(),
       backgroundColor: AppColor.defaultColor,
-      body: Container(
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(35), topRight: Radius.circular(35)),
-              color: AppColor.nearlyWhite),
-          child: GridView.count(
-            padding: EdgeInsets.all(5),
-            crossAxisCount: 2,
-            crossAxisSpacing: 20,
-            mainAxisSpacing: 2,
-            children: [
-              ...HomeModule().list.map((e) {
-                return ItemWidget(e);
-              }).toList()
-            ],
-          )),
+      body: GetBuilder<HomeControllerIMP>(
+        init: HomeControllerIMP(),
+        builder:(controller)=> Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(35), topRight: Radius.circular(35)),
+                color: AppColor.nearlyWhite),
+            child: GridView.count(
+              padding: EdgeInsets.all(5),
+              crossAxisCount: 2,
+              crossAxisSpacing: 20,
+              mainAxisSpacing: 2,
+              children: [
+                ...HomeModule().list.map((e) {
+                  return ItemWidget(e);
+                }).toList()
+              ],
+            )),
+      ),
+          
     );
   }
 }

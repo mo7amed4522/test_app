@@ -107,7 +107,7 @@ Widget defaultTextFormNormal(
       height: 60,
       width: Get.width,
       child: Padding(
-        padding: const EdgeInsets.only(right: 10, left: 10),
+        padding: const EdgeInsets.only(right: 10, left: 20),
         child: TextFormField(
             style: TextStyle(color: color),
             maxLength: maxLength,
@@ -135,7 +135,7 @@ Widget defaultTextFormNormal(
                     color: Colors.red,
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold),
-                labelStyle: TextStyle(color: AppColor.grey),
+                labelStyle: TextStyle(color: Colors.grey,fontSize: 15),
                 labelText: label,
                 suffixIcon: suffix != null
                     ? IconButton(
@@ -189,8 +189,97 @@ Widget defaultTextForm(
           SizedBox(width: 9),
           SvgPicture.asset(
             assetName!,
+            height: 20,
+          ),
+          SizedBox(width: 16),
+          Expanded(
+            child: TextFormField(
+                style: TextStyle(color: color),
+                maxLength: maxLength,
+                maxLines: maxLines,
+                readOnly: readOnly,
+                obscureText: isPassword,
+                enabled: formEnable,
+                controller: controller,
+                keyboardType: keyboardType,
+                onTap: () {
+                  onTap!();
+                },
+                onFieldSubmitted: (value) {
+                  onSubmit!(value);
+                },
+                onChanged: (value) {
+                  onChange!(value);
+                },
+                validator: (s) {
+                  return validate(s);
+                },
+                decoration: InputDecoration(
+                    border: InputBorder.none,
+                    errorStyle: TextStyle(
+                        color: Colors.red,
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold),
+                    labelStyle: TextStyle(color: AppColor.defaultColor),
+                    labelText: label,
+                    suffixIcon: suffix != null
+                        ? IconButton(
+                            onPressed: () {
+                              suffixPress!();
+                            },
+                            icon: Icon(suffix, color: AppColor.nearlyBlue))
+                        : null)),
+          ),
+        ],
+      ),
+    );
+
+
+Widget defaultTextFormPass(
+        {required TextEditingController controller,
+        required TextInputType keyboardType,
+        required String label,
+        bool formEnable = true,
+        bool readOnly = false,
+        IconData? prefix,
+        IconData? suffix,
+        Function? suffixPress,
+        Function? onSubmit,
+        Function? onChange,
+        String? assetName,
+        Function? onTap,
+        int? maxLength,
+        int maxLines = 1,
+        required color,
+        required Function validate,
+        bool isPassword = false}) =>
+    Container(
+      decoration: BoxDecoration(
+        color: AppColor.nearlyWhite,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      height: 55,
+      width: Get.width,
+      child: Row(
+        children: [
+          SizedBox(
+            width: 3,
+            child: Container(
+              decoration: BoxDecoration(
+                color: AppColor.defaultColor,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10),
+                  bottomLeft: Radius.circular(10),
+                ),
+              ),
+            ),
           ),
           SizedBox(width: 9),
+          SvgPicture.asset(
+            assetName!,
+            height: 20,
+          ),
+          SizedBox(width: 16),
           Expanded(
             child: TextFormField(
                 style: TextStyle(color: color),
