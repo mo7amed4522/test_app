@@ -28,7 +28,7 @@ class LoginScreen extends StatelessWidget {
                 topLeft: Radius.circular(40), topRight: Radius.circular(40))),
         child: GetBuilder<LoginControllerIMP>(
           init: LoginControllerIMP(),
-          builder: (controller) => ListView(
+          builder: (controller) => Column(
             children: [
               Padding(
                   padding: EdgeInsets.only(
@@ -58,58 +58,63 @@ class LoginScreen extends StatelessWidget {
                       fontWeight: FontWeight.normal,
                       color: AppColor.colorFontgry)),
               SizedBox(height: 30),
-              defaultTextForm(
-                  controller: controller.emailController,
-                  assetName: AppLinkImage.iconsEmail,
-                  keyboardType: TextInputType.emailAddress,
-                  label: "Email",
-                  onTap: () {},
-                  onChange: (String? vall) {},
-                  onSubmit: (String? vall) {},
-                  prefix: Icons.email_outlined,
-                  color: Colors.black,
-                  validate: (String? val) {}),
+            Expanded(
+              child: ListView(
+                children: [
+                  defaultTextForm(
+                controller: controller.emailController,
+                assetName: AppLinkImage.iconsEmail,
+                keyboardType: TextInputType.emailAddress,
+                label: "Email",
+                onTap: () {},
+                onChange: (String? vall) {},
+                onSubmit: (String? vall) {},
+                prefix: Icons.email_outlined,
+                color: Colors.black,
+                validate: (String? val) {}),
               SizedBox(height: 15),
               defaultTextForm(
-                  controller: controller.passwordController,
-                  assetName: AppLinkImage.iconsPassword,
-                  keyboardType: TextInputType.visiblePassword,
-                  label: "Password",
-                  onTap: () {},
-                  onChange: (String? vall) {},
-                  onSubmit: (String? vall) {},
-                  prefix: Icons.lock_outline,
-                  suffix: controller.isPassword == true
-                      ? Icons.visibility_off_outlined
-                      : Icons.visibility_outlined,
-                  isPassword: controller.isPassword,
-                  suffixPress: () {
-                    controller.changeVisablePass();
-                  },
-                  color: Colors.black,
-                  validate: (String? val) {}),
+                controller: controller.passwordController,
+                assetName: AppLinkImage.iconsPassword,
+                keyboardType: TextInputType.visiblePassword,
+                label: "Password",
+                onTap: () {},
+                onChange: (String? vall) {},
+                onSubmit: (String? vall) {},
+                prefix: Icons.lock_outline,
+                suffix: controller.isPassword == true
+                    ? Icons.visibility_off_outlined
+                    : Icons.visibility_outlined,
+                isPassword: controller.isPassword,
+                suffixPress: () {
+                  controller.changeVisablePass();
+                },
+                color: Colors.black,
+                validate: (String? val) {}),
               const SizedBox(height: 20),
               Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-                MaterialButton(
-                    onPressed: () {
-                      controller.goToForgetPassword();
-                    },
-                    child: TextWidgetShapeEnglish(
-                        text: "Forget Password ?",
-                        size: 17,
-                        fontWeight: FontWeight.normal,
-                        color: AppColor.defaultColor))
+              MaterialButton(
+                  onPressed: () {
+                    controller.goToForgetPassword();
+                  },
+                  child: TextWidgetShapeEnglish(
+                      text: "Forget Password ?",
+                      size: 17,
+                      fontWeight: FontWeight.normal,
+                      color: AppColor.defaultColor))
               ]),
               const SizedBox(height: 50),
               Padding(
-                  padding: EdgeInsets.only(
-                      right: Get.width / 8, left: Get.width / 8),
-                  child: GestureDetector(
-                      child: animatedOptacity("LOGIN"),
-                      onTap: () {
-                        controller.login();
-                      })),
-              SizedBox(height: Get.height / 7),
+                padding: EdgeInsets.only(
+                    right: Get.width / 8, left: Get.width / 8),
+                child: GestureDetector(
+                    child: animatedOptacity("LOGIN"),
+                    onTap: () {
+                      controller.login();
+                    })),
+                ],
+              ),
+            ),
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 TextWidgetShapeEnglish(
                     text: "Already have an account ?",
@@ -127,6 +132,7 @@ class LoginScreen extends StatelessWidget {
                       size: 20),
                 )
               ]),
+              SizedBox(height: 20),
             ],
           ),
         ),

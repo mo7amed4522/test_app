@@ -29,7 +29,7 @@ class RegisterScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
         child: GetBuilder<RegisterControllerIMP>(
           init: RegisterControllerIMP(),
-          builder: (controller) => ListView(
+          builder: (controller) => Column(
             children: [
               Padding(
                   padding: EdgeInsets.only(
@@ -59,7 +59,9 @@ class RegisterScreen extends StatelessWidget {
                       fontWeight: FontWeight.normal,
                       color: AppColor.colorFontgry)),
               SizedBox(height: 30),
-              defaultTextForm(
+              Expanded(child: ListView(
+                children: [
+                  defaultTextForm(
                   controller: controller.nameController,
                   keyboardType: TextInputType.name,
                   assetName: AppLinkImage.iconsUser,
@@ -129,7 +131,8 @@ class RegisterScreen extends StatelessWidget {
                       onTap: () {
                         controller.signUp();
                       })),
-              SizedBox(height: Get.height / 13),
+                ],
+              ),),
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 TextWidgetShapeEnglish(
                     text: "Already have an account ?",
@@ -147,6 +150,7 @@ class RegisterScreen extends StatelessWidget {
                   },
                 )
               ]),
+              SizedBox(height: 20),
             ],
           ),
         ),
