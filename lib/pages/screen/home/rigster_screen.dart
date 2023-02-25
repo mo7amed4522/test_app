@@ -11,8 +11,8 @@ import 'package:test_app/pages/widget/auth_widget/back_arrow_widget.dart';
 import 'package:test_app/pages/widget/auth_widget/text_widget.dart';
 import 'package:test_app/pages/widget/home_widget/choice_button_widget.dart';
 
-class RegisterCaseFirstPage extends StatelessWidget {
-  const RegisterCaseFirstPage({super.key});
+class RegiterCaseScreen extends StatelessWidget {
+  const RegiterCaseScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

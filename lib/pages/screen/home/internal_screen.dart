@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:test_app/controller/internal_controller/internal_first_page_controller.dart';
-import 'package:test_app/core/constant/component.dart';
+import 'package:test_app/core/constant/handeldataview.dart';
 import 'package:test_app/core/theme/theme_color.dart';
 import 'package:test_app/pages/widget/auth_widget/back_arrow_widget.dart';
 import 'package:test_app/pages/widget/auth_widget/text_widget.dart';
 import 'package:test_app/pages/widget/home_widget/internal_drop_mune_widget.dart';
 
-class InternalScreenFirst extends StatelessWidget {
-  const InternalScreenFirst({super.key});
+class InternalScreen extends StatelessWidget {
+  const InternalScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,9 @@ class InternalScreenFirst extends StatelessWidget {
         ),
         body: GetBuilder<InternalFirstPageControllerIMP>(
             init: InternalFirstPageControllerIMP(),
-            builder: (controller) => Container(
+            builder: (controller) => HandlingDataView(
+              statusRequest: controller.statusRequest,
+              widget: Container(
                 color: AppColor.backgroungRegister,
                 padding: EdgeInsets.only(left: 1, right: 1, top: 5),
                 child: Column(children: [
@@ -51,17 +53,8 @@ class InternalScreenFirst extends StatelessWidget {
                           color: AppColor.black,
                           fontWeight: FontWeight.normal)),
                   InternalDropMnueWidget(),
-                  Spacer(),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        right: Get.width / 9, left: Get.width / 9),
-                    child: GestureDetector(
-                        onTap: () {
-                          controller.goToFourthPage();
-                        },
-                        child: animatedOptacity("Next")),
-                  ),
-                  SizedBox(height: 20)
-                ]))));
+
+                ])),
+            )));
   }
 }

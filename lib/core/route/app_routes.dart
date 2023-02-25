@@ -14,16 +14,17 @@ class AppRoute {
   static const String historyPage = "/HistoryScreen";
   static const String nearbyHospital = "/NearByHospitalScreen";
   static const String support = "/SupportScreen";
-  static const String registerCaseSec = "/RegisterCaseSecPage";
-    // ============== register case =============//
-  static const String internalCaseFirst = "/InternalCaseFirst";
-    static const String internalCaseSec = "/InternalCaseSec";
-        // ============== Nearby Hosiptal =============//
+  static const String interactiveScreen = "/InteractiveScreen";
+  // ============== register case =============//
+  static const String internalCase = "/InternalCase";
+  static const String internalCaseSec = "/InternalCaseSec";
+  // ============== Nearby Hosiptal =============//
   static const String nearbyHospitalFirst = "/NearbyHospitalFirst";
-          // ============== History =============//
+  // ============== History =============//
   static const String firstHistoryScreen = "/HistoryScreenFirst";
-            // ============== Profil =============//
+  // ============== Profil =============//
   static const String userProfile = "/UserProfileScreen";
   static const String changePassword = "/ChangePasswordScreen";
-
+    // ============== question =============//
+  static const String questionScreen = "/QuestionScreenFreeText";
 }

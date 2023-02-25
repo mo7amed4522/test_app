@@ -47,9 +47,7 @@ class InternalSecondScreen extends StatelessWidget {
                     child: defaultTextFormwithoutasset(
                         maxLines: 10,
                         controller: controller.painController,
-                        //maxLength: 10,
                         keyboardType: TextInputType.text,
-                        label: "Type of Pain",
                         onTap: () {},
                         onChange: (String? vall) {},
                         onSubmit: (String? vall) {},

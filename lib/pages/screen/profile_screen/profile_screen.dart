@@ -1,19 +1,24 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:test_app/controller/user_controller/profile_edit_controller.dart';
 import 'package:test_app/core/constant/component.dart';
+import 'package:test_app/core/constant/handeldataview.dart';
 import 'package:test_app/core/constant/link_photo.dart';
+import 'package:test_app/core/func/auth/validationinput.dart';
 import 'package:test_app/core/theme/theme_color.dart';
 import 'package:test_app/pages/widget/auth_widget/back_arrow_widget.dart';
 
-class ProfileScreeen extends GetView<ProfileEditScreenControllerIMP>{
-  const ProfileScreeen({super.key});
+class ProfileScreeen extends GetView<ProfileEditScreenControllerIMP> {
+  @override
+  var controller = Get.put(ProfileEditScreenControllerIMP());
+   ProfileScreeen({super.key});
 
   @override
   Widget build(BuildContext context) {
+ 
     return Scaffold(
       backgroundColor: AppColor.backgroungRegister,
       appBar: AppBar(
@@ -41,60 +46,68 @@ class ProfileScreeen extends GetView<ProfileEditScreenControllerIMP>{
             child: GestureDetector(
                 onTap: () {
                   controller.changeEnable();
-                }, child: SvgPicture.asset(AppLinkImage.edit)),
+                },
+                child: SvgPicture.asset(AppLinkImage.edit)),
           )
         ],
         iconTheme: const IconThemeData(color: AppColor.black),
         elevation: 0.0,
       ),
       body: GetBuilder<ProfileEditScreenControllerIMP>(
-        init: ProfileEditScreenControllerIMP(),
-        builder: (controller) => Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-          child: Column(
-            children: [
-              SizedBox(height: 40),
-              defaultTextFormPass(
-                formEnable: controller.enable,
-                  controller: TextEditingController(text: controller.name),
-                  assetName: AppLinkImage.iconsProfile,
-                  keyboardType: TextInputType.emailAddress,
-                  label: "Name",
-                  onTap: () {},
-                  onChange: (String? vall) {},
-                  onSubmit: (String? vall) {},
-                  // prefix: Icons.,
-                  color: Colors.black,
-                  validate: (String? val) {}),
-              SizedBox(height: 20),
-              defaultTextFormPass(
-                formEnable: controller.enable,
-                  controller:
-                      TextEditingController(text: controller.email),
-                  assetName: AppLinkImage.iconsEmail,
-                  keyboardType: TextInputType.emailAddress,
-                  label: "Email",
-                  onTap: () {},
-                  onChange: (String? vall) {},
-                  onSubmit: (String? vall) {},
-                  // prefix: Icons.,
-                  color: Colors.black,
-                  validate: (String? val) {}),
-              const Spacer(),
-              Padding(
-                padding: EdgeInsets.only(
-                    right: Get.width / 10, left: Get.width / 10),
-                child: GestureDetector(
-                    child: animatedOptacity(controller.button),
-                    onTap: () {
-                      controller.save();
-                    }),
-              ),
-              const SizedBox(height: 20),
-            ],
-          ),
-        ),
-      ),
+          init: ProfileEditScreenControllerIMP(),
+          builder: (controller) => HandlingDataView(
+                statusRequest: controller.statusRequest,
+                widget: Form(
+                  key: controller.formState,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 20),
+                    child: Column(
+                      children: [
+                        SizedBox(height: 40),
+                        defaultTextFormPass(
+                            formEnable: controller.enable,
+                            controller: controller.namecontroller,
+                            assetName: AppLinkImage.iconsProfile,
+                            keyboardType: TextInputType.emailAddress,
+                            label: "Name",
+                            onTap: () {},
+                            onChange: (String? vall) {},
+                            onSubmit: (String? vall) {},
+                            color: Colors.black,
+                            validate: (String? val) {
+                              return validInput(val!, 6, 20, "name");
+                            }),
+                        SizedBox(height: 20),
+                        defaultTextFormPass(
+                            formEnable: controller.enable,
+                            controller:controller.emailController,
+                            assetName: AppLinkImage.iconsEmail,
+                            keyboardType: TextInputType.emailAddress,
+                            label: "Email",
+                            onTap: () {},
+                            onChange: (String? vall) {},
+                            onSubmit: (String? vall) {},
+                            color: Colors.black,
+                            validate: (String? val) {
+                              return validInput(val!, 8, 50, "email");
+                            }),
+                        const Spacer(),
+                        Padding(
+                          padding: EdgeInsets.only(
+                              right: Get.width / 10, left: Get.width / 10),
+                          child: GestureDetector(
+                              child: animatedOptacity(controller.button),
+                              onTap: () {
+                                controller.save();
+                              }),
+                        ),
+                        const SizedBox(height: 20),
+                      ],
+                    ),
+                  ),
+                ),
+              )),
     );
   }
 }

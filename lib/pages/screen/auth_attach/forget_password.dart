@@ -74,7 +74,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                       color: AppColor.grey)),
               SizedBox(height: 20),
               defaultTextForm(
-                  controller: controller.emailController,
+                  controller: controller.email,
                   keyboardType: TextInputType.name,
                   assetName: AppLinkImage.iconsEmail,
                   label: "Email",
@@ -84,7 +84,6 @@ class ForgetPasswordScreen extends StatelessWidget {
                   onSubmit: (String? vall) {},
                   color: Colors.black,
                   validate: (String? val) {}),
-              //Spacer(),
               SizedBox(height: 50),
               Padding(
                 padding:

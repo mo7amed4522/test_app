@@ -2,10 +2,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:test_app/controller/home_controller/home_controller.dart';
 import 'package:test_app/core/theme/theme_color.dart';
 import 'package:test_app/pages/widget/auth_widget/text_widget.dart';
 
-class ItemWidget extends StatelessWidget {
+class ItemWidget extends GetView<HomeControllerIMP> {
   var data;
   ItemWidget(
     this.data, {

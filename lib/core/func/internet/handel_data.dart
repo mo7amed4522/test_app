@@ -1,4 +1,5 @@
-import 'package:test_app/core/func/state_request.dart';
+
+import 'package:test_app/core/constant/statusrequest.dart';
 
 handlingData(response) {
   if (response is StatusRequest) {

@@ -1,7 +1,8 @@
-// ignore_for_file: must_be_immutable
+// ignore_for_file: must_be_immutable, prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test_app/controller/internal_controller/internal_first_page_controller.dart';
+import 'package:test_app/core/route/app_routes.dart';
 import 'package:test_app/core/theme/theme_color.dart';
 
 class InternalDropMnueWidget extends GetView<InternalFirstPageControllerIMP> {
@@ -35,25 +36,27 @@ class InternalDropMnueWidget extends GetView<InternalFirstPageControllerIMP> {
                     const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                 child: DropdownButton(
                     borderRadius: BorderRadius.circular(3),
-                    value: controller.dropdownvalue,
                     isExpanded: true,
+                    hint: Text("Select part of Pain"),
                     underline: Container(
                       height: 0,
                       color: AppColor.back,
                     ),
-                    icon: const Icon(Icons.keyboard_arrow_down),
-                    items: controller.items.map((String items) {
+                    icon: Icon(Icons.keyboard_arrow_down),
+                    items: controller.internal.map((list) {
                       return DropdownMenuItem(
-                        value: items,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 12.0),
-                          child: Text(items),
-                        ),
+                        value:list['Id'].toString(),
+                        child:Text(list['Name'].toString())
                       );
                     }).toList(),
-                    onChanged: (String? values) {
+                    onChanged: (values) {
                       controller.changeDropMnue(values!);
-                    }),
+                       Get.toNamed(AppRoute.questionScreen, arguments: {
+                      "Id" : values,
+                    });
+                    },
+                    value: controller.dropdownvalue,
+                    ),
               ),
             ),
           ],

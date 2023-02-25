@@ -2,12 +2,12 @@
 
 import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:flutter/material.dart';
-import 'package:get/state_manager.dart';
-import 'package:test_app/controller/support_controller/drop_down_menu_controller.dart';
 import 'package:test_app/core/theme/theme_color.dart';
 
-class DropMuneSupportWidget extends GetView<DropDowunMuneSupportWidgetIMP> {
-    const DropMuneSupportWidget({super.key});
+class DropMuneSupportWidget extends StatelessWidget {
+  String? text1;
+  String? text2;
+     DropMuneSupportWidget({super.key,this.text1,this.text2});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class DropMuneSupportWidget extends GetView<DropDowunMuneSupportWidgetIMP> {
         elevationCurve: Curves.easeInOutCubic,
       baseColor: AppColor.nearlyWhite,
       expandedColor: AppColor.nearlyWhite,
-      title: Text(controller.value),
+      title: Text(text1!),
       expandedTextColor: AppColor.defaultColor,
       children: [
       Align(
@@ -26,7 +26,7 @@ class DropMuneSupportWidget extends GetView<DropDowunMuneSupportWidgetIMP> {
             horizontal: 16.0,
             vertical: 8.0,
           ),
-          child: Text(controller.value2,
+          child: Text(text2!,
             style: Theme.of(context)
                 .textTheme
                 .bodyMedium

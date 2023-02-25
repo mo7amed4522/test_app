@@ -21,7 +21,6 @@ class RegisterCaseFirstIMP extends RegisterCaseFirst {
 
   @override
   changeSelected() {
-    //isSelected = !isSelected;
     if (isSelected == false) {
       color = AppColor.defaultColor;
       colorText = AppColor.defaultColor;
@@ -35,7 +34,7 @@ class RegisterCaseFirstIMP extends RegisterCaseFirst {
       color = AppColor.back;
       colorText = AppColor.black;
       color2 = AppColor.defaultColor;
-      colorText2 = AppColor.black;
+      colorText2 = AppColor.defaultColor;
       x = 2;
       if (kDebugMode) {
         print(x);
@@ -44,12 +43,13 @@ class RegisterCaseFirstIMP extends RegisterCaseFirst {
     update();
   }
 
+
   @override
   goToSecRegisterCasePage(x) {
     if (x == 1) {
-      Get.toNamed(AppRoute.registerCaseSec);
+      Get.offAndToNamed(AppRoute.interactiveScreen);
     } else {
-      Get.toNamed(AppRoute.internalCaseFirst);
+      Get.offAndToNamed(AppRoute.internalCase);
     }
   }
 

@@ -9,10 +9,8 @@ import 'package:test_app/pages/widget/auth_widget/text_widget.dart';
 Widget defaultTextFormwithoutasset(
         {required TextEditingController controller,
         required TextInputType keyboardType,
-        required String label,
         bool formEnable = true,
         bool readOnly = false,
-        IconData? prefix,
         IconData? suffix,
         Function? suffixPress,
         Function? onSubmit,
@@ -24,16 +22,15 @@ Widget defaultTextFormwithoutasset(
         required Function validate,
         bool isPassword = false}) =>
     Container(
-      decoration: const BoxDecoration(
-        color: AppColor.nearlyWhite,
-        borderRadius: BorderRadius.only(
-            topRight: Radius.circular(10), bottomRight: Radius.circular(10)),
-      ),
-      height: 180,
-      child: Row(
-        children: [
+        decoration: const BoxDecoration(
+          color: AppColor.nearlyWhite,
+          borderRadius: BorderRadius.only(
+              topRight: Radius.circular(10), bottomRight: Radius.circular(10)),
+        ),
+        height: 158,
+        child: Row(children: [
           Container(
-            width: 4,
+            width: 3,
             decoration: const BoxDecoration(
                 color: AppColor.defaultColor,
                 borderRadius: BorderRadius.only(
@@ -41,47 +38,57 @@ Widget defaultTextFormwithoutasset(
                     bottomLeft: Radius.circular(10))),
           ),
           Expanded(
-            child: TextFormField(
-                style: TextStyle(color: color),
-                maxLength: maxLength,
-                maxLines: maxLines,
-                readOnly: readOnly,
-                obscureText: isPassword,
-                enabled: formEnable,
-                controller: controller,
-                keyboardType: keyboardType,
-                onTap: () {
-                  onTap!();
-                },
-                onFieldSubmitted: (value) {
-                  onSubmit!(value);
-                },
-                onChanged: (value) {
-                  onChange!(value);
-                },
-                validator: (s) {
-                  return validate(s);
-                },
-                decoration: InputDecoration(
-                    errorStyle: TextStyle(
-                        color: Colors.red,
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold),
-                    labelStyle: TextStyle(color: Colors.grey),
-                    labelText: label,
-                    border: InputBorder.none,
-                    prefixIcon: Icon(prefix, color: AppColor.nearlyBlue),
-                    suffixIcon: suffix != null
-                        ? IconButton(
-                            onPressed: () {
-                              suffixPress!();
-                            },
-                            icon: Icon(suffix, color: AppColor.nearlyBlue))
-                        : null)),
-          ),
-        ],
-      ),
-    );
+              child: TextFormField(
+                  style: TextStyle(color: color),
+                  maxLength: maxLength,
+                  maxLines: maxLines,
+                  readOnly: readOnly,
+                  obscureText: isPassword,
+                  enabled: formEnable,
+                  controller: controller,
+                  keyboardType: keyboardType,
+                  onTap: () {
+                    onTap!();
+                  },
+                  onFieldSubmitted: (value) {
+                    onSubmit!(value);
+                  },
+                  onChanged: (value) {
+                    onChange!(value);
+                  },
+                  validator: (s) {
+                    return validate(s);
+                  },
+                  decoration: InputDecoration(
+                      isDense: true,
+                      contentPadding:
+                          EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                              width: 0.0, color: AppColor.backgroungRegister)),
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(
+                              color: AppColor.backgroungRegister, width: 0.0)),
+                      border: InputBorder.none,
+                      errorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                              width: 0.0, color: AppColor.backgroungRegister)),
+                      focusedErrorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                              width: 0.0, color: AppColor.backgroungRegister)),
+                      errorStyle: TextStyle(
+                          color: Colors.red,
+                          fontSize: 12.0,
+                          fontWeight: FontWeight.bold),
+                      labelStyle: TextStyle(color: Colors.grey),
+                      suffixIcon: suffix != null
+                          ? IconButton(
+                              onPressed: () {
+                                suffixPress!();
+                              },
+                              icon: Icon(suffix, color: AppColor.nearlyBlue))
+                          : null)))
+        ]));
 Widget defaultTextFormNormal(
         {required TextEditingController controller,
         required TextInputType keyboardType,
@@ -133,9 +140,9 @@ Widget defaultTextFormNormal(
                 border: InputBorder.none,
                 errorStyle: TextStyle(
                     color: Colors.red,
-                    fontSize: 20.0,
+                    fontSize: 12.0,
                     fontWeight: FontWeight.bold),
-                labelStyle: TextStyle(color: Colors.grey,fontSize: 15),
+                labelStyle: TextStyle(color: Colors.grey, fontSize: 15),
                 labelText: label,
                 suffixIcon: suffix != null
                     ? IconButton(
@@ -146,7 +153,6 @@ Widget defaultTextFormNormal(
                     : null)),
       ),
     );
-
 Widget defaultTextForm(
         {required TextEditingController controller,
         required TextInputType keyboardType,
@@ -166,74 +172,85 @@ Widget defaultTextForm(
         required Function validate,
         bool isPassword = false}) =>
     Container(
-      decoration: BoxDecoration(
-        color: AppColor.containerWidget,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      height: 55,
-      width: Get.width,
-      child: Row(
-        children: [
+        decoration: BoxDecoration(
+          color: AppColor.containerWidget,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        height: 60,
+        width: Get.width,
+        child: Row(children: [
           SizedBox(
-            width: 3,
-            child: Container(
-              decoration: BoxDecoration(
-                color: AppColor.defaultColor,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(10),
-                  bottomLeft: Radius.circular(10),
-                ),
-              ),
-            ),
-          ),
+              width: 3,
+              child: Container(
+                  decoration: BoxDecoration(
+                      color: AppColor.defaultColor,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(10),
+                          bottomLeft: Radius.circular(10))))),
           SizedBox(width: 9),
           SvgPicture.asset(
             assetName!,
-            height: 20,
           ),
-          SizedBox(width: 16),
-          Expanded(
-            child: TextFormField(
-                style: TextStyle(color: color),
-                maxLength: maxLength,
-                maxLines: maxLines,
-                readOnly: readOnly,
-                obscureText: isPassword,
-                enabled: formEnable,
-                controller: controller,
-                keyboardType: keyboardType,
-                onTap: () {
-                  onTap!();
-                },
-                onFieldSubmitted: (value) {
-                  onSubmit!(value);
-                },
-                onChanged: (value) {
-                  onChange!(value);
-                },
-                validator: (s) {
-                  return validate(s);
-                },
-                decoration: InputDecoration(
-                    border: InputBorder.none,
-                    errorStyle: TextStyle(
-                        color: Colors.red,
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold),
-                    labelStyle: TextStyle(color: AppColor.defaultColor),
-                    labelText: label,
-                    suffixIcon: suffix != null
-                        ? IconButton(
-                            onPressed: () {
-                              suffixPress!();
-                            },
-                            icon: Icon(suffix, color: AppColor.nearlyBlue))
-                        : null)),
-          ),
-        ],
-      ),
-    );
-
+          SizedBox(width: 9),
+          SizedBox(
+              height: 70,
+              width: Get.width / 1.2,
+              child: TextFormField(
+                  style: TextStyle(color: color),
+                  maxLength: maxLength,
+                  maxLines: maxLines,
+                  readOnly: readOnly,
+                  obscureText: isPassword,
+                  enabled: formEnable,
+                  controller: controller,
+                  keyboardType: keyboardType,
+                  onTap: () {
+                    onTap!();
+                  },
+                  onFieldSubmitted: (value) {
+                    onSubmit!(value);
+                  },
+                  onChanged: (value) {
+                    onChange!(value);
+                  },
+                  validator: (s) {
+                    return validate(s);
+                  },
+                  decoration: InputDecoration(
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            width: 0.0, color: AppColor.backgroungRegister),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(
+                            color: AppColor.backgroungRegister, width: 0.0),
+                      ),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            width: 0.0, color: AppColor.backgroungRegister),
+                      ),
+                      errorBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            width: 0.0, color: AppColor.backgroungRegister),
+                      ),
+                      focusedErrorBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                            width: 0.0, color: AppColor.backgroungRegister),
+                      ),
+                      errorStyle: TextStyle(
+                          color: Colors.red,
+                          fontSize: 12.0,
+                          fontWeight: FontWeight.bold),
+                      labelStyle: TextStyle(color: AppColor.defaultColor),
+                      labelText: label,
+                      suffixIcon: suffix != null
+                          ? IconButton(
+                              onPressed: () {
+                                suffixPress!();
+                              },
+                              icon: Icon(suffix, color: AppColor.nearlyBlue))
+                          : null)))
+        ]));
 
 Widget defaultTextFormPass(
         {required TextEditingController controller,
@@ -306,7 +323,7 @@ Widget defaultTextFormPass(
                     border: InputBorder.none,
                     errorStyle: TextStyle(
                         color: Colors.red,
-                        fontSize: 20.0,
+                        fontSize: 12.0,
                         fontWeight: FontWeight.bold),
                     labelStyle: TextStyle(color: AppColor.defaultColor),
                     labelText: label,

@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
 import 'package:test_app/controller/home_controller/home_controller.dart';
+import 'package:test_app/core/constant/handeldataview.dart';
+import 'package:test_app/core/func/auth/aleartexitapp.dart';
 import 'package:test_app/core/theme/theme_color.dart';
 import 'package:test_app/module/home_page.dart';
 import 'package:test_app/pages/widget/auth_widget/text_widget.dart';
@@ -24,42 +26,46 @@ class HomePageScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 80,
-        title: TextWidgetShapeEnglish(
-            text: "Home",
-            size: 25,
-            fontWeight: FontWeight.w500,
-            color: AppColor.nearlyWhite),
-        centerTitle: true,
-        //automaticallyImplyLeading: false,
-        iconTheme: const IconThemeData(color: AppColor.back),
+    return WillPopScope(
+      onWillPop: aleratExitApp,
+      child: Scaffold(
+        appBar: AppBar(
+          toolbarHeight: 80,
+          title: TextWidgetShapeEnglish(
+              text: "Home",
+              size: 25,
+              fontWeight: FontWeight.w500,
+              color: AppColor.nearlyWhite),
+          centerTitle: true,
+          iconTheme: const IconThemeData(color: AppColor.back),
+          backgroundColor: AppColor.defaultColor,
+          elevation: 0.0,
+        ),
+        drawer: CustomDrawerHomeWidget(),
         backgroundColor: AppColor.defaultColor,
-        elevation: 0.0,
+        body: GetBuilder<HomeControllerIMP>(
+            init: HomeControllerIMP(),
+            builder: (controller) => HandlingDataView(
+                  statusRequest: controller.statusRequest,
+                  widget: Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(35),
+                              topRight: Radius.circular(35)),
+                          color: AppColor.nearlyWhite),
+                      child: GridView.count(
+                        padding: EdgeInsets.all(5),
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 20,
+                        mainAxisSpacing: 2,
+                        children: [
+                          ...HomeModule().list.map((e) {
+                            return ItemWidget(e);
+                          }).toList()
+                        ],
+                      )),
+                )),
       ),
-      drawer: CustomDrawerHomeWidget(),
-      backgroundColor: AppColor.defaultColor,
-      body: GetBuilder<HomeControllerIMP>(
-        init: HomeControllerIMP(),
-        builder:(controller)=> Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(35), topRight: Radius.circular(35)),
-                color: AppColor.nearlyWhite),
-            child: GridView.count(
-              padding: EdgeInsets.all(5),
-              crossAxisCount: 2,
-              crossAxisSpacing: 20,
-              mainAxisSpacing: 2,
-              children: [
-                ...HomeModule().list.map((e) {
-                  return ItemWidget(e);
-                }).toList()
-              ],
-            )),
-      ),
-          
     );
   }
 }

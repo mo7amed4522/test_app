@@ -1,19 +1,46 @@
-
-import 'package:expansion_tile_card/expansion_tile_card.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import 'package:test_app/core/constant/curd.dart';
+import 'package:test_app/core/constant/statusrequest.dart';
+import 'package:test_app/core/func/internet/handel_data.dart';
+import 'package:test_app/core/server/server.dart';
+import 'package:test_app/data/datasorcue/home/foqs/fogs.dart';
 
 abstract class DropDowunMuneSupportWidget extends GetxController {
+  getData();
 }
 
 class DropDowunMuneSupportWidgetIMP extends DropDowunMuneSupportWidget {
-  final GlobalKey<ExpansionTileCardState> cardA =  GlobalKey();
- List index = [];
-  String value =
-      "Lorem ipsum dolor sit amet, consec teture adipiscing elit, sed do ?";
-  String value2 =
-      "Excepteur sint occaecat cupidatat non proident, sunt in culpa deser mollit anim id est laborum .";
+  //Fogsgenerated? faqs;
+  Crud curd = Crud();
+  List data = [];
+  StatusRequest? statusRequest;
+  MyServices myServices = Get.find();
+  GetFogsData fogsData = GetFogsData(Get.find());
 
+  @override
+  getData() async {
+    data.clear();
+    statusRequest = StatusRequest.loading;
+    var response = await fogsData.getData();
+    statusRequest = handlingData(response);
+    if (kDebugMode) {
+      print(statusRequest);
+    }
+    if (StatusRequest.success == statusRequest) {
+      data.addAll(response['Faqs']);
+      if (kDebugMode) {
+        print(statusRequest);
+      }
+      update();
+    } else {
+      update();
+    }
+  }
 
-
+  @override
+  void onInit() {
+    getData();
+    super.onInit();
+  }
 }

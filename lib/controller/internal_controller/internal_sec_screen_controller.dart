@@ -12,13 +12,13 @@ class InternalSecondScreenControllerIMP extends InternalSecondScreenController {
   String? val;
 
   @override
-  changeRadioButton(value) {
+  changeRadioButton(String? value) {
     val = value;
     update();
   }
 
   @override
   goToChoiceScreen() {
-    Get.toNamed(AppRoute.registerCase,preventDuplicates: false);
+    Get.toNamed(AppRoute.registerCase, preventDuplicates: false);
   }
 }

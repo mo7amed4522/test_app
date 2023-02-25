@@ -10,13 +10,14 @@ import 'package:test_app/pages/screen/history_screen/first_history_screen.dart';
 import 'package:test_app/pages/screen/home/history_screen.dart';
 import 'package:test_app/pages/screen/home/nearby_hospital_screen.dart';
 import 'package:test_app/pages/screen/home/support_screen.dart';
-import 'package:test_app/pages/screen/internal_screen/first_internal_screen.dart';
+import 'package:test_app/pages/screen/home/internal_screen.dart';
 import 'package:test_app/pages/screen/internal_screen/sec_internal_page.dart';
 import 'package:test_app/pages/screen/nearby_hospital_screen/first_nearbyschool_screen.dart';
 import 'package:test_app/pages/screen/profile_screen/change_password_user.dart';
 import 'package:test_app/pages/screen/profile_screen/profile_screen.dart';
-import 'package:test_app/pages/screen/register_case_attach/first_screen_register.dart';
-import 'package:test_app/pages/screen/register_case_attach/sec_register_case_screen.dart';
+import 'package:test_app/pages/screen/home/rigster_screen.dart';
+import 'package:test_app/pages/screen/qestion_screen/questation_freetext_screen.dart';
+import 'package:test_app/pages/screen/register_case_attach/interactive_first.dart';
 import 'package:test_app/pages/screen/splach_screen/home.dart';
 import 'package:test_app/pages/screen/home/home_page.dart';
 
@@ -37,15 +38,15 @@ List<GetPage<dynamic>>? routes = [
   // =============== Home Page =====//
   GetPage(name: AppRoute.homePage, page: () => HomePageScreen()),
   GetPage(
-      name: AppRoute.registerCase, page: () => const RegisterCaseFirstPage()),
+      name: AppRoute.registerCase, page: () => const RegiterCaseScreen()),
   GetPage(name: AppRoute.historyPage, page: () => const HistoryScreen()),
   GetPage(name: AppRoute.nearbyHospital, page: () => NearbyHospitalScreen()),
   GetPage(name: AppRoute.support, page: () => const SupportScreen()),
   GetPage(
-      name: AppRoute.registerCaseSec, page: () => const RegisterCaseSecPage()),
+      name: AppRoute.interactiveScreen, page: () => const InteractiveScreen()),
   GetPage(
-      name: AppRoute.internalCaseFirst,
-      page: () => const InternalScreenFirst()),
+      name: AppRoute.internalCase,
+      page: () => const InternalScreen()),
   GetPage(
       name: AppRoute.internalCaseSec, page: () => const InternalSecondScreen()),
   GetPage(
@@ -54,8 +55,11 @@ List<GetPage<dynamic>>? routes = [
   GetPage(
       name: AppRoute.firstHistoryScreen,
       page: () => const FirstUserHistoryScreen()),
-  GetPage(name: AppRoute.userProfile, page: () => const ProfileScreeen()),
+  GetPage(name: AppRoute.userProfile, page: () =>  ProfileScreeen()),
   GetPage(
       name: AppRoute.changePassword,
       page: () => const ChangePasswordUserScreen()),
+        GetPage(
+      name: AppRoute.questionScreen,
+      page: () =>   QuestationScreen()),
 ];

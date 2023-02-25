@@ -32,4 +32,11 @@ class AppLinkImage {
   static const String iconsPassword = "$icons/Password.svg";
   static const String iconsProfile = "$icons/Profile.svg";
   static const String iconsUser = "$icons/User.svg";
+    // ======================= Icons ===============//
+  static const String json = "assets/image/json";
+    static const String loading = "$json/loading.json"; 
+  static const String noData = "$json/no_data.json";
+  static const String offline = "$json/offline.json";
+  //static const String serverError = "$json/server_error.json";
+  static const String error401 = "$json/401.json";
 }

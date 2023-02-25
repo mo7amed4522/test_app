@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:test_app/core/curd/curd.dart';
+import 'package:test_app/core/constant/curd.dart';
 
 class InitialBindings extends Bindings {
   @override
