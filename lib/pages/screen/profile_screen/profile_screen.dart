@@ -14,100 +14,99 @@ import 'package:test_app/pages/widget/auth_widget/back_arrow_widget.dart';
 class ProfileScreeen extends GetView<ProfileEditScreenControllerIMP> {
   @override
   var controller = Get.put(ProfileEditScreenControllerIMP());
-   ProfileScreeen({super.key});
+  ProfileScreeen({super.key});
 
   @override
   Widget build(BuildContext context) {
- 
-    return Scaffold(
-      backgroundColor: AppColor.backgroungRegister,
-      appBar: AppBar(
-        backgroundColor: AppColor.backgroungRegister,
-        title: const Text(
-          "Profile",
-          style: TextStyle(
-              fontFamily: "Inter",
-              fontSize: 23,
-              color: AppColor.black,
-              fontWeight: FontWeight.w500),
-        ),
-        centerTitle: true,
-        leading: Padding(
-            padding: const EdgeInsets.only(left: 5),
-            child: CustomIconBtn(
-                icon: Icons.arrow_back,
-                color: AppColor.black,
-                onPressed: () {
-                  Get.back();
-                })),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 20),
-            child: GestureDetector(
-                onTap: () {
-                  controller.changeEnable();
-                },
-                child: SvgPicture.asset(AppLinkImage.edit)),
-          )
-        ],
-        iconTheme: const IconThemeData(color: AppColor.black),
-        elevation: 0.0,
-      ),
-      body: GetBuilder<ProfileEditScreenControllerIMP>(
-          init: ProfileEditScreenControllerIMP(),
-          builder: (controller) => HandlingDataView(
-                statusRequest: controller.statusRequest,
-                widget: Form(
-                  key: controller.formState,
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 20),
-                    child: Column(
-                      children: [
-                        SizedBox(height: 40),
-                        defaultTextFormPass(
-                            formEnable: controller.enable,
-                            controller: controller.namecontroller,
-                            assetName: AppLinkImage.iconsProfile,
-                            keyboardType: TextInputType.emailAddress,
-                            label: "Name",
-                            onTap: () {},
-                            onChange: (String? vall) {},
-                            onSubmit: (String? vall) {},
-                            color: Colors.black,
-                            validate: (String? val) {
-                              return validInput(val!, 6, 20, "name");
-                            }),
-                        SizedBox(height: 20),
-                        defaultTextFormPass(
-                            formEnable: controller.enable,
-                            controller:controller.emailController,
-                            assetName: AppLinkImage.iconsEmail,
-                            keyboardType: TextInputType.emailAddress,
-                            label: "Email",
-                            onTap: () {},
-                            onChange: (String? vall) {},
-                            onSubmit: (String? vall) {},
-                            color: Colors.black,
-                            validate: (String? val) {
-                              return validInput(val!, 8, 50, "email");
-                            }),
-                        const Spacer(),
-                        Padding(
-                          padding: EdgeInsets.only(
-                              right: Get.width / 10, left: Get.width / 10),
-                          child: GestureDetector(
-                              child: animatedOptacity(controller.button),
-                              onTap: () {
-                                controller.save();
-                              }),
-                        ),
-                        const SizedBox(height: 20),
-                      ],
+    return GetBuilder<ProfileEditScreenControllerIMP>(
+      init: ProfileEditScreenControllerIMP(),
+      builder: (controller) => HandlingDataView(
+          statusRequest: controller.statusRequest,
+          widget: Scaffold(
+            backgroundColor: AppColor.backgroungRegister,
+            appBar: AppBar(
+              backgroundColor: AppColor.backgroungRegister,
+              title: const Text(
+                "Profile",
+                style: TextStyle(
+                    fontFamily: "Inter",
+                    fontSize: 23,
+                    color: AppColor.black,
+                    fontWeight: FontWeight.w500),
+              ),
+              centerTitle: true,
+              leading: Padding(
+                  padding: const EdgeInsets.only(left: 5),
+                  child: CustomIconBtn(
+                      icon: Icons.arrow_back,
+                      color: AppColor.black,
+                      onPressed: () {
+                        Get.back();
+                      })),
+              actions: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: GestureDetector(
+                      onTap: () {
+                        controller.changeEnable();
+                      },
+                      child: SvgPicture.asset(AppLinkImage.edit)),
+                )
+              ],
+              iconTheme: const IconThemeData(color: AppColor.black),
+              elevation: 0.0,
+            ),
+            body: Form(
+              key: controller.formState,
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                child: Column(
+                  children: [
+                    SizedBox(height: 40),
+                    defaultTextFormPass(
+                        formEnable: controller.enable,
+                        controller: controller.namecontroller,
+                        assetName: AppLinkImage.iconsProfile,
+                        keyboardType: TextInputType.emailAddress,
+                        label: "Name",
+                        onTap: () {},
+                        onChange: (String? vall) {},
+                        onSubmit: (String? vall) {},
+                        color: Colors.black,
+                        validate: (String? val) {
+                          return validInput(val!, 6, 20, "name");
+                        }),
+                    SizedBox(height: 20),
+                    defaultTextFormPass(
+                        formEnable: controller.enable,
+                        controller: controller.emailController,
+                        assetName: AppLinkImage.iconsEmail,
+                        keyboardType: TextInputType.emailAddress,
+                        label: "Email",
+                        onTap: () {},
+                        onChange: (String? vall) {},
+                        onSubmit: (String? vall) {},
+                        color: Colors.black,
+                        validate: (String? val) {
+                          return validInput(val!, 8, 50, "email");
+                        }),
+                    const Spacer(),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          right: Get.width / 10, left: Get.width / 10),
+                      child: GestureDetector(
+                          child: animatedOptacity(controller.button),
+                          onTap: () {
+                            controller.save();
+                          }),
                     ),
-                  ),
+                    const SizedBox(height: 20),
+                  ],
                 ),
-              )),
+              ),
+            ),
+          )),
     );
   }
 }

@@ -44,6 +44,7 @@ class ProfileEditScreenControllerIMP extends ProfileEditScreenController {
           emailController.text,
         );
         statusRequest = handlingData(response);
+        update();
         if (statusRequest == StatusRequest.success) {
           enable = false;
           button = "Save";

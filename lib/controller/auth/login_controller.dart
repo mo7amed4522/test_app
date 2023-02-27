@@ -46,6 +46,7 @@ class LoginControllerIMP extends LoginController {
       var response = await signinData.postData(
           emailController.text, passwordController.text);
       statusRequest = handlingData(response);
+      update();
       if (statusRequest == StatusRequest.success) {
         myServices.sharedPreferences.setString("token", response['Token']);
         token = response['Token'];

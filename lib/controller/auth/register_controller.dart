@@ -48,9 +48,8 @@ class RegisterControllerIMP extends RegisterController {
        update();
     var response = await signupData.postData(nameController.text,emailController.text,passwordController.text);
     statusRequest = handlingData(response);
+    update();
     if(StatusRequest.success == statusRequest){
-      //myServices.sharedPreferences.setString('name', nameController.text);
-       //myServices.sharedPreferences.setString('email', emailController.text);
       Get.offAllNamed(AppRoute.loginPage);
     }
     update();

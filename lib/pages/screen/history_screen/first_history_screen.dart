@@ -2,7 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:test_app/controller/history_controller/user_history_controller.dart';
+import 'package:test_app/core/constant/handeldataview.dart';
 import 'package:test_app/core/theme/theme_color.dart';
+import 'package:test_app/module/user_history_model.dart';
 import 'package:test_app/pages/widget/auth_widget/back_arrow_widget.dart';
 import 'package:test_app/pages/widget/history_widget/history_first_screen_widget/container_listview_history_widget.dart';
 import 'package:test_app/pages/widget/history_widget/history_first_screen_widget/container_style_widget.dart';
@@ -35,40 +38,53 @@ class FirstUserHistoryScreen extends StatelessWidget {
                   })),
           iconTheme: const IconThemeData(color: AppColor.black),
           elevation: 0.0),
-      body: Container(
-        color: AppColor.backgroungRegister,
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ContainerBarHistoryWidget(),
-            SizedBox(height: 30),
-            const Text(
-              "Pain Qestion Answers",
-              style: TextStyle(
-                fontFamily: "Poppinss",
-                fontSize: 17,
-                fontWeight: FontWeight.w600,
-                color: AppColor.defaultColor,
+      body: GetBuilder<FirstUserHistoryScreenControllerIMP>(
+        init: FirstUserHistoryScreenControllerIMP(),
+        builder: (controller) => HandlingDataView(
+          statusRequest: controller.statusRequest,
+          widget: Container(
+          color: AppColor.backgroungRegister,
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ContainerBarHistoryWidget(
+                hospitalName: controller.hosptailName,
+                dataTime: controller.dataTime,
+                timeData: controller.timeDate,
               ),
-            ),
-             SizedBox(height: 15),
-            Expanded(
-              child: SizedBox(
-                height: Get.height - 200,
-                width: Get.width,
-                child: ListView.separated(
-                  itemCount: 10,
-                  separatorBuilder: (BuildContext context, int index) => const SizedBox(height: 10),
-                  itemBuilder: (context,index){
-                    return ContainerListViewHistoryWidget();
-                  },
+              SizedBox(height: 30),
+              const Text(
+                "Pain Qestion Answers",
+                style: TextStyle(
+                  fontFamily: "Poppinss",
+                  fontSize: 17,
+                  fontWeight: FontWeight.w600,
+                  color: AppColor.defaultColor,
                 ),
               ),
-            ),
-          ],
+              SizedBox(height: 15),
+              Expanded(
+                child: SizedBox(
+                  height: Get.height - 200,
+                  width: Get.width,
+                  child: ListView.separated(
+                    itemCount: controller.items.length,
+                    separatorBuilder: (BuildContext context, int index) =>
+                        const SizedBox(height: 10),
+                    itemBuilder: (context, index) {
+                      return ContainerListViewHistoryWidget(
+                        answers: Answers.fromJson(controller.items[index]),
+                      );
+                    },
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
+        )
       ),
     );
   }

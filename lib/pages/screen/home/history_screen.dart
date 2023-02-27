@@ -14,66 +14,73 @@ class HistoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColor.backgroungRegister,
-      appBar: AppBar(
+    return GetBuilder<UserHistoryScreenControllerIMP>(
+      init: UserHistoryScreenControllerIMP(),
+      builder: (controller) => HandlingDataView(
+        statusRequest: controller.statusRequest,
+        widget: Scaffold(
           backgroundColor: AppColor.backgroungRegister,
-          title: Text(
-            "User History",
-            style: TextStyle(
-                fontFamily: "Inter",
-                fontSize: 23,
-                color: AppColor.black,
-                fontWeight: FontWeight.w500),
-          ),
-          centerTitle: true,
-          leading: Padding(
-              padding: EdgeInsets.only(left: 5),
-              child: CustomIconBtn(
-                  icon: Icons.arrow_back,
-                  color: AppColor.black,
-                  onPressed: () {
-                    Get.back();
-                  })),
-          iconTheme: const IconThemeData(color: AppColor.black),
-          elevation: 0.0),
-      body: GetBuilder<UserHistoryScreenControllerIMP>(
-          init: UserHistoryScreenControllerIMP(),
-          builder: (controller) => HandlingDataView(
-                statusRequest: controller.statusRequest,
-                widget: Container(
-                    color: AppColor.backgroungRegister,
-                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                    child: Column(
-                      children: [
-                        HistoryBarWidget(),
-                        Expanded(
-                          child: SizedBox(
-                            height: Get.height - 50,
-                            width: Get.width,
-                            child: ListView.builder(
-                              itemCount: controller.items.length,
-                              itemBuilder: (context, index) {
-                                String data =
-                                    controller.items[index]['ReportedAt'];
-                                var e = data.split("T").first;
-                                var en = data.substring(11, 16);
-                                return HistoryListViewBuilderWidget(
-                                  dataTime: e.toString(),
-                                  timeDate: "${en.toString()} T",
-                                  hospitalName: controller.items[index]
-                                      ['BodyPart'],
-                                  onTap: () {
-                                    Get.toNamed(AppRoute.firstHistoryScreen);
-                                  },
-                                );
-                              },
-                            ),
-                          ),
-                        ),
-                      ],
-                    )),
+          appBar: AppBar(
+              backgroundColor: AppColor.backgroungRegister,
+              title: Text(
+                "User History",
+                style: TextStyle(
+                    fontFamily: "Inter",
+                    fontSize: 23,
+                    color: AppColor.black,
+                    fontWeight: FontWeight.w500),
+              ),
+              centerTitle: true,
+              leading: Padding(
+                  padding: EdgeInsets.only(left: 5),
+                  child: CustomIconBtn(
+                      icon: Icons.arrow_back,
+                      color: AppColor.black,
+                      onPressed: () {
+                        Get.back();
+                      })),
+              iconTheme: const IconThemeData(color: AppColor.black),
+              elevation: 0.0),
+          body: Container(
+              color: AppColor.backgroungRegister,
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              child: Column(
+                children: [
+                  HistoryBarWidget(),
+                  Expanded(
+                    child: SizedBox(
+                      height: Get.height - 50,
+                      width: Get.width,
+                      child: ListView.builder(
+                        itemCount: controller.items.length,
+                        itemBuilder: (context, index) {
+                          String data = controller.items[index]['ReportedAt'];
+                          var e = data.split("T").first;
+                          var en = data.substring(11, 16);
+                          return HistoryListViewBuilderWidget(
+                            dataTime: e.toString(),
+                            timeDate: "${en.toString()} T",
+                            hospitalName: controller.items[index]['BodyPart'],
+                            onTap: () {
+                              Get.toNamed(AppRoute.firstHistoryScreen,
+                                  arguments: {
+                                    "IDCase": controller.items[index]['Id']
+                                        .toString(),
+                                    "hosptailName": controller.items[index]
+                                        ['BodyPart'],
+                                    "dataTime": e.toString(),
+                                    "timeDate": en.toString(),
+                                  });
+                            },
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                ],
               )),
+        ),
+      ),
     );
   }
 }

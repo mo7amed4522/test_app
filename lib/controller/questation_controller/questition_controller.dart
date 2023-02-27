@@ -12,7 +12,12 @@ import 'package:test_app/data/datasorcue/question/question_datasource.dart';
 abstract class QuestitionScreenController extends GetxController {
   getData();
   changeRadioButton(String? value, TextEditingController answerController);
-  postData(Map<dynamic, dynamic> data);
+  postData({
+    String? bodyPartId,
+    required List<Map<dynamic, String>> map,
+    double? longitude,
+    double? latitude,
+  });
 }
 
 class QuestitionScreenControllerIMP extends QuestitionScreenController {
@@ -35,6 +40,7 @@ class QuestitionScreenControllerIMP extends QuestitionScreenController {
     update();
     var response = await questioinData.gettData(IdController.text);
     statusRequest = handlingData(response);
+    update();
     if (statusRequest == StatusRequest.success) {
       data.addAll(response['BodyPartQuestions']);
       if (data.isNotEmpty) {
@@ -56,7 +62,7 @@ class QuestitionScreenControllerIMP extends QuestitionScreenController {
           snackPosition: SnackPosition.BOTTOM,
         );
         Timer(const Duration(seconds: 3), () {
-         Get.offNamed(AppRoute.homePage);
+          Get.offNamed(AppRoute.homePage);
         });
       }
     }
@@ -80,12 +86,21 @@ class QuestitionScreenControllerIMP extends QuestitionScreenController {
   }
 
   @override
-  postData(Map<dynamic, dynamic> data) async {
+  postData({
+    String? bodyPartId,
+    required List<Map<dynamic, String>> map,
+    double? longitude,
+    double? latitude,
+  }) async {
     statusRequest = StatusRequest.loading;
     update();
-    var response = await questioinData.postData(data); 
+    var response = await questioinData.postData(
+        bodyPartId: bodyPartId,
+        map: map,
+        longitude: longitude,
+        latitude: latitude);
     statusRequest = handlingData(response);
-    if(statusRequest == StatusRequest.success){
+    if (statusRequest == StatusRequest.success) {
       Get.toNamed(AppRoute.nearbyHospitalFirst);
     }
     update();

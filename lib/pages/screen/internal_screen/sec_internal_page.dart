@@ -13,77 +13,78 @@ class InternalSecondScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          backgroundColor: AppColor.backgroungRegister,
-          automaticallyImplyLeading: false,
-          elevation: 0.0,
-          title: TextWidgetShapeEnglish(
-              text: "Register Case",
-              size: 20,
-              fontWeight: FontWeight.normal,
-              color: AppColor.black),
-          leading: Padding(
-              padding: EdgeInsets.only(left: 5),
-              child: Padding(
-                  padding: EdgeInsets.only(left: 5),
-                  child: CustomIconBtn(
-                      icon: Icons.arrow_back,
-                      color: AppColor.black,
-                      onPressed: () {
-                        Get.back();
-                      }))),
-          iconTheme: const IconThemeData(color: AppColor.black),
-          centerTitle: true,
-        ),
-        body: GetBuilder<InternalSecondScreenControllerIMP>(
-            init: InternalSecondScreenControllerIMP(),
-            builder: (controller) => Container(
-                color: AppColor.backgroungRegister,
-                child: Column(children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 10, horizontal: 10),
-                    child: defaultTextFormwithoutasset(
-                        maxLines: 10,
-                        controller: controller.painController,
-                        keyboardType: TextInputType.text,
-                        onTap: () {},
-                        onChange: (String? vall) {},
-                        onSubmit: (String? vall) {},
+    return GetBuilder<InternalSecondScreenControllerIMP>(
+      init: InternalSecondScreenControllerIMP(),
+      builder: (controller) => Scaffold(
+          appBar: AppBar(
+            backgroundColor: AppColor.backgroungRegister,
+            automaticallyImplyLeading: false,
+            elevation: 0.0,
+            title: TextWidgetShapeEnglish(
+                text: "Register Case",
+                size: 20,
+                fontWeight: FontWeight.normal,
+                color: AppColor.black),
+            leading: Padding(
+                padding: EdgeInsets.only(left: 5),
+                child: Padding(
+                    padding: EdgeInsets.only(left: 5),
+                    child: CustomIconBtn(
+                        icon: Icons.arrow_back,
                         color: AppColor.black,
-                        validate: (String? val) {}),
-                  ),
-                  SizedBox(height: 3),
-                  RadioListTile(
-                    activeColor: AppColor.defaultColor,
-                    title: TextWidgetShapeEnglish(text: "Yes", size: 15),
-                    value: "yes",
-                    groupValue: controller.val,
-                    onChanged: (v) {
-                      controller.changeRadioButton(v);
-                    },
-                  ),
-                  RadioListTile(
-                    activeColor: AppColor.defaultColor,
-                    title: TextWidgetShapeEnglish(text: "No", size: 15),
-                    value: "No",
-                    groupValue: controller.val,
-                    onChanged: (v) {
-                      controller.changeRadioButton(v);
-                    },
-                  ),
-                  const Spacer(),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        right: Get.width / 8, left: Get.width / 8),
-                    child: GestureDetector(
-                        onTap: () {
-                          controller.goToChoiceScreen();
-                        },
-                        child: animatedOptacity("Next")),
-                  ),
-                  SizedBox(height: 30)
-                ]))));
+                        onPressed: () {
+                          Get.back();
+                        }))),
+            iconTheme: const IconThemeData(color: AppColor.black),
+            centerTitle: true,
+          ),
+          body: Container(
+              color: AppColor.backgroungRegister,
+              child: Column(children: [
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  child: defaultTextFormwithoutasset(
+                      maxLines: 10,
+                      controller: controller.painController,
+                      keyboardType: TextInputType.text,
+                      onTap: () {},
+                      onChange: (String? vall) {},
+                      onSubmit: (String? vall) {},
+                      color: AppColor.black,
+                      validate: (String? val) {}),
+                ),
+                SizedBox(height: 3),
+                RadioListTile(
+                  activeColor: AppColor.defaultColor,
+                  title: TextWidgetShapeEnglish(text: "Yes", size: 15),
+                  value: "yes",
+                  groupValue: controller.val,
+                  onChanged: (v) {
+                    controller.changeRadioButton(v);
+                  },
+                ),
+                RadioListTile(
+                  activeColor: AppColor.defaultColor,
+                  title: TextWidgetShapeEnglish(text: "No", size: 15),
+                  value: "No",
+                  groupValue: controller.val,
+                  onChanged: (v) {
+                    controller.changeRadioButton(v);
+                  },
+                ),
+                const Spacer(),
+                Padding(
+                  padding: EdgeInsets.only(
+                      right: Get.width / 8, left: Get.width / 8),
+                  child: GestureDetector(
+                      onTap: () {
+                        controller.goToChoiceScreen();
+                      },
+                      child: animatedOptacity("Next")),
+                ),
+                SizedBox(height: 30)
+              ]))),
+    );
   }
 }

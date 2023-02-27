@@ -33,6 +33,7 @@ class InternalFirstPageControllerIMP extends InternalFirstPageController {
     statusRequest = StatusRequest.loading;
     var response = await getRegisterSec.getData();
     statusRequest = handlingData(response);
+    update();
     if (StatusRequest.success == statusRequest) {
       items = response['BodyParts'];
       for (int x = 0;x<items.length;x++){

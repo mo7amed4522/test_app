@@ -8,7 +8,8 @@ import 'package:test_app/core/constant/link_photo.dart';
 import 'package:test_app/core/theme/theme_color.dart';
 
 class CustomDrawerHomeWidget extends GetView<HomeControllerIMP> {
-  const CustomDrawerHomeWidget({super.key});
+
+   const CustomDrawerHomeWidget({super.key,});
 
   @override
   Widget build(BuildContext context) {
@@ -50,16 +51,16 @@ class CustomDrawerHomeWidget extends GetView<HomeControllerIMP> {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children:  [
                     Text(
-                      "Carla Willis",
+                      controller.homeModel!.name!,
                       style: TextStyle(
                           color: AppColor.defaultColor,
                           fontSize: 16,
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      "carla547@email.com",
+                      controller.homeModel!.email!,
                       style: TextStyle(
                         color: AppColor.grey,
                       ),

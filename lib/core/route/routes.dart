@@ -40,7 +40,7 @@ List<GetPage<dynamic>>? routes = [
   GetPage(
       name: AppRoute.registerCase, page: () => const RegiterCaseScreen()),
   GetPage(name: AppRoute.historyPage, page: () => const HistoryScreen()),
-  GetPage(name: AppRoute.nearbyHospital, page: () => NearbyHospitalScreen()),
+  GetPage(name: AppRoute.nearbyHospital, page: () => const NearbyHospitalScreen()),
   GetPage(name: AppRoute.support, page: () => const SupportScreen()),
   GetPage(
       name: AppRoute.interactiveScreen, page: () => const InteractiveScreen()),

@@ -1,11 +1,16 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:test_app/controller/hosiptal_controller/first_hospital_controller.dart';
 import 'package:test_app/core/constant/link_photo.dart';
 import 'package:test_app/core/theme/theme_color.dart';
+import 'package:test_app/module/hosiptal_first_model.dart';
 
-class ClanderNearbyHospitalWidget extends StatelessWidget {
-  const ClanderNearbyHospitalWidget({super.key});
+class ClanderNearbyHospitalWidget extends GetView<FirstNearByHospitalScreenIMP> {
+  HospitalFirstModel? hospitalFirstModel;
+   ClanderNearbyHospitalWidget({super.key,this.hospitalFirstModel});
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +29,10 @@ class ClanderNearbyHospitalWidget extends StatelessWidget {
               children: [
                 SvgPicture.asset(AppLinkImage.hospitalName, height: 18),
                 const SizedBox(width: 20),
-                const Text(
-                  "NYU Langone Hospital",
-                  style: TextStyle(
+                 Text(
+                 
+                  "${hospitalFirstModel!.name}",
+                  style:const TextStyle(
                     fontSize: 19,
                     fontFamily: "Inter",
                    fontWeight: FontWeight.w600,
@@ -43,13 +49,12 @@ class ClanderNearbyHospitalWidget extends StatelessWidget {
               children: [
                 SvgPicture.asset(AppLinkImage.location, height: 18),
                 const SizedBox(width: 14),
-                const Text(
-                  "550 First Avenue, New Yourk, NY",
-                  style: TextStyle(
+                 Text(
+                
+                  "${hospitalFirstModel!.address}",
+                  style:const TextStyle(
                     fontSize: 15,
                     fontFamily: "Inter",
-                   // fontWeight: FontWeight.normal,
-                   // color: AppColor.defaultColor
                   ),
                 ),
               ],
@@ -62,13 +67,12 @@ class ClanderNearbyHospitalWidget extends StatelessWidget {
               children: [
                 SvgPicture.asset(AppLinkImage.phone, height: 18),
                 const SizedBox(width: 14),
-                const Text(
-                  "5016-6402",
-                  style: TextStyle(
+                 Text(
+                 
+                  "${hospitalFirstModel!.telephone}",
+                  style:const TextStyle(
                     fontSize: 15,
                     fontFamily: "Inter",
-                   // fontWeight: FontWeight.normal,
-                   // color: AppColor.defaultColor
                   ),
                 ),
               ],
@@ -81,13 +85,12 @@ class ClanderNearbyHospitalWidget extends StatelessWidget {
               children: [
                 SvgPicture.asset(AppLinkImage.speciality, height: 18),
                 const SizedBox(width: 14),
-                const Text(
-                  "Hector Vardcentral",
-                  style: TextStyle(
+                 Text(
+                  
+                  "${hospitalFirstModel!.specialty}",
+                  style:const TextStyle(
                     fontSize: 15,
                     fontFamily: "Inter",
-                   // fontWeight: FontWeight.normal,
-                   // color: AppColor.defaultColor
                   ),
                 ),
               ],
@@ -117,8 +120,6 @@ class ClanderNearbyHospitalWidget extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 15,
                     fontFamily: "Inter",
-                   //fontWeight: FontWeight.normal,
-                   //color: AppColor.defaultColor
                   ),
                 ),
               ],
@@ -136,7 +137,7 @@ class ClanderNearbyHospitalWidget extends StatelessWidget {
                     fontSize: 15,
                     //fontFamily: "Poppins",
                    fontWeight: FontWeight.normal,
-                   //color: AppColor.defaultColor
+
                   ),
                 ),
                 Text(
@@ -145,7 +146,7 @@ class ClanderNearbyHospitalWidget extends StatelessWidget {
                     fontSize: 15,
                     fontFamily: "Inter",
                    //fontWeight: FontWeight.normal,
-                   //color: AppColor.defaultColor
+
                   ),
                 ),
               ],
@@ -171,8 +172,7 @@ class ClanderNearbyHospitalWidget extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 15,
                     fontFamily: "Inter",
-                   //fontWeight: FontWeight.normal,
-                   //color: AppColor.defaultColor
+
                   ),
                 ),
               ],
@@ -198,8 +198,7 @@ class ClanderNearbyHospitalWidget extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 15,
                     fontFamily: "Inter",
-                   //fontWeight: FontWeight.normal,
-                   //color: AppColor.defaultColor
+
                   ),
                 ),
               ],
@@ -225,8 +224,7 @@ class ClanderNearbyHospitalWidget extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 15,
                     fontFamily: "Inter",
-                   //fontWeight: FontWeight.normal,
-                   //color: AppColor.defaultColor
+
                   ),
                 ),
               ],

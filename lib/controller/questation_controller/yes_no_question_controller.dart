@@ -31,6 +31,7 @@ class YesNoQuestionScreenControllerIMP extends YesNoQuestionScreenController {
     update();
     var response = await questioinData.gettData(IdController.text);
     statusRequest = handlingData(response);
+    update();
     if (statusRequest == StatusRequest.success) {
       data.addAll(response['BodyPartQuestions']);
       if (data.isNotEmpty) {
@@ -48,7 +49,7 @@ class YesNoQuestionScreenControllerIMP extends YesNoQuestionScreenController {
           snackPosition: SnackPosition.BOTTOM,
         );
         Timer(const Duration(seconds: 3), () {
-          Get.toNamed(AppRoute.historyPage);
+          Get.toNamed(AppRoute.homePage);
         });
       }
     }

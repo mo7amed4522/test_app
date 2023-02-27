@@ -18,37 +18,37 @@ class QuestationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int i = 0;
-    return Scaffold(
-        appBar: AppBar(
-            backgroundColor: AppColor.backgroungRegister,
-            automaticallyImplyLeading: false,
-            elevation: 0.0,
-            title: TextWidgetShapeEnglish(
-              text: "Register Case",
-              size: 20,
-              fontWeight: FontWeight.normal,
-              color: AppColor.black,
-            ),
-            leading: Padding(
-              padding: EdgeInsets.only(left: 5),
-              child: Padding(
-                padding: EdgeInsets.only(left: 5),
-                child: CustomIconBtn(
-                  icon: Icons.arrow_back,
-                  color: AppColor.black,
-                  onPressed: () {
-                    Get.back();
-                  },
-                ),
-              ),
-            ),
-            iconTheme: const IconThemeData(color: AppColor.black),
-            centerTitle: true),
-        body: GetBuilder<QuestitionScreenControllerIMP>(
-            init: QuestitionScreenControllerIMP(),
-            builder: (controller) => HandlingDataView(
-                statusRequest: controller.statusRequest,
-                widget: Container(
+    return GetBuilder<QuestitionScreenControllerIMP>(
+        init: QuestitionScreenControllerIMP(),
+        builder: (controller) => HandlingDataView(
+            statusRequest: controller.statusRequest,
+            widget: Scaffold(
+                appBar: AppBar(
+                    backgroundColor: AppColor.backgroungRegister,
+                    automaticallyImplyLeading: false,
+                    elevation: 0.0,
+                    title: TextWidgetShapeEnglish(
+                      text: "Register Case",
+                      size: 20,
+                      fontWeight: FontWeight.normal,
+                      color: AppColor.black,
+                    ),
+                    leading: Padding(
+                      padding: EdgeInsets.only(left: 5),
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 5),
+                        child: CustomIconBtn(
+                          icon: Icons.arrow_back,
+                          color: AppColor.black,
+                          onPressed: () {
+                            Get.back();
+                          },
+                        ),
+                      ),
+                    ),
+                    iconTheme: const IconThemeData(color: AppColor.black),
+                    centerTitle: true),
+                body: Container(
                     padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                     color: AppColor.backgroungRegister,
                     child: Column(children: [
@@ -81,25 +81,22 @@ class QuestationScreen extends StatelessWidget {
                           child: GestureDetector(
                               child: animatedOptacity("Next"),
                               onTap: () {
-                                for (i;
-                                    i < controller.data.length;
-                                    i++) {
+                                while (i < controller.data.length) {
                                   controller.result
                                       .add(controller.controllers[i].text);
-                                      map.add(
-                                       {
-                                        "QuestionId":controller.questID[i].toString(),
-                                        "Answer": controller.controllers[i].text,
-                                       }
-                                      );
+                                  map.add({
+                                    "QuestionId":
+                                        controller.questID[i].toString(),
+                                    "Answer": controller.controllers[i].text,
+                                  });
+                                  i++;
                                 }
-                                psotData.addAll({
-                                  "BodyPartId":controller.IdController.text,
-                                  "Answers":map,
-                                  "Longitude":long,
-                                  "Latitude":lati,
-                                });
-                                controller.postData(psotData);
+                                controller.postData(
+                                  bodyPartId: controller.IdController.text,
+                                  map: map,
+                                  longitude: long,
+                                  latitude: lati,
+                                );
                               }))
                     ])))));
   }

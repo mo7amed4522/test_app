@@ -15,46 +15,45 @@ class InternalScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: AppColor.backgroungRegister,
-        appBar: AppBar(
-          toolbarHeight: 80,
-          title: TextWidgetShapeEnglish(
-              text: "Register Case",
-              size: 20,
-              fontWeight: FontWeight.normal,
-              color: AppColor.black),
-          centerTitle: true,
-          leading: Padding(
-              padding: EdgeInsets.only(left: 5),
-              child: CustomIconBtn(
-                  icon: Icons.arrow_back,
-                  color: AppColor.black,
-                  onPressed: () {
-                    Get.back();
-                  })),
-          iconTheme: const IconThemeData(color: AppColor.black),
-          backgroundColor: AppColor.backgroungRegister,
-          elevation: 0.0,
-        ),
-        body: GetBuilder<InternalFirstPageControllerIMP>(
-            init: InternalFirstPageControllerIMP(),
-            builder: (controller) => HandlingDataView(
-              statusRequest: controller.statusRequest,
-              widget: Container(
-                color: AppColor.backgroungRegister,
-                padding: EdgeInsets.only(left: 1, right: 1, top: 5),
-                child: Column(children: [
-                  SizedBox(height: 20),
-                  Center(
-                      child: TextWidgetShapeEnglish(
-                          text: "Please select the part of Pain",
-                          size: 18,
-                          color: AppColor.black,
-                          fontWeight: FontWeight.normal)),
-                  InternalDropMnueWidget(),
-
-                ])),
+    return GetBuilder<InternalFirstPageControllerIMP>(
+        init: InternalFirstPageControllerIMP(),
+        builder: (controller) => HandlingDataView(
+            statusRequest: controller.statusRequest,
+            widget: Scaffold(
+              backgroundColor: AppColor.backgroungRegister,
+              appBar: AppBar(
+                toolbarHeight: 80,
+                title: TextWidgetShapeEnglish(
+                    text: "Register Case",
+                    size: 20,
+                    fontWeight: FontWeight.normal,
+                    color: AppColor.black),
+                centerTitle: true,
+                leading: Padding(
+                    padding: EdgeInsets.only(left: 5),
+                    child: CustomIconBtn(
+                        icon: Icons.arrow_back,
+                        color: AppColor.black,
+                        onPressed: () {
+                          Get.back();
+                        })),
+                iconTheme: const IconThemeData(color: AppColor.black),
+                backgroundColor: AppColor.backgroungRegister,
+                elevation: 0.0,
+              ),
+              body: Container(
+                  color: AppColor.backgroungRegister,
+                  padding: EdgeInsets.only(left: 1, right: 1, top: 5),
+                  child: Column(children: [
+                    SizedBox(height: 20),
+                    Center(
+                        child: TextWidgetShapeEnglish(
+                            text: "Please select the part of Pain",
+                            size: 18,
+                            color: AppColor.black,
+                            fontWeight: FontWeight.normal)),
+                    InternalDropMnueWidget(),
+                  ])),
             )));
   }
 }

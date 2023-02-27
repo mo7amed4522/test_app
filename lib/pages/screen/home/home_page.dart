@@ -28,26 +28,26 @@ class HomePageScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: aleratExitApp,
-      child: Scaffold(
-        appBar: AppBar(
-          toolbarHeight: 80,
-          title: TextWidgetShapeEnglish(
-              text: "Home",
-              size: 25,
-              fontWeight: FontWeight.w500,
-              color: AppColor.nearlyWhite),
-          centerTitle: true,
-          iconTheme: const IconThemeData(color: AppColor.back),
-          backgroundColor: AppColor.defaultColor,
-          elevation: 0.0,
-        ),
-        drawer: CustomDrawerHomeWidget(),
-        backgroundColor: AppColor.defaultColor,
-        body: GetBuilder<HomeControllerIMP>(
-            init: HomeControllerIMP(),
-            builder: (controller) => HandlingDataView(
-                  statusRequest: controller.statusRequest,
-                  widget: Container(
+      child: GetBuilder<HomeControllerIMP>(
+          init: HomeControllerIMP(),
+          builder: (controller) => HandlingDataView(
+                statusRequest: controller.statusRequest,
+                widget: Scaffold(
+                  appBar: AppBar(
+                    toolbarHeight: 80,
+                    title: TextWidgetShapeEnglish(
+                        text: "Home",
+                        size: 25,
+                        fontWeight: FontWeight.w500,
+                        color: AppColor.nearlyWhite),
+                    centerTitle: true,
+                    iconTheme: const IconThemeData(color: AppColor.back),
+                    backgroundColor: AppColor.defaultColor,
+                    elevation: 0.0,
+                  ),
+                  drawer: CustomDrawerHomeWidget(),
+                  backgroundColor: AppColor.defaultColor,
+                  body: Container(
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(35),
@@ -64,8 +64,8 @@ class HomePageScreen extends StatelessWidget {
                           }).toList()
                         ],
                       )),
-                )),
-      ),
+                ),
+              )),
     );
   }
 }

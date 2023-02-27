@@ -15,11 +15,21 @@ class QuestioinData {
     return response.fold((l) => l, (r) => r);
   }
 
-  postData(Map<dynamic, dynamic> data) async {
+  postData({
+    String? bodyPartId,
+    required List<Map<dynamic, String>> map,
+    double? longitude,
+    double? latitude,
+  }) async {
     token = myServices.sharedPreferences.getString("token");
     var response = await curd.postData(
-      linkUrl: AppLink.foqs,
-      data: data,
+      linkUrl: AppLink.createCase,
+      data: {
+        "BodyPartId":bodyPartId,
+        "Answers":map,
+        "Longitude":longitude,
+        "Latitude":latitude,
+      },
       token: token,
     );
     return response.fold((l) => l, (r) => r);

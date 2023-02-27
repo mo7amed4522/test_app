@@ -24,6 +24,7 @@ class DropDowunMuneSupportWidgetIMP extends DropDowunMuneSupportWidget {
     statusRequest = StatusRequest.loading;
     var response = await fogsData.getData();
     statusRequest = handlingData(response);
+    update();
     if (kDebugMode) {
       print(statusRequest);
     }

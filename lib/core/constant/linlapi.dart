@@ -11,8 +11,12 @@ class AppLink{
   static const String getAllParts ="$serverLink/bodypart/getall";
   static const String createCase ="$serverLink/case/createcase";
   static const String getAllCase ="$serverLink/case/getallcases";
+  static const String getCaseDetails ="$serverLink/case/getcase";
+  static const String getallHospital ="$serverLink/nearbyhospital/getall";
+  static const String getHospitalByID ="$serverLink/hospital/gethospital";
     // ============== get User =============//
   static const String getUser = "$serverLink/Account/GetUser";
   static const String updateUser = "$serverLink/Account/UpdateUser";
+  static const String changePassword = "$serverLink/Account/ChangePassword";
   static const String getallquestionByID = "$serverLink/bodypartquestion/getquestionsbybodypart";
 }

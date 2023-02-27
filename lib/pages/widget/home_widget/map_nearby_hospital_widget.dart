@@ -3,12 +3,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:test_app/controller/home_controller/nearby_hospital_screen_controller.dart';
 import 'package:test_app/core/constant/link_photo.dart';
 import 'package:test_app/core/theme/theme_color.dart';
+import 'package:test_app/module/hospital_model.dart';
 
-class MapNearbyHospitalWidget extends StatelessWidget {
+class MapNearbyHospitalWidget extends GetView<NearbySchoolScreenControllerIMP> {
   void Function()? onTap;
-   MapNearbyHospitalWidget({super.key,this.onTap});
+  Hospitals? hospitals;
+   MapNearbyHospitalWidget({super.key,this.onTap,this.hospitals});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +39,6 @@ class MapNearbyHospitalWidget extends StatelessWidget {
                 padding:const EdgeInsets.symmetric(vertical: 20,horizontal: 20),
                 decoration: const BoxDecoration(
                   color: AppColor.nearlyWhite,
-                 // border: Border.all(color: AppColor.black),
                   borderRadius:  BorderRadius.only(
                       bottomLeft: Radius.circular(20),
                       bottomRight: Radius.circular(20))
@@ -47,8 +49,7 @@ class MapNearbyHospitalWidget extends StatelessWidget {
                       children: [
                         SvgPicture.asset(AppLinkImage.hospitalName,height: 16),
                         const SizedBox(width: 15),
-                        //TextWidgetShapeEnglish(text: "NYU Langone Hospital", size: 13,fontWeight: FontWeight.normal),
-                        const Text("NYU Langone Hospital",style: TextStyle(fontFamily: "Inter",fontSize: 14,fontWeight: FontWeight.normal))
+                         Text("${hospitals!.name}",style:const TextStyle(fontFamily: "Inter",fontSize: 14,fontWeight: FontWeight.normal))
                       ]
                     ),
                     const SizedBox(height: 15),
@@ -56,7 +57,7 @@ class MapNearbyHospitalWidget extends StatelessWidget {
                       children: [
                         SvgPicture.asset(AppLinkImage.location,height: 16),
                         const SizedBox(width: 15),
-                        const Text("550 First Avenue, New Yourk, NY",style: TextStyle(fontFamily: "Inter",fontSize: 14,fontWeight: FontWeight.normal))
+                         Text("${hospitals!.address}",style:const TextStyle(fontFamily: "Inter",fontSize: 14,fontWeight: FontWeight.normal))
                       ]
                     ),
                     const SizedBox(height: 15),
@@ -64,7 +65,7 @@ class MapNearbyHospitalWidget extends StatelessWidget {
                       children: [
                         SvgPicture.asset(AppLinkImage.phone,height: 16),
                         const SizedBox(width: 15),
-                        const Text("10016-6402",style: TextStyle(fontFamily: "Inter",fontSize: 14,fontWeight: FontWeight.normal))
+                         Text("${hospitals!.telephone}",style:const TextStyle(fontFamily: "Inter",fontSize: 14,fontWeight: FontWeight.normal))
                       ]
                     ),
     

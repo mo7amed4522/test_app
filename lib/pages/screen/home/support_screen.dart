@@ -13,71 +13,68 @@ class SupportScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColor.backgroungRegister,
-      appBar: AppBar(
+    return GetBuilder<DropDowunMuneSupportWidgetIMP>(
+      init: DropDowunMuneSupportWidgetIMP(),
+      builder: (controller) => HandlingDataView(
+        statusRequest: controller.statusRequest,
+        widget: Scaffold(
           backgroundColor: AppColor.backgroungRegister,
-          title: Text(
-            "Support",
-            style: TextStyle(
-                fontFamily: "Inter",
-                fontSize: 23,
-                color: AppColor.black,
-                fontWeight: FontWeight.w500),
-          ),
-          centerTitle: true,
-          leading: Padding(
-              padding: EdgeInsets.only(left: 5),
-              child: CustomIconBtn(
-                  icon: Icons.arrow_back,
-                  color: AppColor.black,
-                  onPressed: () {
-                    Get.back();
-                  })),
-          iconTheme: const IconThemeData(color: AppColor.black),
-          elevation: 0.0),
-      body: 
-      GetBuilder<DropDowunMuneSupportWidgetIMP>(
-        init: DropDowunMuneSupportWidgetIMP(),
-        builder: (controller) => 
-        HandlingDataView(
-          statusRequest: controller.statusRequest,
-          widget:  Container(
-          color: AppColor.backgroungRegister,
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "FAQS",
+          appBar: AppBar(
+              backgroundColor: AppColor.backgroungRegister,
+              title: Text(
+                "Support",
                 style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.normal,
-                ),
+                    fontFamily: "Inter",
+                    fontSize: 23,
+                    color: AppColor.black,
+                    fontWeight: FontWeight.w500),
               ),
-              SizedBox(height: 20),
-              SizedBox(
-                height: Get.height - 200,
-                width: Get.width,
-                child: ListView.separated(
-                  separatorBuilder: (BuildContext context, int index) =>
-                      const SizedBox(height: 10),
-                  itemBuilder: (context, index) => Column(
-                    children:  [
-                      DropMuneSupportWidget(
-                        text1: controller.data[index]['Question'],
-                        text2: controller.data[index]['Answer'],
-                      ),
-                    ],
+              centerTitle: true,
+              leading: Padding(
+                  padding: EdgeInsets.only(left: 5),
+                  child: CustomIconBtn(
+                      icon: Icons.arrow_back,
+                      color: AppColor.black,
+                      onPressed: () {
+                        Get.back();
+                      })),
+              iconTheme: const IconThemeData(color: AppColor.black),
+              elevation: 0.0),
+          body: Container(
+            color: AppColor.backgroungRegister,
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "FAQS",
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.normal,
                   ),
-                  itemCount: controller.data.length,
                 ),
-              ),
-            ],
+                SizedBox(height: 20),
+                SizedBox(
+                  height: Get.height - 200,
+                  width: Get.width,
+                  child: ListView.separated(
+                    separatorBuilder: (BuildContext context, int index) =>
+                        const SizedBox(height: 10),
+                    itemBuilder: (context, index) => Column(
+                      children: [
+                        DropMuneSupportWidget(
+                          text1: controller.data[index]['Question'],
+                          text2: controller.data[index]['Answer'],
+                        ),
+                      ],
+                    ),
+                    itemCount: controller.data.length,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
-        ),
-       
       ),
     );
   }

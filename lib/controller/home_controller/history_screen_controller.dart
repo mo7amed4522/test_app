@@ -24,6 +24,7 @@ class UserHistoryScreenControllerIMP extends UserHistoryScreenController {
     statusRequest = StatusRequest.loading;
     var response = await userHistory.getData();
     statusRequest = handlingData(response);
+    update();
     if (statusRequest == StatusRequest.success) {
       items = response['Cases'];
       update();
