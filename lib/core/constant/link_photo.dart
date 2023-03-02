@@ -37,6 +37,6 @@ class AppLinkImage {
     static const String loading = "$json/loading.json"; 
   static const String noData = "$json/no_data.json";
   static const String offline = "$json/offline.json";
-  //static const String serverError = "$json/server_error.json";
+  static const String err0r400 = "$json/400.json";
   static const String error401 = "$json/401.json";
 }

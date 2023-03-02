@@ -23,7 +23,6 @@ class RegisterControllerIMP extends RegisterController {
 
   List data = [];
   StatusRequest? statusRequest;
-  GlobalKey<FormState> formState = GlobalKey();
   bool isPassword = true;
   bool isPasswordconfirm = true;
   MyServices myServices = Get.find();
@@ -41,29 +40,25 @@ class RegisterControllerIMP extends RegisterController {
   }
 
   @override
-  signUp() async{
-      var formData = formState.currentState;
-    if(formData!.validate()){
-       statusRequest = StatusRequest.loading;
-       update();
-    var response = await signupData.postData(nameController.text,emailController.text,passwordController.text);
+  signUp() async {
+    statusRequest = StatusRequest.loading;
+    update();
+    var response = await signupData.postData(
+        nameController.text, emailController.text, passwordController.text);
     statusRequest = handlingData(response);
     update();
-    if(StatusRequest.success == statusRequest){
+    if (StatusRequest.success == statusRequest) {
       Get.offAllNamed(AppRoute.loginPage);
     }
     update();
-    }else{
-      Get.snackbar('Error Register', "you have an error in your email address or phone or password",snackPosition: SnackPosition.BOTTOM);
-    }
   }
 
   @override
   login() {
-    Get.back();
+    Get.toNamed(AppRoute.loginPage);
   }
 
-    @override
+  @override
   void onInit() {
     nameController = TextEditingController();
     emailController = TextEditingController();

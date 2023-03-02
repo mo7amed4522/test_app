@@ -8,7 +8,6 @@ import 'package:test_app/core/constant/component.dart';
 import 'package:test_app/core/constant/link_photo.dart';
 import 'package:test_app/core/theme/theme_color.dart';
 import 'package:test_app/pages/widget/auth_widget/back_arrow_widget.dart';
-import 'package:test_app/pages/widget/auth_widget/text_widget.dart';
 import 'package:test_app/pages/widget/home_widget/choice_button_widget.dart';
 
 class RegiterCaseScreen extends StatelessWidget {
@@ -17,16 +16,19 @@ class RegiterCaseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<RegisterCaseFirstIMP>(
-init: RegisterCaseFirstIMP(),
-      builder:(controller)=> Scaffold(
+      init: RegisterCaseFirstIMP(),
+      builder: (controller) => Scaffold(
           backgroundColor: AppColor.backgroungRegister,
           appBar: AppBar(
             toolbarHeight: 80,
-            title: TextWidgetShapeEnglish(
-                text: "Register Case",
-                size: 20,
-                fontWeight: FontWeight.normal,
-                color: AppColor.black),
+            title: Text(
+              "Register Case",
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500,
+                  fontFamily: "Poppins",
+                  color: AppColor.black),
+            ),
             centerTitle: true,
             leading: Padding(
                 padding: EdgeInsets.only(left: 5),
@@ -40,66 +42,74 @@ init: RegisterCaseFirstIMP(),
             backgroundColor: AppColor.backgroungRegister,
             elevation: 0.0,
           ),
-          body:  Container(
-                    color: AppColor.backgroungRegister,
-                    padding: EdgeInsets.only(right: 1, left: 1, top: 5),
-                    child: Column(children: [
-                      SizedBox(height: 30),
-                      SvgPicture.asset(AppLinkImage.regiserCase,
-                          height: 100, fit: BoxFit.contain),
-                      SizedBox(height: 3),
-                      Center(
-                          child: TextWidgetShapeEnglish(
-                              text: "Register Case",
-                              size: 25,
-                              color: AppColor.defaultColor,
-                              fontWeight: FontWeight.normal)),
-                      SizedBox(height: 2),
-                      Center(
-                          child: TextWidgetShapeEnglish(
-                              text: "Please enter the following details to",
-                              size: 15,
-                              color: AppColor.grey)),
-                      Center(
-                          child: TextWidgetShapeEnglish(
-                              text: "register your case",
-                              size: 15,
-                              color: AppColor.grey)),
-                      SizedBox(height: 7),
-                      Center(
-                          child: TextWidgetShapeEnglish(
-                              text: "Please select one of the following",
-                              size: 15,
-                              color: AppColor.black,
-                              fontWeight: FontWeight.normal)),
-                      SizedBox(height: 20),
-                      ChoiceButtonWidget(
-                          onTap: () {
-                            controller.changeInteractive();
-                          },
-                          text: "Interactive body",
-                          color: controller.color,
-                          colorText: controller.colorText),
-                      ChoiceButtonWidget(
-                          onTap: () {
-                            controller.changeInternal();
-                          },
-                          text: "Internal list",
-                          color: controller.color2,
-                          colorText: controller.colorText2),
-                      Spacer(),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            right: Get.width / 9, left: Get.width / 9),
-                        child: GestureDetector(
-                            onTap: () {
-                              controller.goToSecRegisterCasePage(controller.x);
-                            },
-                            child: animatedOptacity("Next")),
-                      ),
-                      SizedBox(height: 20),
-                    ]),
-                  )),
+          body: Container(
+            color: AppColor.backgroungRegister,
+            padding: EdgeInsets.only(right: 1, left: 1, top: 5),
+            child: Column(children: [
+              SizedBox(height: 30),
+              SvgPicture.asset(AppLinkImage.regiserCase,
+                  height: 80, fit: BoxFit.contain),
+              SizedBox(height: 15),
+              Center(
+                  child: Text(
+                "Register Case",
+                style: TextStyle(
+                    fontSize: 25,
+                    color: AppColor.defaultColor,
+                    fontFamily: "Poppins",
+                    fontWeight: FontWeight.w500),
+              )),
+              SizedBox(height: 2),
+              Center(
+                  child: Text(
+                "Please enter the following details to",
+                style: TextStyle(
+                    fontSize: 18, fontFamily: "Poppins", color: AppColor.grey),
+              )),
+              Center(
+                  child: Text(
+                "register your case",
+                style: TextStyle(
+                    fontSize: 18, fontFamily: "Poppins", color: AppColor.grey),
+              )),
+              SizedBox(height: 80),
+              Center(
+                  child: Text(
+                "Please select one of the following",
+                style: TextStyle(
+                    fontSize: 18,
+                    color: AppColor.black,
+                    fontFamily: "Poppins",
+                    fontWeight: FontWeight.normal),
+              )),
+              SizedBox(height: 20),
+              ChoiceButtonWidget(
+                  onTap: () {
+                    controller.changeInteractive();
+                  },
+                  text: "Interactive body",
+                  color: controller.color,
+                  colorText: controller.colorText),
+              ChoiceButtonWidget(
+                  onTap: () {
+                    controller.changeInternal();
+                  },
+                  text: "Internal list",
+                  color: controller.color2,
+                  colorText: controller.colorText2),
+              Spacer(),
+              Padding(
+                padding:
+                    EdgeInsets.only(right: Get.width / 9, left: Get.width / 9),
+                child: GestureDetector(
+                    onTap: () {
+                      controller.goToSecRegisterCasePage(controller.x);
+                    },
+                    child: animatedOptacity("Next")),
+              ),
+              SizedBox(height: 20),
+            ]),
+          )),
     );
   }
 }

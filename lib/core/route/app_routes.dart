@@ -17,7 +17,6 @@ class AppRoute {
   static const String interactiveScreen = "/InteractiveScreen";
   // ============== register case =============//
   static const String internalCase = "/InternalCase";
-  static const String internalCaseSec = "/InternalCaseSec";
   // ============== Nearby Hosiptal =============//
   static const String nearbyHospitalFirst = "/NearbyHospitalFirst";
   // ============== History =============//

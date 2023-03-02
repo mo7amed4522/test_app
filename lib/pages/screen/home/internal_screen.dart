@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, must_be_immutable
+// ignore_for_file: prefer_const_constructors, must_be_immutable, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -7,7 +7,6 @@ import 'package:test_app/controller/internal_controller/internal_first_page_cont
 import 'package:test_app/core/constant/handeldataview.dart';
 import 'package:test_app/core/theme/theme_color.dart';
 import 'package:test_app/pages/widget/auth_widget/back_arrow_widget.dart';
-import 'package:test_app/pages/widget/auth_widget/text_widget.dart';
 import 'package:test_app/pages/widget/home_widget/internal_drop_mune_widget.dart';
 
 class InternalScreen extends StatelessWidget {
@@ -23,11 +22,13 @@ class InternalScreen extends StatelessWidget {
               backgroundColor: AppColor.backgroungRegister,
               appBar: AppBar(
                 toolbarHeight: 80,
-                title: TextWidgetShapeEnglish(
-                    text: "Register Case",
-                    size: 20,
+                title: Text(
+                    "Register Case",
+                    style: TextStyle(fontSize: 20,
+                    fontFamily: "Poppins",
                     fontWeight: FontWeight.normal,
                     color: AppColor.black),
+                    ),
                 centerTitle: true,
                 leading: Padding(
                     padding: EdgeInsets.only(left: 5),
@@ -47,11 +48,15 @@ class InternalScreen extends StatelessWidget {
                   child: Column(children: [
                     SizedBox(height: 20),
                     Center(
-                        child: TextWidgetShapeEnglish(
-                            text: "Please select the part of Pain",
-                            size: 18,
+                        child: Text(
+                            "Please select the part of Pain",
+                            style: TextStyle(
+                               fontSize: 18,
+                               fontFamily: "Poppins",
                             color: AppColor.black,
-                            fontWeight: FontWeight.normal)),
+                            fontWeight: FontWeight.normal
+                            ),
+                           )),
                     InternalDropMnueWidget(),
                   ])),
             )));

@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable
+// ignore_for_file: must_be_immutable, prefer_const_constructors
 
 import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +16,7 @@ class DropMuneSupportWidget extends StatelessWidget {
         elevationCurve: Curves.easeInOutCubic,
       baseColor: AppColor.nearlyWhite,
       expandedColor: AppColor.nearlyWhite,
-      title: Text(text1!),
+      title: Text(text1!,style: TextStyle(fontFamily: "Poppins",),),
       expandedTextColor: AppColor.defaultColor,
       children: [
       Align(

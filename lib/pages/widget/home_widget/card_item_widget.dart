@@ -1,10 +1,9 @@
-// ignore_for_file: prefer_typing_uninitialized_variables, sized_box_for_whitespace, must_be_immutable
+// ignore_for_file: prefer_typing_uninitialized_variables, sized_box_for_whitespace, must_be_immutable, prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:test_app/controller/home_controller/home_controller.dart';
 import 'package:test_app/core/theme/theme_color.dart';
-import 'package:test_app/pages/widget/auth_widget/text_widget.dart';
 
 class ItemWidget extends GetView<HomeControllerIMP> {
   var data;
@@ -36,10 +35,13 @@ class ItemWidget extends GetView<HomeControllerIMP> {
                       child: SvgPicture.asset(data["Image"],
                           fit: BoxFit.contain))),
               Center(
-                  child: TextWidgetShapeEnglish(
-                text: data["Name"],
-                size: 15,
+                  child: Text(
+                 data["Name"],
+                 style: TextStyle(
+                  fontSize: 15,
                 fontWeight: FontWeight.bold,
+                 ),
+                
               ))
             ]))),
       ),

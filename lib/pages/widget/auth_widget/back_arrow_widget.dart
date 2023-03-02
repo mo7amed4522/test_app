@@ -11,10 +11,16 @@ class CustomIconBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        decoration: BoxDecoration(
-            shape: BoxShape.rectangle, borderRadius: BorderRadius.circular(10)),
-        child:
-            IconButton(onPressed: onPressed, icon: Icon(icon, color: color)));
+    return MaterialButton(
+      onPressed: onPressed,
+      shape: ContinuousRectangleBorder(
+        borderRadius: BorderRadius.circular(30)
+      ),
+      //color: AppColor.nearlyWhite,
+      child: Icon(
+        icon,
+        color: color,
+      ),
+    );
   }
 }

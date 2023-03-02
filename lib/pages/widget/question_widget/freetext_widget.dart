@@ -42,7 +42,7 @@ class FreeTextWidget extends StatelessWidget {
                         padding: const EdgeInsets.only(left: 30),
                         child: Text(
                           questionText,
-                          style: TextStyle(color: AppColor.defaultColor),
+                          style: TextStyle(fontFamily: "Poppins",color: AppColor.defaultColor),
                         ),
                       ),
                     ),

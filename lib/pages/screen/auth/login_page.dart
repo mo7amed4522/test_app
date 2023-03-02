@@ -10,7 +10,6 @@ import 'package:test_app/core/constant/statusrequest.dart';
 import 'package:test_app/core/func/auth/aleartexitapp.dart';
 import 'package:test_app/core/func/auth/validationinput.dart';
 import 'package:test_app/core/theme/theme_color.dart';
-import 'package:test_app/pages/widget/auth_widget/text_widget.dart';
 import 'package:test_app/pages/widget/splach_scenn_widget/logo_widget.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -18,6 +17,7 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    GlobalKey<FormState> formState = GlobalKey<FormState>();
     return Scaffold(
         backgroundColor: AppColor.defaultColor,
         appBar: AppBar(
@@ -37,13 +37,12 @@ class LoginScreen extends StatelessWidget {
                   init: LoginControllerIMP(),
                   builder: (controller) => controller.statusRequest ==
                           StatusRequest.loading
-                      ? Center(child: Lottie.asset(AppLinkImage.loading,
-                      width: Get.width,
-                      height: Get.height
-                      ))
+                      ? Center(
+                          child: Lottie.asset(AppLinkImage.loading,
+                              width: Get.width, height: Get.height))
                       : Form(
-                        key: controller.formState,
-                        child: ListView(children: [
+                          key: formState,
+                          child: ListView(children: [
                             Padding(
                                 padding: EdgeInsets.only(
                                     right: Get.width / 3, left: Get.width / 3),
@@ -53,24 +52,33 @@ class LoginScreen extends StatelessWidget {
                                     width: Get.width / 4)),
                             SizedBox(height: 50),
                             Center(
-                                child: TextWidgetShapeEnglish(
-                                    text: "Welcome Back",
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black,
-                                    size: 27)),
+                                child: Text(
+                              "Welcome Back",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: "Poppins",
+                                  color: Colors.black,
+                                  fontSize: 27),
+                            )),
                             SizedBox(height: 6),
                             Center(
-                                child: TextWidgetShapeEnglish(
-                                    text: "Please enter your email and password",
-                                    size: 20,
-                                    fontWeight: FontWeight.normal,
-                                    color: AppColor.colorFontgry)),
+                                child: Text(
+                              "Please enter your email and password",
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.normal,
+                                  fontFamily: "Poppins-Medium",
+                                  color: AppColor.colorFontgry),
+                            )),
                             Center(
-                                child: TextWidgetShapeEnglish(
-                                    text: "to countinue",
-                                    size: 20,
-                                    fontWeight: FontWeight.normal,
-                                    color: AppColor.colorFontgry)),
+                                child: Text(
+                              "to countinue",
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.normal,
+                                  fontFamily: "Poppins-Medium",
+                                  color: AppColor.colorFontgry),
+                            )),
                             SizedBox(height: 30),
                             defaultTextForm(
                                 controller: controller.emailController,
@@ -114,11 +122,14 @@ class LoginScreen extends StatelessWidget {
                                       onPressed: () {
                                         controller.goToForgetPassword();
                                       },
-                                      child: TextWidgetShapeEnglish(
-                                          text: "Forget Password ?",
-                                          size: 17,
-                                          fontWeight: FontWeight.normal,
-                                          color: AppColor.defaultColor))
+                                      child: Text(
+                                        "Forget Password ?",
+                                        style: TextStyle(
+                                            fontSize: 17,
+                                            fontWeight: FontWeight.normal,
+                                            fontFamily: "Poppins-Regular",
+                                            color: AppColor.defaultColor),
+                                      ))
                                 ]),
                             const SizedBox(height: 50),
                             Padding(
@@ -127,30 +138,48 @@ class LoginScreen extends StatelessWidget {
                                 child: GestureDetector(
                                     child: animatedOptacity("LOGIN"),
                                     onTap: () {
-                                      controller.login();
+                                      var formData = formState.currentState;
+                                      if (formData!.validate()) {
+                                        controller.login();
+                                      } else {
+                                        Get.snackbar(
+                                          'Error Login',
+                                          "you have an error while Login to your account !",
+                                          snackPosition: SnackPosition.BOTTOM,
+                                          colorText: AppColor.grey,
+                                        );
+                                        controller.statusRequest = StatusRequest.failure;
+                                      }
+                                      
                                     })),
-                            SizedBox(height: Get.height / 15),
+                            SizedBox(height: Get.height / 12),
                             Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  TextWidgetShapeEnglish(
-                                      text: "Already have an account ?",
-                                      fontWeight: FontWeight.normal,
-                                      color: Colors.black,
-                                      size: 15),
+                                  Text(
+                                    "Already have an account ?",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.normal,
+                                        color: Colors.black,
+                                        fontFamily: "Poppins-Regular",
+                                        fontSize: 15),
+                                  ),
                                   MaterialButton(
                                     onPressed: () {
                                       controller.goToSignUpPage();
                                     },
-                                    child: TextWidgetShapeEnglish(
-                                        text: "SIGN UP",
-                                        fontWeight: FontWeight.bold,
-                                        color: AppColor.defaultColor,
-                                        size: 20),
+                                    child: Text(
+                                      "SIGN UP",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: AppColor.defaultColor,
+                                          fontFamily: "Poppins-Regular",
+                                          fontSize: 20),
+                                    ),
                                   )
                                 ])
                           ]),
-                      )),
+                        )),
             )));
   }
 }

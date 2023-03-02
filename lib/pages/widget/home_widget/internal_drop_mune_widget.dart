@@ -35,28 +35,37 @@ class InternalDropMnueWidget extends GetView<InternalFirstPageControllerIMP> {
                 padding:
                     const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                 child: DropdownButton(
-                    borderRadius: BorderRadius.circular(3),
-                    isExpanded: true,
-                    hint: Text("Select part of Pain"),
-                    underline: Container(
-                      height: 0,
-                      color: AppColor.back,
+                  borderRadius: BorderRadius.circular(3),
+                  isExpanded: true,
+                  hint: Text(
+                    "Select part of Pain",
+                    style: TextStyle(
+                      fontFamily: "Poppins",
                     ),
-                    icon: Icon(Icons.keyboard_arrow_down),
-                    items: controller.internal.map((list) {
-                      return DropdownMenuItem(
-                        value:list['Id'].toString(),
-                        child:Text(list['Name'].toString())
-                      );
-                    }).toList(),
-                    onChanged: (values) {
-                      controller.changeDropMnue(values!);
-                       Get.toNamed(AppRoute.questionScreen, arguments: {
-                      "Id" : values,
+                  ),
+                  underline: Container(
+                    height: 0,
+                    color: AppColor.back,
+                  ),
+                  icon: Icon(Icons.keyboard_arrow_down),
+                  items: controller.internal.map((list) {
+                    return DropdownMenuItem(
+                        value: list['Id'].toString(),
+                        child: Text(
+                          list['Name'].toString(),
+                          style: TextStyle(
+                            fontFamily: "Poppins",
+                          ),
+                        ));
+                  }).toList(),
+                  onChanged: (values) {
+                    controller.changeDropMnue(values!);
+                    Get.toNamed(AppRoute.questionScreen, arguments: {
+                      "Id": values,
                     });
-                    },
-                    value: controller.dropdownvalue,
-                    ),
+                  },
+                  value: controller.dropdownvalue,
+                ),
               ),
             ),
           ],

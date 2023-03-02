@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test_app/core/theme/theme_color.dart';
 import 'package:test_app/pages/widget/auth_widget/back_arrow_widget.dart';
-import 'package:test_app/pages/widget/auth_widget/text_widget.dart';
 
 class AppBarWidgetRegisterCase extends StatelessWidget {
   const AppBarWidgetRegisterCase({super.key});
@@ -25,11 +24,14 @@ class AppBarWidgetRegisterCase extends StatelessWidget {
             }),
       ),
       SizedBox(width: 23),
-      TextWidgetShapeEnglish(
-          text: "Register Case",
-          color: AppColor.black,
-          size: 20,
-          fontWeight: FontWeight.normal),
+      Text(
+          "Register Case",
+          style: TextStyle(
+            color: AppColor.black,
+          fontSize: 20,
+          fontWeight: FontWeight.normal
+          ),
+          ),
     ]);
   }
 }

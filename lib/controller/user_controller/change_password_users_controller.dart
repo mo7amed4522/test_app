@@ -13,42 +13,56 @@ abstract class ChangeUsersPasswordController extends GetxController {
 }
 
 class ChangeUsersPasswordControllerIMP extends ChangeUsersPasswordController {
-  TextEditingController currentPasswordController = TextEditingController();
-  TextEditingController newPasswordController = TextEditingController();
-  TextEditingController confNewPasswordController = TextEditingController();
-  GlobalKey<FormState> formState = GlobalKey();
+  late TextEditingController currentPasswordController;
+  late TextEditingController newPasswordController;
+  late TextEditingController confNewPasswordController;
+  
   StatusRequest? statusRequest;
   ChangePasswordData changePasswordData = ChangePasswordData(Get.find());
 
- 
-
   @override
   sucessReset(BuildContext context) async {
-    var formData = formState.currentState;
-    if (formData!.validate()) {
-      statusRequest = StatusRequest.loading;
-      update();
-      var response = await changePasswordData.postData(
-        currentPasswordController.text,
-        newPasswordController.text,
-      );
-      statusRequest = handlingData(response);
-      update();
-      if (statusRequest == StatusRequest.success) {
-        if (response['Status'] == 0) {
-          showDialog(
-            context: context,
-            builder: (context) => DialogWidget(
-              onTap: () {
-                Get.offAndToNamed(AppRoute.homePage);
-              },
-            ),
-          );
-        } else {
-          Get.snackbar("Error", response['Error'],
-              snackPosition: SnackPosition.BOTTOM);
-        }
+    statusRequest = StatusRequest.loading;
+    update();
+    var response = await changePasswordData.postData(
+      currentPasswordController.text,
+      newPasswordController.text,
+    );
+    statusRequest = handlingData(response);
+    update();
+    if (statusRequest == StatusRequest.success) {
+      if (response['Status'] == 0) {
+        showDialog(
+          context: context,
+          builder: (context) => DialogWidget(
+            onTap: () {
+              currentPasswordController.clear();
+              newPasswordController.clear();
+              confNewPasswordController.clear();
+              Get.offAndToNamed(AppRoute.homePage);
+            },
+          ),
+        );
+      } else {
+        Get.snackbar("Error", response['Error'],
+            snackPosition: SnackPosition.BOTTOM);
       }
     }
+  }
+
+  @override
+  void onInit() {
+    currentPasswordController = TextEditingController();
+    newPasswordController = TextEditingController();
+    confNewPasswordController = TextEditingController();
+    super.onInit();
+  }
+
+  @override
+  void dispose() {
+    currentPasswordController.dispose();
+    newPasswordController.dispose();
+    confNewPasswordController.dispose();
+    super.dispose();
   }
 }

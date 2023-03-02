@@ -8,6 +8,7 @@ import 'package:test_app/core/constant/component.dart';
 import 'package:test_app/core/constant/handeldataview.dart';
 import 'package:test_app/core/constant/link_photo.dart';
 import 'package:test_app/core/func/auth/validationinput.dart';
+import 'package:test_app/core/route/app_routes.dart';
 import 'package:test_app/core/theme/theme_color.dart';
 import 'package:test_app/pages/widget/auth_widget/back_arrow_widget.dart';
 
@@ -18,6 +19,8 @@ class ProfileScreeen extends GetView<ProfileEditScreenControllerIMP> {
 
   @override
   Widget build(BuildContext context) {
+    GlobalKey<FormState> formState = GlobalKey<FormState>();
+
     return GetBuilder<ProfileEditScreenControllerIMP>(
       init: ProfileEditScreenControllerIMP(),
       builder: (controller) => HandlingDataView(
@@ -41,7 +44,7 @@ class ProfileScreeen extends GetView<ProfileEditScreenControllerIMP> {
                       icon: Icons.arrow_back,
                       color: AppColor.black,
                       onPressed: () {
-                        Get.back();
+                        Get.toNamed(AppRoute.homePage);
                       })),
               actions: [
                 Padding(
@@ -57,7 +60,7 @@ class ProfileScreeen extends GetView<ProfileEditScreenControllerIMP> {
               elevation: 0.0,
             ),
             body: Form(
-              key: controller.formState,
+              key: formState,
               child: Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -98,7 +101,13 @@ class ProfileScreeen extends GetView<ProfileEditScreenControllerIMP> {
                       child: GestureDetector(
                           child: animatedOptacity(controller.button),
                           onTap: () {
-                            controller.save();
+                            var formData = formState.currentState;
+                            if (formData!.validate()) {
+                              controller.save();
+                            } else {
+                              Get.snackbar("Error", "close Edit and back !!",
+                                  snackPosition: SnackPosition.BOTTOM);
+                            }
                           }),
                     ),
                     const SizedBox(height: 20),

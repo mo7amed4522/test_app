@@ -11,7 +11,10 @@ class EditData {
 
   postData(String name, String email) async {
     token = myServices.sharedPreferences.getString("token");
-    var response = await curd.postData(linkUrl: AppLink.updateUser, data: {},
+    var response = await curd.postData(linkUrl: AppLink.updateUser, data: {
+      "Name":name,
+      "Email":email,
+    },
     token: token
     );
     return response.fold((l) => l, (r) => r);

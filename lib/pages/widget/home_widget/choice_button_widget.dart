@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:test_app/core/theme/theme_color.dart';
-import 'package:test_app/pages/widget/auth_widget/text_widget.dart';
 
 class ChoiceButtonWidget extends StatelessWidget {
   String text;
@@ -34,11 +33,15 @@ class ChoiceButtonWidget extends StatelessWidget {
                                 borderRadius:const  BorderRadius.all(
                                     Radius.circular(16.0))),
                             child: Center(
-                                child: TextWidgetShapeEnglish(
-                                    text: text,
-                                    fontWeight: FontWeight.normal,
+                                child: Text(
+                                     text,
+                                     style: TextStyle(
+                                      fontWeight: FontWeight.normal,
+                                      fontFamily: "Poppins",
                                     color: colorText,
-                                    size: 15))))
+                                    fontSize: 15
+                                     ),
+                                    ))))
                   ]))),
     );
   }

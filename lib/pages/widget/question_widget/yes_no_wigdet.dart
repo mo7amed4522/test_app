@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test_app/controller/questation_controller/questition_controller.dart';
 import 'package:test_app/core/theme/theme_color.dart';
-import 'package:test_app/pages/widget/auth_widget/text_widget.dart';
 
 class YesNoQuestionWidget extends GetView<QuestitionScreenControllerIMP> {
   String quesText;
-  TextEditingController edit;
-
+String value;
+int index;
   YesNoQuestionWidget({
     super.key,
     required this.quesText,
-    required this.edit,
+    required this.value,
+    required this.index,
   });
 
   @override
@@ -40,7 +40,7 @@ class YesNoQuestionWidget extends GetView<QuestitionScreenControllerIMP> {
                   child: Padding(
                       padding: const EdgeInsets.only(left: 30),
                       child: Text(quesText,
-                          style: TextStyle(color: AppColor.defaultColor))))
+                          style: TextStyle(fontFamily: "Poppins",color: AppColor.defaultColor))))
             ]),
             Padding(
                 padding: const EdgeInsets.only(left: 7, right: 7),
@@ -58,24 +58,22 @@ class YesNoQuestionWidget extends GetView<QuestitionScreenControllerIMP> {
                   child: Column(children: [
                 RadioListTile(
                   activeColor: AppColor.defaultColor,
-                  title: TextWidgetShapeEnglish(text: "Yes", size: 15),
+                  title: Text("Yes",style: TextStyle(fontFamily: "Poppins",) ),
                   value: "yes",
-                  groupValue: controller.val,
+                  groupValue: controller.controllers[index].text,
                   onChanged: (v) {
                     controller.changeRadioButton(
-                      v,
-                      edit,
+                      v,index
                     );
                   },
                 ),
                 RadioListTile(
                     activeColor: AppColor.defaultColor,
-                    title: TextWidgetShapeEnglish(text: "No", size: 15),
+                    title: Text( "No",style: TextStyle(fontFamily: "Poppins",)),
                     value: "no",
-                    groupValue: controller.val,
+                    groupValue: controller.controllers[index].text,
                     onChanged: (v) {
-                      controller.changeRadioButton(v,
-                      edit);
+                      controller.changeRadioButton(v,index);
                     })
               ]))
             ])

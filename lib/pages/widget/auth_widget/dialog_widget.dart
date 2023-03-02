@@ -5,7 +5,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:test_app/core/constant/component.dart';
 import 'package:test_app/core/constant/link_photo.dart';
 import 'package:test_app/core/theme/theme_color.dart';
-import 'package:test_app/pages/widget/auth_widget/text_widget.dart';
 
 class DialogWidget extends StatelessWidget {
   void Function()? onTap;
@@ -26,17 +25,26 @@ class DialogWidget extends StatelessWidget {
             SvgPicture.asset(AppLinkImage.success, height: 120, width: 100),
             SizedBox(height: 10),
             Center(
-                child: TextWidgetShapeEnglish(
-                    text: "SUCCESS",
-                    size: 20,
+                child: Text(
+                    "SUCCESS",
+                    style: TextStyle(
+                      fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: AppColor.black)),
+                    fontFamily: "Poppins-Medium",
+                    color: AppColor.black
+                    ),
+                    )),
             Center(
-                child: TextWidgetShapeEnglish(
-                    text: "Your password has been reset",
-                    size: 15,
+                child: Text(
+                     "Your password has been reset",
+                     
+                     style: TextStyle(
+                      fontSize: 15,
                     fontWeight: FontWeight.normal,
-                    color: AppColor.grey)),
+                    fontFamily: "Poppins-Medium",
+                    color: AppColor.grey
+                     ),
+                   )),
             Padding(
               padding: const EdgeInsets.only(left: 7, right: 7),
               child: GestureDetector(

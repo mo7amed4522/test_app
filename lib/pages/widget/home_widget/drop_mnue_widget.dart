@@ -35,7 +35,12 @@ class DropMnueWidget extends GetView<RegisterCaseSecondIMP> {
                 child: DropdownButton(
                   borderRadius: BorderRadius.circular(3),
                   isExpanded: true,
-                  hint: Text("Select part of Pain"),
+                  hint: Text(
+                    "Select part of Pain",
+                    style: TextStyle(
+                      fontFamily: "Poppins",
+                    ),
+                  ),
                   underline: Container(
                     height: 0,
                     color: AppColor.back,
@@ -43,13 +48,19 @@ class DropMnueWidget extends GetView<RegisterCaseSecondIMP> {
                   icon: Icon(Icons.keyboard_arrow_down),
                   items: controller.interactive.map((list) {
                     return DropdownMenuItem(
-                        value: list['Id'].toString(),
-                        child: Text(list['Name'].toString()));
+                      value: list['Id'].toString(),
+                      child: Text(
+                        list['Name'].toString(),
+                        style: TextStyle(
+                          fontFamily: "Poppins",
+                        ),
+                      ),
+                    );
                   }).toList(),
                   onChanged: (values) {
                     controller.changeDropMnue(values!);
                     Get.toNamed(AppRoute.questionScreen, arguments: {
-                      "Id" : values,
+                      "Id": values,
                     });
                   },
                   value: controller.dropdownvalue,

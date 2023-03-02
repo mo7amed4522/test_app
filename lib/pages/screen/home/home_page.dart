@@ -7,7 +7,6 @@ import 'package:test_app/core/constant/handeldataview.dart';
 import 'package:test_app/core/func/auth/aleartexitapp.dart';
 import 'package:test_app/core/theme/theme_color.dart';
 import 'package:test_app/module/home_page.dart';
-import 'package:test_app/pages/widget/auth_widget/text_widget.dart';
 import 'package:test_app/pages/widget/home_widget/card_item_widget.dart';
 import 'package:test_app/pages/widget/home_widget/custom_drawer_home_screen_widget.dart';
 
@@ -35,11 +34,14 @@ class HomePageScreen extends StatelessWidget {
                 widget: Scaffold(
                   appBar: AppBar(
                     toolbarHeight: 80,
-                    title: TextWidgetShapeEnglish(
-                        text: "Home",
-                        size: 25,
-                        fontWeight: FontWeight.w500,
-                        color: AppColor.nearlyWhite),
+                    title: Text(
+                      "Home",
+                      style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: "Poppins",
+                          color: AppColor.nearlyWhite),
+                    ),
                     centerTitle: true,
                     iconTheme: const IconThemeData(color: AppColor.back),
                     backgroundColor: AppColor.defaultColor,

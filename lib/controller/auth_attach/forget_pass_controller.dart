@@ -11,7 +11,6 @@ abstract class ForgetPassword extends GetxController {
 class ForgetPasswordIMP extends ForgetPassword {
   CheckEmailForgetPassword checkEmailForgetPassword =
       CheckEmailForgetPassword(Get.find());
-  GlobalKey<FormState> formState = GlobalKey();
   late TextEditingController email;
   List data = [];
   StatusRequest? statusRequest;

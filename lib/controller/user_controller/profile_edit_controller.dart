@@ -17,10 +17,9 @@ class ProfileEditScreenControllerIMP extends ProfileEditScreenController {
   EditData editData = EditData(Get.find());
   String button = "Save";
   bool enable = false;
-  GlobalKey<FormState> formState = GlobalKey();
 
-   TextEditingController  namecontroller = TextEditingController();
-   TextEditingController  emailController = TextEditingController();
+  TextEditingController namecontroller = TextEditingController();
+  TextEditingController emailController = TextEditingController();
 
   @override
   changeEnable() {
@@ -35,32 +34,31 @@ class ProfileEditScreenControllerIMP extends ProfileEditScreenController {
 
   @override
   save() async {
-      var formData = formState.currentState;
-      if (formData!.validate()) {
-        statusRequest = StatusRequest.loading;
-        update();
-        var response = await editData.postData(
-          namecontroller.text,
-          emailController.text,
-        );
-        statusRequest = handlingData(response);
-        update();
-        if (statusRequest == StatusRequest.success) {
-          enable = false;
-          button = "Save";
-          Get.offAndToNamed(AppRoute.homePage);
-        } else {
-          Get.snackbar(
-            "Error",
-            "faild to Save e_mail or pass",
-            snackPosition: SnackPosition.BOTTOM,
-          );
-        }
-      } else {
-        Get.snackbar("Error", "close Edit and back !!",
-            snackPosition: SnackPosition.BOTTOM);
-      }
-    
+    statusRequest = StatusRequest.loading;
+    update();
+    var response = await editData.postData(
+      namecontroller.text,
+      emailController.text,
+    );
+    statusRequest = handlingData(response);
+    update();
+    if (statusRequest == StatusRequest.success) {
+      enable = false;
+      button = "Save";
+      Get.toNamed(AppRoute.homePage,
+      arguments: {
+        "newName" : namecontroller.text,
+        "newEmail":emailController.text,
+       }
+      );
+    } else {
+      Get.snackbar(
+        "Error",
+        "faild to Save e_mail or pass",
+        snackPosition: SnackPosition.BOTTOM,
+      );
+      Get.back();
+    }
   }
 
   @override

@@ -8,7 +8,6 @@ import 'package:test_app/core/constant/component.dart';
 import 'package:test_app/core/constant/link_photo.dart';
 import 'package:test_app/core/theme/theme_color.dart';
 import 'package:test_app/pages/widget/auth_widget/back_arrow_widget.dart';
-import 'package:test_app/pages/widget/auth_widget/text_widget.dart';
 
 class ResetePasswordScreen extends StatelessWidget {
   const ResetePasswordScreen({super.key});
@@ -48,30 +47,42 @@ class ResetePasswordScreen extends StatelessWidget {
               ]),
               SizedBox(height: 10),
               SizedBox(
-                height: Get.height / 3,
+                height: Get.height / 4,
                 child: SvgPicture.asset(AppLinkImage.resetPass,
                     fit: BoxFit.contain),
               ),
               SizedBox(height: 50),
               Center(
-                  child: TextWidgetShapeEnglish(
-                      text: "Reset Password",
-                      fontWeight: FontWeight.bold,
+                  child: Text(
+                       "Reset Password",
+                       style: TextStyle(
+                         fontWeight: FontWeight.bold,
+                         fontFamily: "Poppins-Regular",
                       color: AppColor.black,
-                      size: 27)),
+                      fontSize: 27
+                       ),
+                     )),
               SizedBox(height: 5),
               Center(
-                  child: TextWidgetShapeEnglish(
-                      text: "Reset your password to login to",
-                      size: 15,
+                  child: Text(
+                       "Reset your password to login to",
+                       style: TextStyle(
+                        fontSize: 18,
                       fontWeight: FontWeight.normal,
-                      color: AppColor.grey)),
+                      fontFamily: "Poppins-Medium",
+                      color: AppColor.grey
+                       ),
+                      )),
               Center(
-                  child: TextWidgetShapeEnglish(
-                      text: "your account",
-                      size: 15,
+                  child: Text(
+                       "your account",
+                       style: TextStyle(
+                        fontSize: 18,
                       fontWeight: FontWeight.normal,
-                      color: AppColor.grey)),
+                      fontFamily: "Poppins-Medium",
+                      color: AppColor.grey
+                       ),
+                      )),
               SizedBox(height: 20),
               defaultTextForm(
                   controller: controller.passwordController,

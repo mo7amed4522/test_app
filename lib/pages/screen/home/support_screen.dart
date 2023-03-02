@@ -24,7 +24,7 @@ class SupportScreen extends StatelessWidget {
               title: Text(
                 "Support",
                 style: TextStyle(
-                    fontFamily: "Inter",
+                    fontFamily: "Poppins",
                     fontSize: 23,
                     color: AppColor.black,
                     fontWeight: FontWeight.w500),
@@ -50,6 +50,7 @@ class SupportScreen extends StatelessWidget {
                   "FAQS",
                   style: TextStyle(
                     fontSize: 24,
+                    fontFamily: "Poppins",
                     fontWeight: FontWeight.normal,
                   ),
                 ),

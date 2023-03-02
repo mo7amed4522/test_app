@@ -1,5 +1,10 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:test_app/controller/hosiptal_controller/first_hospital_controller.dart';
 import 'package:test_app/core/constant/handeldataview.dart';
 import 'package:test_app/core/theme/theme_color.dart';
@@ -13,6 +18,8 @@ class FirstNearByHospitalScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Completer<GoogleMapController> controllerMap =
+        Completer<GoogleMapController>();
     return GetBuilder<FirstNearByHospitalScreenIMP>(
       init: FirstNearByHospitalScreenIMP(),
       builder: (controller) => HandlingDataView(
@@ -50,9 +57,15 @@ class FirstNearByHospitalScreen extends StatelessWidget {
                     hospitalFirstModel:
                         HospitalFirstModel.fromJson(controller.items),
                   ),
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                    child: MapNearbyHospialWidget(),
+                    child: MapNearbyHospialWidget(
+                      onMapCreated: (GoogleMapController controll) {
+                        if (!controllerMap.isCompleted) {
+                          controllerMap.complete(controll);
+                        } 
+                      },
+                    ),
                   ),
                 ],
               ),

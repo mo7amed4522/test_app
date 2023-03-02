@@ -8,7 +8,6 @@ import 'package:test_app/core/constant/handeldataview.dart';
 import 'package:test_app/core/constant/link_photo.dart';
 import 'package:test_app/core/theme/theme_color.dart';
 import 'package:test_app/pages/widget/auth_widget/back_arrow_widget.dart';
-import 'package:test_app/pages/widget/auth_widget/text_widget.dart';
 import 'package:test_app/pages/widget/home_widget/drop_mnue_widget.dart';
 
 class InteractiveScreen extends StatelessWidget {
@@ -24,20 +23,22 @@ class InteractiveScreen extends StatelessWidget {
               backgroundColor: AppColor.backgroungRegister,
               appBar: AppBar(
                 toolbarHeight: 80,
-                title: TextWidgetShapeEnglish(
-                    text: "Register Case",
-                    size: 20,
-                    fontWeight: FontWeight.normal,
-                    color: AppColor.black),
+                title: Text(
+                  "Register Case",
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontFamily: "Poppins",
+                      fontWeight: FontWeight.normal,
+                      color: AppColor.black),
+                ),
                 centerTitle: true,
-                leading: Padding(
-                    padding: EdgeInsets.only(left: 5),
-                    child: CustomIconBtn(
-                        icon: Icons.arrow_back,
-                        color: AppColor.black,
-                        onPressed: () {
-                          Get.back();
-                        })),
+                
+                leading: CustomIconBtn(
+                    icon: Icons.arrow_back,
+                    color: AppColor.black,
+                    onPressed: () {
+                      Get.back();
+                    }),
                 iconTheme: const IconThemeData(color: AppColor.black),
                 backgroundColor: AppColor.backgroungRegister,
                 elevation: 0.0,
@@ -45,14 +46,17 @@ class InteractiveScreen extends StatelessWidget {
               body: Container(
                   color: AppColor.backgroungRegister,
                   padding: EdgeInsets.only(top: 5, right: 1, left: 1),
-                  child: ListView(children: [
+                  child: Column(children: [
                     SizedBox(height: 7),
                     Center(
-                        child: TextWidgetShapeEnglish(
-                            text: "Please select the part of Pain",
-                            size: 18,
-                            color: AppColor.black,
-                            fontWeight: FontWeight.normal)),
+                        child: Text(
+                      "Please select the part of Pain",
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontFamily: "Poppins",
+                          color: AppColor.black,
+                          fontWeight: FontWeight.w500),
+                    )),
                     SizedBox(height: 25),
                     Row(children: [
                       Expanded(
@@ -64,7 +68,7 @@ class InteractiveScreen extends StatelessWidget {
                             fit: BoxFit.contain),
                       )
                     ]),
-                    SizedBox(height: 10),
+                    SizedBox(height: 50),
                     DropMnueWidget(),
                   ])),
             )));

@@ -82,6 +82,34 @@ class HandlingDataView extends StatelessWidget {
                           ],
                         ),
                       )
-                    : widget!;
+                    : statusRequest == StatusRequest.exeptions
+                        ? Scaffold(
+                            body: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Center(
+                                    child: Lottie.asset(AppLinkImage.err0r400,
+                                        width: Get.width,
+                                        height: Get.height / 1.6)),
+                                Text(
+                                  "Bad Request Go Back",
+                                ),
+                                Spacer(),
+                                Padding(
+                                    padding: EdgeInsets.only(
+                                        bottom: 60,
+                                        right: Get.width / 8,
+                                        left: Get.width / 8),
+                                    child: GestureDetector(
+                                        child:
+                                            animatedOptacity("Back"),
+                                        onTap: () {
+                                          Get.back();
+                                        })),
+                              ],
+                            ),
+                          )
+                        : widget!;
   }
 }

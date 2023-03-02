@@ -1,21 +1,22 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, must_be_immutable, prefer_const_constructors_in_immutables
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:test_app/controller/home_controller/home_controller.dart';
+import 'package:test_app/core/constant/constant.dart';
 import 'package:test_app/core/constant/link_photo.dart';
+import 'package:test_app/core/route/app_routes.dart';
+import 'package:test_app/core/shared_preference/cache_helper.dart';
 import 'package:test_app/core/theme/theme_color.dart';
 
 class CustomDrawerHomeWidget extends GetView<HomeControllerIMP> {
-
-   const CustomDrawerHomeWidget({super.key,});
+  CustomDrawerHomeWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: Column(
-        //padding: EdgeInsets.zero,
         children: [
           DrawerHeader(
             curve: Curves.easeInCirc,
@@ -51,18 +52,23 @@ class CustomDrawerHomeWidget extends GetView<HomeControllerIMP> {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children:  [
+                  children: [
                     Text(
                       controller.homeModel!.name!,
                       style: TextStyle(
                           color: AppColor.defaultColor,
+                          
+                          fontFamily: "Poppins",
                           fontSize: 16,
-                          fontWeight: FontWeight.bold),
+                          fontWeight: FontWeight.w600),
                     ),
+                    SizedBox(height: 8),
                     Text(
                       controller.homeModel!.email!,
                       style: TextStyle(
                         color: AppColor.grey,
+                        fontSize: 15,
+                        fontFamily: "Poppins",
                       ),
                     ),
                   ],
@@ -77,7 +83,11 @@ class CustomDrawerHomeWidget extends GetView<HomeControllerIMP> {
               offset: Offset(-25, -4),
               child: Text(
                 'Profile',
-                style: TextStyle(color: AppColor.grey),
+                style: TextStyle(
+                  color: AppColor.grey,
+                  fontSize: 15,
+                  fontFamily: "Poppins",
+                ),
               ),
             ),
             onTap: () {
@@ -90,7 +100,11 @@ class CustomDrawerHomeWidget extends GetView<HomeControllerIMP> {
               offset: Offset(-25, 0),
               child: Text(
                 'Change Password',
-                style: TextStyle(color: AppColor.grey),
+                style: TextStyle(
+                  color: AppColor.grey,
+                  fontSize: 15,
+                  fontFamily: "Poppins",
+                ),
               ),
             ),
             onTap: () {
@@ -99,16 +113,25 @@ class CustomDrawerHomeWidget extends GetView<HomeControllerIMP> {
           ),
           Spacer(),
           ListTile(
-            leading: SvgPicture.asset(AppLinkImage.logout),
+            leading: SvgPicture.asset(AppLinkImage.logout, height: 20),
             title: Transform.translate(
-              offset: Offset(-25, -5),
+              offset: Offset(-20, -4),
               child: Text(
                 'Logout',
-                style: TextStyle(color: AppColor.grey),
+                style: TextStyle(
+                  color: AppColor.grey,
+                  fontSize: 18,
+                  fontFamily: "Poppins",
+                ),
               ),
             ),
             onTap: () {
-              controller.logOut();
+              CacheHelper.removeData(key: "token").then((value) {
+                if (value) {
+                  token = CacheHelper.get(key: "token");
+                  Get.toNamed(AppRoute.loginPage);
+                }
+              });
             },
           ),
           SizedBox(height: 50),

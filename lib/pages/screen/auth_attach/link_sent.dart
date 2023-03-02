@@ -8,7 +8,6 @@ import 'package:test_app/core/constant/component.dart';
 import 'package:test_app/core/constant/link_photo.dart';
 import 'package:test_app/core/theme/theme_color.dart';
 import 'package:test_app/pages/widget/auth_widget/back_arrow_widget.dart';
-import 'package:test_app/pages/widget/auth_widget/text_widget.dart';
 
 class LinkSentScreen extends StatelessWidget {
   const LinkSentScreen({super.key});
@@ -54,30 +53,44 @@ class LinkSentScreen extends StatelessWidget {
                         fit: BoxFit.contain),
                   ),
                   Center(
-                      child: TextWidgetShapeEnglish(
-                          text: "Link has been sent",
-                          fontWeight: FontWeight.bold,
+                      child: Text(
+                           "Link has been sent",
+                           style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontFamily: "Poppins-Regular",
                           color: Colors.black,
-                          size: 27)),
-                  SizedBox(height: 5),
+                          fontSize: 27
+                           ),
+                          )),
+                  SizedBox(height: 15),
                   Center(
-                      child: TextWidgetShapeEnglish(
-                          text: "We have sent an email to that",
-                          size: 17,
+                      child: Text(
+                           "We have sent an email to that",
+                           style: TextStyle(
+                             fontSize: 22,
                           fontWeight: FontWeight.normal,
-                          color: AppColor.grey)),
+                          fontFamily: "Poppins-Medium",
+                          color: AppColor.grey
+                           ),
+                         )),
                   Center(
-                      child: TextWidgetShapeEnglish(
-                          text: "contains a link to reset your",
-                          size: 17,
+                      child: Text(
+                           "contains a link to reset your",
+                           style: TextStyle(
+                            fontSize: 22,
                           fontWeight: FontWeight.normal,
-                          color: AppColor.grey)),
+                          fontFamily: "Poppins-Medium",
+                          color: AppColor.grey
+                           ),
+                         )),
                   Center(
-                      child: TextWidgetShapeEnglish(
-                          text: "password",
-                          size: 17,
+                      child: Text(
+                           "password",
+                           style: TextStyle( fontSize: 22,
                           fontWeight: FontWeight.normal,
-                          color: AppColor.grey)),
+                          fontFamily: "Poppins-Medium",
+                          color: AppColor.grey),
+                         )),
                   SizedBox(height: 50),
                   Padding(
                     padding: EdgeInsets.only(

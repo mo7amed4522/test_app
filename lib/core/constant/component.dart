@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:test_app/core/theme/theme_color.dart';
-import 'package:test_app/pages/widget/auth_widget/text_widget.dart';
 
 Widget defaultTextFormwithoutasset(
         {required TextEditingController controller,
@@ -321,6 +320,22 @@ Widget defaultTextFormPass(
                 },
                 decoration: InputDecoration(
                     border: InputBorder.none,
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                          width: 0.0, color: AppColor.backgroungRegister),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(
+                          color: AppColor.backgroungRegister, width: 0.0),
+                    ),
+                    errorBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                          width: 0.0, color: AppColor.backgroungRegister),
+                    ),
+                    focusedErrorBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                          width: 0.0, color: AppColor.backgroungRegister),
+                    ),
                     errorStyle: TextStyle(
                         color: Colors.red,
                         fontSize: 12.0,
@@ -358,10 +373,13 @@ Widget animatedOptacity(String text) {
                               const BorderRadius.all(Radius.circular(10.0)),
                         ),
                         child: Center(
-                            child: TextWidgetShapeEnglish(
-                                text: text,
-                                fontWeight: FontWeight.bold,
-                                color: AppColor.nearlyWhite,
-                                size: 20))))
+                            child: Text(
+                          text,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: AppColor.nearlyWhite,
+                              fontFamily: "Poppins",
+                              fontSize: 20),
+                        ))))
               ])));
 }

@@ -29,10 +29,9 @@ class Crud {
             print(response.statusCode);
           }
           return Right(responsebody);
-        } else {
-          if (kDebugMode) {
-            print(response.statusCode);
-          }
+        } else if(response.statusCode == 400){
+          return const Left(StatusRequest.exeptions);
+        }else{
           return const Left(StatusRequest.serverfailure);
         }
       } else {
@@ -67,10 +66,9 @@ class Crud {
             print(response.statusCode,);
           }
           return Right(responsebody);
-        } else {
-          if (kDebugMode) {
-            print(response.statusCode);
-          }
+        } else if(response.statusCode == 400){
+          return const Left(StatusRequest.exeptions);
+        }else{
           return const Left(StatusRequest.serverfailure);
         }
       } else {
@@ -99,10 +97,10 @@ class Crud {
             print(response.statusCode);
           }
           return Right(responsebody);
-        } else {
-          if (kDebugMode) {
-            print(response.statusCode);
-          }
+        } else if(response.statusCode == 400){
+          
+          return const Left(StatusRequest.exeptions);
+        }else{
           return const Left(StatusRequest.serverfailure);
         }
       } else {

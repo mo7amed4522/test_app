@@ -16,6 +16,8 @@ class ChangePasswordUserScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    GlobalKey<FormState> formState = GlobalKey<FormState>();
+
     return GetBuilder<ChangeUsersPasswordControllerIMP>(
       init: ChangeUsersPasswordControllerIMP(),
       builder: (controller) => HandlingDataView(
@@ -45,7 +47,7 @@ class ChangePasswordUserScreen extends StatelessWidget {
             elevation: 0.0,
           ),
           body: Form(
-            key: controller.formState,
+            key: formState,
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: Column(
@@ -63,7 +65,8 @@ class ChangePasswordUserScreen extends StatelessWidget {
                       height: Get.height - 300,
                       width: Get.width,
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 5,vertical: 5),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 5, vertical: 5),
                         child: ListView(
                           children: [
                             defaultTextForm(
@@ -120,13 +123,15 @@ class ChangePasswordUserScreen extends StatelessWidget {
                               child: GestureDetector(
                                   child: animatedOptacity("Save"),
                                   onTap: () {
-                                    if (controller.newPasswordController.text ==
-                                        controller.confNewPasswordController) {
-                                      controller.sucessReset(context);
+                                    var formData = formState.currentState;
+                                    if (formData!.validate()) {
+                                      
+                                        controller.sucessReset(context);
+                                      
                                     } else {
                                       Get.snackbar(
                                         "Error !",
-                                        "Your New Password is not match with Confirm Password",
+                                        "please add the values !!",
                                         snackPosition: SnackPosition.BOTTOM,
                                       );
                                     }

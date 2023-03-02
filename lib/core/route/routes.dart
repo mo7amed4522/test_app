@@ -11,7 +11,6 @@ import 'package:test_app/pages/screen/home/history_screen.dart';
 import 'package:test_app/pages/screen/home/nearby_hospital_screen.dart';
 import 'package:test_app/pages/screen/home/support_screen.dart';
 import 'package:test_app/pages/screen/home/internal_screen.dart';
-import 'package:test_app/pages/screen/internal_screen/sec_internal_page.dart';
 import 'package:test_app/pages/screen/nearby_hospital_screen/first_nearbyschool_screen.dart';
 import 'package:test_app/pages/screen/profile_screen/change_password_user.dart';
 import 'package:test_app/pages/screen/profile_screen/profile_screen.dart';
@@ -47,8 +46,7 @@ List<GetPage<dynamic>>? routes = [
   GetPage(
       name: AppRoute.internalCase,
       page: () => const InternalScreen()),
-  GetPage(
-      name: AppRoute.internalCaseSec, page: () => const InternalSecondScreen()),
+
   GetPage(
       name: AppRoute.nearbyHospitalFirst,
       page: () => const FirstNearByHospitalScreen()),

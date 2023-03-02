@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test_app/core/constant/constant.dart';
@@ -6,7 +5,7 @@ import 'package:test_app/core/constant/statusrequest.dart';
 import 'package:test_app/core/func/internet/handel_data.dart';
 import 'package:test_app/core/route/app_routes.dart';
 import 'package:test_app/core/server/server.dart';
-import 'package:test_app/core/theme/theme_color.dart';
+import 'package:test_app/core/shared_preference/cache_helper.dart';
 import 'package:test_app/data/datasorcue/auth/login_screen_datasorcue.dart';
 
 abstract class LoginController extends GetxController {
@@ -19,7 +18,6 @@ abstract class LoginController extends GetxController {
 class LoginControllerIMP extends LoginController {
   late TextEditingController emailController;
   late TextEditingController passwordController;
-  GlobalKey<FormState> formState = GlobalKey();
   bool isPassword = true;
   List data = [];
   StatusRequest? statusRequest;
@@ -39,32 +37,20 @@ class LoginControllerIMP extends LoginController {
 
   @override
   login() async {
-    var formData = formState.currentState;
-    if (formData!.validate()) {
-      statusRequest = StatusRequest.loading;
-      update();
-      var response = await signinData.postData(
-          emailController.text, passwordController.text);
-      statusRequest = handlingData(response);
-      update();
-      if (statusRequest == StatusRequest.success) {
-        myServices.sharedPreferences.setString("token", response['Token']);
+    statusRequest = StatusRequest.loading;
+    update();
+    var response = await signinData.postData(
+        emailController.text, passwordController.text);
+    statusRequest = handlingData(response);
+    update();
+    if (statusRequest == StatusRequest.success) {
+      CacheHelper.saveData(key: "token", value: response['Token'])
+          .then((value) {
         token = response['Token'];
-        if (kDebugMode) {
-          print(response['Token']);
-        }
         Get.offNamed(AppRoute.homePage);
-      }
-      update();
-    } else {
-      Get.snackbar(
-        'Error Login',
-        "you have an error while Login to your account !",
-        snackPosition: SnackPosition.BOTTOM,
-        colorText: AppColor.grey,
-      );
-      statusRequest = StatusRequest.failure;
+      });
     }
+    update();
   }
 
   @override

@@ -11,7 +11,7 @@ import 'package:test_app/data/datasorcue/question/question_datasource.dart';
 
 abstract class QuestitionScreenController extends GetxController {
   getData();
-  changeRadioButton(String? value, TextEditingController answerController);
+  changeRadioButton(String? value,int index);
   postData({
     String? bodyPartId,
     required List<Map<dynamic, String>> map,
@@ -75,13 +75,10 @@ class QuestitionScreenControllerIMP extends QuestitionScreenController {
     getData();
   }
 
-  String? val;
 
   @override
-  changeRadioButton(String? value, answerController) {
-    answerController.clear();
-    val = value;
-    answerController.text = value!;
+  changeRadioButton(String? value,int index) {
+    controllers[index].text = value!;
     update();
   }
 
@@ -100,8 +97,9 @@ class QuestitionScreenControllerIMP extends QuestitionScreenController {
         longitude: longitude,
         latitude: latitude);
     statusRequest = handlingData(response);
+    update();
     if (statusRequest == StatusRequest.success) {
-      Get.toNamed(AppRoute.nearbyHospitalFirst);
+      Get.toNamed(AppRoute.nearbyHospital);
     }
     update();
   }
