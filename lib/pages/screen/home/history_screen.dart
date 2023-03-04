@@ -67,7 +67,7 @@ class HistoryScreen extends StatelessWidget {
                                     "IDCase": controller.items[index]['Id']
                                         .toString(),
                                     "hosptailName": controller.items[index]
-                                        ['BodyPart'],
+                                        ['Hospital']?? "Hospital",
                                     "dataTime": e.toString(),
                                     "timeDate": en.toString(),
                                   });
