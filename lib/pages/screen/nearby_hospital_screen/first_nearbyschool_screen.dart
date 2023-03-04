@@ -1,10 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:test_app/controller/hosiptal_controller/first_hospital_controller.dart';
 import 'package:test_app/core/constant/handeldataview.dart';
 import 'package:test_app/core/theme/theme_color.dart';
@@ -18,7 +15,6 @@ class FirstNearByHospitalScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return GetBuilder<FirstNearByHospitalScreenIMP>(
       init: FirstNearByHospitalScreenIMP(),
       builder: (controller) => HandlingDataView(
@@ -59,9 +55,7 @@ class FirstNearByHospitalScreen extends StatelessWidget {
                   Spacer(),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 4, vertical: 4),
-                    child: MapNearbyHospialWidget(
-                     
-                    ),
+                    child: MapNearbyHospialWidget(),
                   ),
                 ],
               ),

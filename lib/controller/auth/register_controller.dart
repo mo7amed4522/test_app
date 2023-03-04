@@ -17,7 +17,7 @@ class RegisterControllerIMP extends RegisterController {
   late TextEditingController nameController;
   late TextEditingController emailController;
   late TextEditingController passwordController;
-  late TextEditingController confPasswordController;
+  
 
   SignupData signupData = SignupData(Get.find());
 
@@ -49,8 +49,14 @@ class RegisterControllerIMP extends RegisterController {
     update();
     if (StatusRequest.success == statusRequest) {
       Get.offAllNamed(AppRoute.loginPage);
+    } else {
+      Get.snackbar(
+        "Error !!",
+        "User with email ${emailController.text} exist!",
+        snackPosition: SnackPosition.BOTTOM,
+      );
+      update();
     }
-    update();
   }
 
   @override
@@ -63,7 +69,7 @@ class RegisterControllerIMP extends RegisterController {
     nameController = TextEditingController();
     emailController = TextEditingController();
     passwordController = TextEditingController();
-    confPasswordController = TextEditingController();
+
     super.onInit();
   }
 
@@ -72,7 +78,7 @@ class RegisterControllerIMP extends RegisterController {
     nameController.dispose();
     emailController.dispose();
     passwordController.dispose();
-    confPasswordController.dispose();
+   
     super.dispose();
   }
 }

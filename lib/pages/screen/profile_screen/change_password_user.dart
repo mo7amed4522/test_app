@@ -54,7 +54,7 @@ class ChangePasswordUserScreen extends StatelessWidget {
                 children: [
                   const SizedBox(height: 10),
                   SizedBox(
-                    height: Get.height / 4,
+                    height: Get.height /4,
                     width: Get.width / 1,
                     child: SvgPicture.asset(AppLinkImage.resetPass,
                         fit: BoxFit.contain),
@@ -62,7 +62,7 @@ class ChangePasswordUserScreen extends StatelessWidget {
                   const SizedBox(height: 30),
                   Expanded(
                     child: SizedBox(
-                      height: Get.height - 300,
+                     // height: Get.height - 100,
                       width: Get.width,
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
@@ -100,47 +100,28 @@ class ChangePasswordUserScreen extends StatelessWidget {
                               color: AppColor.black,
                               isPassword: true,
                             ),
-                            const SizedBox(height: 15),
-                            defaultTextForm(
-                              controller: controller.confNewPasswordController,
-                              keyboardType: TextInputType.visiblePassword,
-                              assetName: AppLinkImage.iconsPassword,
-                              label: "Confirm Password",
-                              onTap: () {},
-                              onChange: (String? vall) {},
-                              onSubmit: (String? vall) {},
-                              prefix: Icons.lock_outline,
-                              validate: (String? vall) {
-                                return validInput(vall!, 5, 100, "password");
-                              },
-                              color: AppColor.black,
-                              isPassword: true,
-                            ),
-                            const SizedBox(height: 100),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  right: Get.width / 10, left: Get.width / 10),
-                              child: GestureDetector(
-                                  child: animatedOptacity("Save"),
-                                  onTap: () {
-                                    var formData = formState.currentState;
-                                    if (formData!.validate()) {
-                                      
-                                        controller.sucessReset(context);
-                                      
-                                    } else {
-                                      Get.snackbar(
-                                        "Error !",
-                                        "please add the values !!",
-                                        snackPosition: SnackPosition.BOTTOM,
-                                      );
-                                    }
-                                  }),
-                            ),
                           ],
                         ),
                       ),
                     ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        right: Get.width / 10, left: Get.width / 10),
+                    child: GestureDetector(
+                        child: animatedOptacity("Save"),
+                        onTap: () {
+                          var formData = formState.currentState;
+                          if (formData!.validate()) {
+                            controller.sucessReset(context);
+                          } else {
+                            Get.snackbar(
+                              "Error !",
+                              "please add the values !!",
+                              snackPosition: SnackPosition.BOTTOM,
+                            );
+                          }
+                        }),
                   ),
                 ],
               ),

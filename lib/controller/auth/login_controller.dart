@@ -49,8 +49,15 @@ class LoginControllerIMP extends LoginController {
         token = response['Token'];
         Get.offNamed(AppRoute.homePage);
       });
-    }
+    }else{
+      Get.snackbar(
+      "Error !!",
+      "No user with id ${emailController.text} could be found! or password",
+      snackPosition: SnackPosition.BOTTOM,
+    );
     update();
+    }
+    
   }
 
   @override

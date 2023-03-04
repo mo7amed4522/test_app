@@ -15,7 +15,6 @@ abstract class ChangeUsersPasswordController extends GetxController {
 class ChangeUsersPasswordControllerIMP extends ChangeUsersPasswordController {
   late TextEditingController currentPasswordController;
   late TextEditingController newPasswordController;
-  late TextEditingController confNewPasswordController;
   
   StatusRequest? statusRequest;
   ChangePasswordData changePasswordData = ChangePasswordData(Get.find());
@@ -38,7 +37,6 @@ class ChangeUsersPasswordControllerIMP extends ChangeUsersPasswordController {
             onTap: () {
               currentPasswordController.clear();
               newPasswordController.clear();
-              confNewPasswordController.clear();
               Get.offAndToNamed(AppRoute.homePage);
             },
           ),
@@ -54,7 +52,6 @@ class ChangeUsersPasswordControllerIMP extends ChangeUsersPasswordController {
   void onInit() {
     currentPasswordController = TextEditingController();
     newPasswordController = TextEditingController();
-    confNewPasswordController = TextEditingController();
     super.onInit();
   }
 
@@ -62,7 +59,6 @@ class ChangeUsersPasswordControllerIMP extends ChangeUsersPasswordController {
   void dispose() {
     currentPasswordController.dispose();
     newPasswordController.dispose();
-    confNewPasswordController.dispose();
     super.dispose();
   }
 }
