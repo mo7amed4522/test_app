@@ -15,7 +15,7 @@ class ClanderNearbyHospitalWidget extends GetView<FirstNearByHospitalScreenIMP> 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: Get.height - 450,
+      height: Get.height /1.8,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
         color: AppColor.nearlyWhite,

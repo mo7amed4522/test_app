@@ -40,7 +40,7 @@ class NearbyHospitalScreen extends StatelessWidget {
                       icon: Icons.arrow_back,
                       color: AppColor.black,
                       onPressed: () {
-                        Get.back();
+                        Get.toNamed(AppRoute.homePage);
                       })),
               iconTheme: const IconThemeData(color: AppColor.black),
               elevation: 0.0,
