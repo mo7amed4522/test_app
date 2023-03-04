@@ -4,8 +4,6 @@ import 'package:test_app/core/route/app_routes.dart';
 import 'package:test_app/pages/screen/auth/login_page.dart';
 import 'package:test_app/pages/screen/auth/register_page.dart';
 import 'package:test_app/pages/screen/auth_attach/forget_password.dart';
-import 'package:test_app/pages/screen/auth_attach/link_sent.dart';
-import 'package:test_app/pages/screen/auth_attach/reset_password_page.dart';
 import 'package:test_app/pages/screen/history_screen/first_history_screen.dart';
 import 'package:test_app/pages/screen/home/history_screen.dart';
 import 'package:test_app/pages/screen/home/nearby_hospital_screen.dart';
@@ -31,9 +29,7 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoute.loginPage, page: () => const LoginScreen()),
   // =============== auth_attach =====//
   GetPage(name: AppRoute.forggetPass, page: () => const ForgetPasswordScreen()),
-  GetPage(name: AppRoute.linkSent, page: () => const LinkSentScreen()),
-  GetPage(
-      name: AppRoute.resetPassword, page: () => const ResetePasswordScreen()),
+
   // =============== Home Page =====//
   GetPage(name: AppRoute.homePage, page: () => HomePageScreen()),
   GetPage(

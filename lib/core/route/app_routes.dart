@@ -6,8 +6,6 @@ class AppRoute {
   static const String loginPage = "/LoginPage";
   // ============== auth_attach =============//
   static const String forggetPass = "/ForgetPassword";
-  static const String linkSent = "/LinkSent";
-  static const String resetPassword = "/ResetPassword";
   // ============== register case =============//
   static const String homePage = "/HomePage";
   static const String registerCase = "/RegisterCase";

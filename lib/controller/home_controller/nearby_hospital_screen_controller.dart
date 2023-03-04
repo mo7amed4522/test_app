@@ -1,10 +1,12 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'dart:async';
+import 'dart:collection';
 import 'package:flutter/foundation.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:test_app/core/constant/constant.dart';
 import 'package:test_app/core/constant/statusrequest.dart';
 import 'package:test_app/core/func/internet/handel_data.dart';
@@ -14,11 +16,14 @@ abstract class NearbySchoolScreenController extends GetxController {
   getData();
   checkGps();
   getLocation();
+  markeradd(double latitude,double longitude);
 }
 
 class NearbySchoolScreenControllerIMP extends NearbySchoolScreenController {
   TextEditingController searchController = TextEditingController();
   StatusRequest? statusRequest;
+     final Completer<GoogleMapController> controllerMap =
+        Completer<GoogleMapController>();
   GetHonspital getHonspital = GetHonspital(Get.find());
   bool servicestatus = false;
   List data = [];
@@ -27,6 +32,7 @@ class NearbySchoolScreenControllerIMP extends NearbySchoolScreenController {
   Position? positionlate;
   String log = "", lat = "";
   late StreamSubscription<Position> positionStream;
+  var markers = HashSet<Marker>();
 
   @override
   void onInit() {
@@ -110,5 +116,16 @@ class NearbySchoolScreenControllerIMP extends NearbySchoolScreenController {
         );
       }
     }
+  }
+  
+  @override
+  markeradd( latitude,longitude) {
+   markers.add(
+    Marker(
+      markerId: MarkerId('1'),
+      position: LatLng(latitude, longitude)
+    ),
+   );
+   update();
   }
 }

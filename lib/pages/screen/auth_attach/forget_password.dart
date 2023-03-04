@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:test_app/controller/auth_attach/forget_pass_controller.dart';
 import 'package:test_app/core/constant/component.dart';
 import 'package:test_app/core/constant/link_photo.dart';
+import 'package:test_app/core/func/auth/validationinput.dart';
 import 'package:test_app/core/theme/theme_color.dart';
 import 'package:test_app/pages/widget/auth_widget/back_arrow_widget.dart';
 
@@ -16,21 +17,22 @@ class ForgetPasswordScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     GlobalKey<FormState> formState = GlobalKey<FormState>();
 
-    return Scaffold(
-      backgroundColor: AppColor.defaultColor,
-      appBar: AppBar(
-          elevation: 0.0,
-          foregroundColor: AppColor.defaultColor,
-          backgroundColor: AppColor.defaultColor,
-          shadowColor: AppColor.defaultColor),
-      body: GetBuilder<ForgetPasswordIMP>(
-        init: ForgetPasswordIMP(),
-        builder: (controller) => Form(
+    return GetBuilder<ForgetPasswordIMP>(
+      init: ForgetPasswordIMP(),
+      builder: (controller) => Scaffold(
+        backgroundColor: AppColor.defaultColor,
+        appBar: AppBar(
+            elevation: 0.0,
+            foregroundColor: AppColor.defaultColor,
+            backgroundColor: AppColor.defaultColor,
+            shadowColor: AppColor.defaultColor),
+        body: Form(
           key: formState,
           child: Container(
             decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(40), topRight: Radius.circular(40)),
+                    topLeft: Radius.circular(40),
+                    topRight: Radius.circular(40)),
                 color: AppColor.nearlyWhite),
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             child: ListView(
@@ -95,15 +97,26 @@ class ForgetPasswordScreen extends StatelessWidget {
                     onChange: (String? vall) {},
                     onSubmit: (String? vall) {},
                     color: Colors.black,
-                    validate: (String? val) {}),
+                    validate: (String? val) {
+                      return validInput(val!, 6, 100, "email");
+                    }),
                 SizedBox(height: 50),
                 Padding(
-                  padding:
-                      EdgeInsets.only(left: Get.width / 9, right: Get.width / 9),
+                  padding: EdgeInsets.only(
+                      left: Get.width / 9, right: Get.width / 9),
                   child: GestureDetector(
                       child: animatedOptacity("SUBMIT"),
                       onTap: () {
-                        controller.submit();
+                        if (formState.currentState!.validate()) {
+                          controller.submit();
+                          print("object");
+                        } else {
+                          Get.snackbar(
+                            "Error !!",
+                            "please enter your email address",
+                            snackPosition: SnackPosition.BOTTOM,
+                          );
+                        }
                       }),
                 )
               ],

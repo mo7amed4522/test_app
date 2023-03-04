@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:test_app/controller/home_controller/nearby_hospital_screen_controller.dart';
+import 'package:test_app/core/constant/constant.dart';
 import 'package:test_app/core/constant/link_photo.dart';
 import 'package:test_app/core/theme/theme_color.dart';
 import 'package:test_app/module/hospital_model.dart';
@@ -12,16 +13,15 @@ import 'package:test_app/module/hospital_model.dart';
 class MapNearbyHospitalWidget extends GetView<NearbySchoolScreenControllerIMP> {
   void Function()? onTap;
   Hospitals? hospitals;
-  Function(GoogleMapController)? onMapCreated;
   MapNearbyHospitalWidget(
-      {super.key, this.onTap, this.onMapCreated, this.hospitals});
+      {super.key, this.onTap, this.hospitals});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
       child: SizedBox(
-        height: 275,
+        height: 278,
         child: Stack(
           alignment: AlignmentDirectional.topCenter,
           children: [
@@ -29,25 +29,29 @@ class MapNearbyHospitalWidget extends GetView<NearbySchoolScreenControllerIMP> {
               borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(20), topRight: Radius.circular(20)),
               child: SizedBox(
-                height: 124,
+                height: 130,
                 width: Get.width / 1.22,
                 child: GoogleMap(
-                  mapType: MapType.normal,
+                  markers: controller.markers,
+                 // mapType: MapType.normal,
                   initialCameraPosition: CameraPosition(
+                    zoom: 14,
                     target: LatLng(
                       hospitals!.latitude!,
                       hospitals!.longitude!,
                     ),
                   ),
-                  onMapCreated: onMapCreated,
+                  onMapCreated: (GoogleMapController controll) {
+                    if (controller.controllerMap.isCompleted) {
+                      controller.markeradd(lati, long);
+                    } else {
+                      controller.controllerMap.complete(controll);
+                      controller.markeradd(lati, long);
+                    }
+                  },
                 ),
               ),
             ),
-            Positioned(
-                right: 92,
-                top: 83,
-                child: ClipRRect(
-                    child: SvgPicture.asset(AppLinkImage.pin, height: 20))),
             Positioned(
               bottom: 19,
               height: 130,

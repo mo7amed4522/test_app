@@ -21,7 +21,7 @@ class HomePage extends StatelessWidget {
       nextScreen: newScreen(),
       splashIconSize: Get.height,
       animationDuration: const Duration(
-        milliseconds: 700,
+        milliseconds: 2000,
       ),
       splashTransition: SplashTransition.sizeTransition,
     );

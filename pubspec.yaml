@@ -20,16 +20,26 @@ dependencies:
   lottie: ^2.2.0
   dartz: ^0.10.1
   dio: ^5.0.0
-  google_maps_flutter: ^2.2.3
+  google_maps_flutter:
+    git:
+      url: https://github.com/lukaskurz/plugins
+      path: packages/google_maps_flutter/google_maps_flutter
+      ref: main
 
 
 
 dev_dependencies:
+  flutter_launcher_icons: ^0.12.0
   flutter_test:
     sdk: flutter
   geolocator: ^7.7.1
   geocoding: ^2.0.1
-
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  remove_alpha_ios: true
+  image_path: "assets/image/asset 10.png"
+  min_sdk_android: 21
   flutter_lints: ^2.0.0
 
 flutter:

@@ -2,7 +2,7 @@ class AppLinkImage {
 // ======================= Images ===============//
   static const String images = "assets/image";
   static const String logoImage = "$images/asset1.png";
-  static const String logoImage2 = "$images/Asset 10.png";
+  static const String logoImage2 = "$images/asset 10.png";
   // ======================= SVG ===============//
   static const String forgetPass = "$images/forgetPass.svg";
   static const String linkset = "$images/linkSent.svg";
@@ -14,8 +14,6 @@ class AppLinkImage {
   static const String frontBody = "$images/frontbody.svg";
   static const String backBody = "$images/backbody.svg";
   static const String success = "$images/Success.svg";
-  static const String map = "$images/map.svg";
-  static const String map2 = "$images/map2.svg";
   static const String location = "$images/location.svg";
   static const String pin = "$images/pin.svg";
   static const String hospitalName = "$images/hospital name.svg";

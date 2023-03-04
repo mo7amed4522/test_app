@@ -60,7 +60,7 @@ class HistoryScreen extends StatelessWidget {
                           return HistoryListViewBuilderWidget(
                             dataTime: e.toString(),
                             timeDate: "${en.toString()} T",
-                            hospitalName: controller.items[index]['BodyPart'],
+                            hospitalName: controller.items[index]['Hospital'] ?? "Hospital",
                             onTap: () {
                               Get.toNamed(AppRoute.firstHistoryScreen,
                                   arguments: {

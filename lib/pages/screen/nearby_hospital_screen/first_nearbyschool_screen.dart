@@ -18,8 +18,7 @@ class FirstNearByHospitalScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Completer<GoogleMapController> controllerMap =
-        Completer<GoogleMapController>();
+
     return GetBuilder<FirstNearByHospitalScreenIMP>(
       init: FirstNearByHospitalScreenIMP(),
       builder: (controller) => HandlingDataView(
@@ -57,14 +56,11 @@ class FirstNearByHospitalScreen extends StatelessWidget {
                     hospitalFirstModel:
                         HospitalFirstModel.fromJson(controller.items),
                   ),
+                  Spacer(),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                    padding: EdgeInsets.symmetric(horizontal: 4, vertical: 4),
                     child: MapNearbyHospialWidget(
-                      onMapCreated: (GoogleMapController controll) {
-                        if (!controllerMap.isCompleted) {
-                          controllerMap.complete(controll);
-                        } 
-                      },
+                     
                     ),
                   ),
                 ],

@@ -1,9 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, must_be_immutable
-import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:test_app/controller/home_controller/nearby_hospital_screen_controller.dart';
 import 'package:test_app/core/constant/component.dart';
 import 'package:test_app/core/constant/handeldataview.dart';
@@ -18,8 +16,7 @@ class NearbyHospitalScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Completer<GoogleMapController> controllerMap =
-        Completer<GoogleMapController>();
+ 
     return GetBuilder<NearbySchoolScreenControllerIMP>(
       init: NearbySchoolScreenControllerIMP(),
       builder: (controller) => HandlingDataView(
@@ -75,19 +72,6 @@ class NearbyHospitalScreen extends StatelessWidget {
                             return MapNearbyHospitalWidget(
                               hospitals:
                                   Hospitals.fromJson(controller.data[index]),
-                              onMapCreated: (GoogleMapController controll) {
-                                if (!controllerMap.isCompleted) {
-                                  //first calling is false
-                                  //call "completer()"
-                                  controllerMap.complete(controll);
-                                } else {
-                                  //other calling, later is true,
-                                  //don't call again completer()
-                                }
-                              },
-                              /* onMapCreated: (GoogleMapController controlle) {
-                                controllerMap.complete(controlle);
-                              }, */
                               onTap: () {
                                 Get.toNamed(
                                   AppRoute.nearbyHospitalFirst,

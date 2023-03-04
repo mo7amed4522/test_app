@@ -48,7 +48,7 @@ class DialogWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 7, right: 7),
               child: GestureDetector(
-                  onTap: onTap, child: animatedOptacity("BACK TO LOGIN")),
+                  onTap: onTap, child: animatedOptacity("BACK TO HOME")),
             ),
             SizedBox(height: 10),
           ],
