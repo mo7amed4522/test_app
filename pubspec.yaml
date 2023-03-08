@@ -25,6 +25,7 @@ dependencies:
       url: https://github.com/lukaskurz/plugins
       path: packages/google_maps_flutter/google_maps_flutter
       ref: main
+  rename: ^2.1.1
 
 
 
